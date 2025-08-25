@@ -5,7 +5,7 @@ import '@/../public/glitch.css';
 
 export default function Banner({name} : {name: string}) {
   return (
-    <Box sx={{ position: "fixed", width: "100%", height: "100vh", overflow: "hidden" , top: 0}}>
+    <Box sx={{ width: "100%", height: "100vh", overflow: "hidden" , top: 0}}>
       <video
         autoPlay
         loop
@@ -18,7 +18,7 @@ export default function Banner({name} : {name: string}) {
           objectFit: "cover",
           top: 0,
           left: 0,
-          zIndex: -1,
+          zIndex: -1
         }}
       >
         <source src="/banner.mp4" type="video/mp4" />

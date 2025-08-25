@@ -1,12 +1,13 @@
-import ClientHeader from "@/components/ClientHeader";
+import * as Client from "@/components/Client";
 import Banner from "@/components/Banner";
 
 export default function Home() {
   
   return (
     <div>
-      <ClientHeader name={'Daniel'}/>
+      <Client.Header name={'Daniel'}/>
       <Banner name={'Daniel Dias'}/>
+      <Client.About/>
     </div>
   );
 }
