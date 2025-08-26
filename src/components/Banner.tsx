@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import '@/../public/glitch.css';
+import GlitchText from "./GlitchText";
 
 export default function Banner({name} : {name: string}) {
   return (
@@ -42,6 +42,7 @@ export default function Banner({name} : {name: string}) {
         <Typography variant="h3" component="div">
             {name}
         </Typography>
+        <GlitchText text="Full Stack Developer" fontSize="5rem" />
       </Box>
     </Box>
   );
