@@ -6,10 +6,9 @@ import Typed from "./Typed";
 
 export default function About() {
     return (
-        <Container id="about">
+        <Container>
             <Title text="About" lineColor="blue" />
             <Typed
-                id='about'
                 strings={
                     [
                     `Olá! Eu sou um programador full-stack com habilidades em uma variedade de tecnologias. Aqui estão algumas das minhas principais habilidades:
