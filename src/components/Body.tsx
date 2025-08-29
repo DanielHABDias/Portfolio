@@ -17,9 +17,7 @@ export default function Body() : React.ReactNode {
     return (
         <Grid container spacing={2} sx={style}>
             <Aside size={3}/>
-            <Grid size={9}  sx={{ backgroundColor: "red", height: "100%" }}>
-                <Main />
-            </Grid>
+            <Main size={9}/>
         </Grid>
     );
 }
