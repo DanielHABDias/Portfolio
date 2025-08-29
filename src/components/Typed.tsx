@@ -9,12 +9,13 @@ type TypedProps = {
     showCursor?: boolean 
 };
 
-export default function Typed({ strings, loop=false, showCursor=true }: TypedProps) {
-    let time: number = 0;
+export default function Typed({ strings, loop=true, showCursor=true }: TypedProps) {
+    let tempo: number = 0;
     strings.forEach((string) => {
-        time += string.length;
+        tempo += string.length * 0.06; 
     });
-    time = 1000 / time;
+    tempo = tempo / 60; 
+    let velocidade: number = strings.length / tempo; 
     return (
         <Typography
             variant="h6"
@@ -22,12 +23,11 @@ export default function Typed({ strings, loop=false, showCursor=true }: TypedPro
         >
             <ReactTyped
                 strings={strings}
-                typeSpeed={time}
-                backSpeed={time}
+                typeSpeed={velocidade}
+                backSpeed={velocidade}
                 showCursor={showCursor}
                 cursorChar="█"
                 loop={loop}
-                startWhenVisible
             />
         </Typography>
     );

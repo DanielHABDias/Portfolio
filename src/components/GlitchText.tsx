@@ -2,7 +2,6 @@
 "use client";
 
 import { Box, Typography } from "@mui/material";
-import { trace } from "console";
 import { AnimationType, motion, Transition } from "framer-motion";
 
 interface GlitchTextProps {
