@@ -7,6 +7,7 @@ import { Grid, Divider } from "@mui/material";
 import { useState } from "react";
 import About from "./About";
 import Habilits from "./Habilits";
+import Experience from "./Experience";
 
 const style = {
     padding: 4, 
@@ -33,7 +34,7 @@ export default function Main ({size} : {size: object}) : React.ReactNode {
             <Grid size={12} sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center", flexDirection: "row", padding: 2}}>
                 {session === 'About' && <About/>}
                 {session === 'Habilits' && <Habilits/>}
-                {session === 'Experience' && <div>Conteúdo da Seção Experiência</div>}
+                {session === 'Experience' && <Experience/>}
                 {session === 'Contact-me' && <div>Conteúdo da Seção Contato</div>}
             </Grid>
         </Grid>

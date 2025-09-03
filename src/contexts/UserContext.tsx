@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext } from "react";
-import { FaJava, FaPython, FaPhp, FaNodeJs, FaReact, FaDocker, FaAws } from "react-icons/fa";
+import { FaJava, FaPython, FaPhp, FaNodeJs, FaReact, FaDocker, FaAws, FaGraduationCap, FaChalkboardTeacher, FaBriefcase } from "react-icons/fa";
 import { SiTypescript, SiGo, SiSpringboot, SiDjango, SiNextdotjs, SiIonic, SiMui, SiPostgresql, SiMongodb, SiFirebase, SiRabbitmq, SiOpenai, SiGooglegemini, SiLangchain } from "react-icons/si";
 import { TbBrandCSharp } from "react-icons/tb";
 import { FaLightbulb, FaComments, FaRocket, FaHandsHelping } from "react-icons/fa";
@@ -25,6 +25,15 @@ type Habilits = {
   softskills: Skills[];
 }
 
+type Experience = {
+  company: string;
+  period: string;
+  role: string;
+  description: string[];
+  icon: any;
+  color: string;
+}
+
 interface UserContext {
   'name': string;
   'years': number;
@@ -36,6 +45,7 @@ interface UserContext {
   'about': string;
   'avatar': string;
   'habilits'?: Habilits;
+  'experiences'?: Experience[];
 }
 
 const UserContext = createContext<UserContext>({
@@ -49,6 +59,7 @@ const UserContext = createContext<UserContext>({
   about: "",
   avatar: "",
   habilits: { hardskills: [], softskills: [] },
+  experiences: [],
 });
 
 const habilits: Habilits = {
@@ -95,6 +106,84 @@ const habilits: Habilits = {
   ],
 };
 
+const experiences: Experience[] = [
+  // Formação Acadêmica
+  {
+    company: "COLTEC UFMG",
+    period: "02/2020 – 12/2022",
+    role: "Técnico em Eletrônica",
+    description: [],
+    icon: FaGraduationCap,
+    color: "#1c61f7ff",
+  },
+  {
+    company: "PUC Minas",
+    period: "02/2023 – 12/2025",
+    role: "Graduação em Análise e Desenvolvimento de Sistemas",
+    description: [],
+    icon: FaGraduationCap,
+    color: "#062cdaff",
+  },
+
+  // Experiência Acadêmica
+  {
+    company: "PUC Minas",
+    period: "Fevereiro 2024 - Março 2024",
+    role: "Monitor de Algoritmos e Estruturas de Dados",
+    description: [
+      "Reforço para alunos e apoio ao professor."
+    ],
+    icon: FaChalkboardTeacher,
+    color: "#062cdaff",
+  },
+
+  // Experiência Profissional
+  {
+    company: "LITE COLTEC - COPASA",
+    period: "Fevereiro 2022 - Dezembro 2022",
+    role: "Pesquisador - Desenvolvedor",
+    description: [
+      "Projeto UFMG-COPASA com microcontroladores e LoraWAN (C/C++).",
+      "Projeto resultou em patente registrada."
+    ],
+    icon: FaBriefcase,
+    color: "#1c61f7ff",
+  },
+  {
+    company: "ENGAGE ELETRO",
+    period: "Março 2024 - Outubro 2024",
+    role: "Auxiliar de T.I.",
+    description: [
+      "Suporte a ERP, relatórios (Excel/Power BI) e treinamentos internos."
+    ],
+    icon: FaBriefcase,
+    color: "#070070ff",
+  },
+  {
+    company: "4MTI",
+    period: "Outubro 2024 - Março 2025",
+    role: "Estagiário em Desenvolvimento de Software",
+    description: [
+      "Crawlers em PHP para coleta de dados e manutenção supervisionada em banco de dados."
+    ],
+    icon: FaBriefcase,
+    color: "#fa3200ff",
+  },
+  {
+    company: "4MTI",
+    period: "Abril 2025 - Presente",
+    role: "Desenvolvedor Full Stack Júnior",
+    description: [
+      "Desenvolvimento de crawlers e automações (PHP, Node.js, Python).",
+      "Integração de APIs de IA (OpenAI, Gemini).",
+      "Modelagem orientada a objetos (SOLID), PostgreSQL e suporte em infraestrutura.",
+      "Efetivado de estagiário a júnior em poucos meses."
+    ],
+    icon: FaBriefcase,
+    color: "#fa3200ff",
+  },
+];
+
 const UserProvider = ({ children }: any) => {
     const user = {
         'name': 'Daniel Dias',
@@ -126,6 +215,7 @@ const UserProvider = ({ children }: any) => {
         Além do conhecimento técnico, valorizo a proatividade, aprendizado rápido, boa comunicação, colaboração em equipe e foco em boas práticas de código, buscando sempre soluções eficientes e de qualidade.`,
         'avatar': '/avatar.webp',
         'habilits': habilits,
+        'experiences': experiences
     };
 
     return (
