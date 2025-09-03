@@ -12,7 +12,7 @@ import AsideInfo from "./AsideInfo";
 
 const style = {
     padding: 4, 
-    height: "100%", 
+    minheight: "100%", 
     boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", 
     background: "linear-gradient(90deg, rgba(29, 29, 29, 1) 0%, rgba(32, 32, 32, 1) 35%, rgba(44, 44, 44, 1) 100%)",
     borderRadius: "10px"
@@ -27,7 +27,7 @@ const styleInfo = {
     height: '3rem',
 }
 
-export default function Aside ({size} : {size: number}) : React.ReactNode {
+export default function Aside ({size} : {size: object}) : React.ReactNode {
     const user = useUser();
     return (
         <Grid sx={style} size={size}>
