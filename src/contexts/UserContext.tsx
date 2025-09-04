@@ -4,7 +4,8 @@ import { createContext, ReactNode } from "react";
 import { 
   FaJava, FaPython, FaPhp, FaNodeJs, FaReact, FaDocker, FaAws, 
   FaGraduationCap, FaChalkboardTeacher, FaBriefcase,
-  FaLightbulb, FaComments, FaRocket, FaHandsHelping, FaGitAlt
+  FaLightbulb, FaComments, FaRocket, FaHandsHelping, FaGitAlt,
+  FaGithub, FaLinkedin, FaWhatsapp, 
 } from "react-icons/fa";
 import { GiBrain } from "react-icons/gi";
 import { MdCheckCircle } from "react-icons/md";
@@ -12,13 +13,14 @@ import { TbBrandCSharp } from "react-icons/tb";
 import { 
   SiTypescript, SiGo, SiSpringboot, SiDjango, SiNextdotjs, SiIonic, 
   SiMui, SiPostgresql, SiMongodb, SiFirebase, SiRabbitmq, 
-  SiOpenai, SiGooglegemini, SiLangchain 
+  SiOpenai, SiGooglegemini, SiLangchain, SiGmail
 } from "react-icons/si";
 
 type AsideInfo = {
   type: string;
   title: string;
   link: string;
+  icon: React.ElementType;
 }
 
 type Skill = {
@@ -46,6 +48,7 @@ interface UserContextType {
   years: number;
   email: AsideInfo;
   linkedin: AsideInfo;
+  github: AsideInfo;
   whatsapp: AsideInfo;
   title: string;
   titles: string[];
@@ -59,9 +62,10 @@ interface UserContextType {
 const UserContext = createContext<UserContextType>({
   name: "",
   years: 0,
-  email: { type: "email", title: "", link: "" },
-  linkedin: { type: "linkedin", title: "", link: "" },
-  whatsapp: { type: "whatsapp", title: "", link: "" },
+  email: { type: "email", title: "", link: "", icon: SiGmail },
+  linkedin: { type: "linkedin", title: "", link: "", icon: FaLinkedin },
+  github: { type: "github", title: "", link: "", icon: FaGithub },
+  whatsapp: { type: "whatsapp", title: "", link: "", icon: FaWhatsapp },
   title: "",
   titles: [],
   about: [],
@@ -77,8 +81,8 @@ const skills: Skills = {
     { title: "Python", icon: FaPython, color: "#3B82F6" },
     { title: "PHP", icon: FaPhp, color: "#4F46E5" },
     { title: "Node.js", icon: FaNodeJs, color: "#22C55E" },
-    { title: "TypeScript", icon: SiTypescript, color: "#2563EB" },
     { title: "Golang", icon: SiGo, color: "#06B6D4" },
+    { title: "TypeScript", icon: SiTypescript, color: "#2563EB" },
     { title: "CSharp", icon: TbBrandCSharp, color: "#7C3AED" },
     { title: "Spring Boot", icon: SiSpringboot, color: "#15803D" },
     { title: "Django", icon: SiDjango, color: "#166534" },
@@ -209,17 +213,26 @@ const UserProvider = ({ children }: { children: ReactNode }) => {
     email: {
       type: "Email",
       title: "danielhabdias@gmail.com",
-      link: "mailto:danielhabdias@gmail.com?subject=Proposta de trabalho&body=Olá somos a Empresa..."
+      link: "mailto:danielhabdias@gmail.com?subject=Proposta de trabalho&body=Olá somos a Empresa...",
+      icon: SiGmail
     },
     linkedin: {
       type: "Linkedin",
       title: "Daniel Dias",
-      link: "https://www.linkedin.com/in/daniel-henrique-alves-bicalho-dias-0143ab240"
+      link: "https://www.linkedin.com/in/daniel-henrique-alves-bicalho-dias-0143ab240",
+      icon: FaLinkedin
+    },
+    github: {
+      type: "Github",
+      title: "KloseBH",
+      link: "https://github.com/KloseBH",
+      icon: FaGithub
     },
     whatsapp: {
       type: "Whatsapp",
       title: "Talk to me",
-      link: "https://wa.me/5531994332959"
+      link: "https://wa.me/5531994332959",
+      icon: FaWhatsapp
     },
     title: "Full-Stack Developer",
     titles: ["Full-Stack Developer", "Front-End Developer", "Back-End Developer"],

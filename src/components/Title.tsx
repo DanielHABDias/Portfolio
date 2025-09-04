@@ -18,7 +18,7 @@ export default function Title({ text, lineColor }: { text: string, lineColor?: s
                 fontWeight: 700 
             }}
         >
-            {text}
+            {text.toUpperCase()}
         </Typography>
     );
 }
