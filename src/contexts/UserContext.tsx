@@ -21,15 +21,15 @@ type AsideInfo = {
   link: string;
 }
 
-type Skills = {
+type Skill = {
   icon: React.ElementType;
   title: string;
   color: string;
 }
 
-type Habilits = {
-  hardskills: Skills[];
-  softskills: Skills[];
+type Skills = {
+  hardskills: Skill[];
+  softskills: Skill[];
 }
 
 type Experience = {
@@ -52,7 +52,7 @@ interface UserContextType {
   about: string[]; 
   avatar: string;
   avatarBody: string;
-  habilits: Habilits;
+  skills: Skills;
   experiences: Experience[];
 }
 
@@ -67,11 +67,11 @@ const UserContext = createContext<UserContextType>({
   about: [],
   avatar: "",
   avatarBody: "",
-  habilits: { hardskills: [], softskills: [] },
+  skills: { hardskills: [], softskills: [] },
   experiences: [],
 });
 
-const habilits: Habilits = {
+const skills: Skills = {
   hardskills: [
     { title: "Java", icon: FaJava, color: "#DC2626" },
     { title: "Python", icon: FaPython, color: "#3B82F6" },
@@ -79,7 +79,7 @@ const habilits: Habilits = {
     { title: "Node.js", icon: FaNodeJs, color: "#22C55E" },
     { title: "TypeScript", icon: SiTypescript, color: "#2563EB" },
     { title: "Golang", icon: SiGo, color: "#06B6D4" },
-    { title: "C#", icon: TbBrandCSharp, color: "#7C3AED" },
+    { title: "CSharp", icon: TbBrandCSharp, color: "#7C3AED" },
     { title: "Spring Boot", icon: SiSpringboot, color: "#15803D" },
     { title: "Django", icon: SiDjango, color: "#166534" },
     { title: "React", icon: FaReact, color: "#22D3EE" },
@@ -93,7 +93,7 @@ const habilits: Habilits = {
     { title: "Git", icon: FaGitAlt , color: "#fa5d15ff" },
     { title: "AWS S3", icon: FaAws, color: "#F97316" },
     { title: "RabbitMQ", icon: SiRabbitmq, color: "#EA580C" },
-    { title: "OpenAI", icon: SiOpenai, color: "#17407A" },
+    { title: "OpenAI", icon: SiOpenai, color: "#0b08cfff" },
     { title: "Gemini", icon: SiGooglegemini, color: "#2563EB" },
     { title: "LangChain", icon: SiLangchain, color: "#166534" },
   ],
@@ -226,7 +226,7 @@ const UserProvider = ({ children }: { children: ReactNode }) => {
     about,
     avatar: "/avatar.webp",
     avatarBody: "/avatarBody.png",
-    habilits,
+    skills,
     experiences,
   };
 

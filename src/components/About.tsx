@@ -67,7 +67,7 @@ export default function About() {
               <Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap">
                 <FaLaptopCode />
                 <Typography>
-                    {user.habilits?.hardskills.slice(0, 5).map(skill => skill.title).join(", ")}
+                    {user.skills?.hardskills.slice(0, 5).map(skill => skill.title).join(", ")}
                 </Typography>
               </Stack>
 

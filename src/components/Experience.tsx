@@ -42,8 +42,7 @@ export default function Experience() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: color,
-                  boxShadow: `0 0 8px ${color}50`,
+                  boxShadow: `0 4px 8px rgba(0,0,0,0.2)`,
                   transition: "transform 0.3s, box-shadow 0.3s",
                   "&:hover": {
                     transform: "scale(1.3)",
@@ -63,7 +62,7 @@ export default function Experience() {
                 elevation={6}
                 sx={{
                   p: 2,
-                  bgcolor: darken(color, 0.3),
+                  bgcolor: "rgba(255,255,255,0.05)",
                   color: "white",
                   boxShadow: `0 4px 16px rgba(0,0,0,0.2)`,
                   borderRadius: 2,

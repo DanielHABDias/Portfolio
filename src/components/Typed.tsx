@@ -24,7 +24,7 @@ export default function Typed({ strings, loop=true, showCursor=true }: TypedProp
             <ReactTyped
                 strings={strings}
                 typeSpeed={velocidade}
-                backDelay={4000}
+                backDelay={5000}
                 backSpeed={velocidade}
                 showCursor={showCursor}
                 cursorChar="█"

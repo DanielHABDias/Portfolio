@@ -48,7 +48,7 @@ export default function Aside ({size} : {size: object}) : React.ReactNode {
                     {`Age: ${user.years} years`}
                 </Typography>
                 <Box sx={{ mt: 2, display: "flex", flexWrap: "wrap", gap: 1, justifyContent: "center" }}>
-                    {user.habilits?.hardskills.slice(0, 5).map((skill, i) => (
+                    {user.skills?.hardskills.slice(0, 5).map((skill, i) => (
                         <Chip
                             key={i}
                             label={skill.title}

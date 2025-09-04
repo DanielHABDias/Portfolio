@@ -4,18 +4,17 @@ import { Grid, Card, CardContent, Typography } from "@mui/material";
 import useUser from "@/hooks/useUser"; 
 import Title from "./Title";
 
-export default function Habilits() {
+export default function Skills() {
   const user = useUser();
-  const hardskills = user?.habilits?.hardskills || [];
-  const softskills = user?.habilits?.softskills || [];
+  const hardskills = user?.skills?.hardskills || [];
+  const softskills = user?.skills?.softskills || [];
 
   return (
     <Grid container spacing={4} sx={{ p: 4 }}>
-      <Grid size={12}>
-        <Title text="Hard Skills" lineColor="blue" />
+      <Grid size={12} sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
+        <Title text="Hard Skills" lineColor="#ff0000" />
       </Grid>
       {hardskills.map((skill, index) => {
-        const Icon = skill.icon;
         return (
           <Grid size={2} key={index}>
             <Card
@@ -57,11 +56,10 @@ export default function Habilits() {
       })}
 
       {/* Softskills */}
-      <Grid size={12} sx={{ mt: 6 }}>
+      <Grid size={12} sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", mt: 4}}>
         <Title text="Soft Skills" lineColor="pink" />
       </Grid>
       {softskills.map((skill, index) => {
-        const Icon = skill.icon;
         return (
           <Grid size={2} key={index}>
             <Card

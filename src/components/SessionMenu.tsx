@@ -38,8 +38,8 @@ export default function SessionMenu({ value, setValue }: any) {
             <ToggleButton value="About" aria-label="left aligned" sx={styleButtons}>
                 About
             </ToggleButton>
-            <ToggleButton value="Habilits" aria-label="centered" sx={styleButtons}>
-                Habilits
+            <ToggleButton value="Skills" aria-label="centered" sx={styleButtons}>
+                Skills
             </ToggleButton>
             <ToggleButton value="Experience" aria-label="right aligned" sx={styleButtons}>
                 Experience
