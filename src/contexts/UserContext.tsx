@@ -1,12 +1,19 @@
 "use client";
 
-import { createContext } from "react";
-import { FaJava, FaPython, FaPhp, FaNodeJs, FaReact, FaDocker, FaAws, FaGraduationCap, FaChalkboardTeacher, FaBriefcase } from "react-icons/fa";
-import { SiTypescript, SiGo, SiSpringboot, SiDjango, SiNextdotjs, SiIonic, SiMui, SiPostgresql, SiMongodb, SiFirebase, SiRabbitmq, SiOpenai, SiGooglegemini, SiLangchain } from "react-icons/si";
-import { TbBrandCSharp } from "react-icons/tb";
-import { FaLightbulb, FaComments, FaRocket, FaHandsHelping } from "react-icons/fa";
+import { createContext, ReactNode } from "react";
+import { 
+  FaJava, FaPython, FaPhp, FaNodeJs, FaReact, FaDocker, FaAws, 
+  FaGraduationCap, FaChalkboardTeacher, FaBriefcase,
+  FaLightbulb, FaComments, FaRocket, FaHandsHelping, FaGitAlt
+} from "react-icons/fa";
 import { GiBrain } from "react-icons/gi";
 import { MdCheckCircle } from "react-icons/md";
+import { TbBrandCSharp } from "react-icons/tb";
+import { 
+  SiTypescript, SiGo, SiSpringboot, SiDjango, SiNextdotjs, SiIonic, 
+  SiMui, SiPostgresql, SiMongodb, SiFirebase, SiRabbitmq, 
+  SiOpenai, SiGooglegemini, SiLangchain 
+} from "react-icons/si";
 
 type AsideInfo = {
   type: string;
@@ -15,7 +22,7 @@ type AsideInfo = {
 }
 
 type Skills = {
-  icon: any;
+  icon: React.ElementType;
   title: string;
   color: string;
 }
@@ -30,25 +37,26 @@ type Experience = {
   period: string;
   role: string;
   description: string[];
-  icon: any;
+  icon: React.ElementType;
   color: string;
 }
 
-interface UserContext {
-  'name': string;
-  'years': number;
-  'email': AsideInfo;
-  'linkedin': AsideInfo;
-  'whatsapp': AsideInfo;
-  'title': string;
-  'titles': string[];
-  'about': string;
-  'avatar': string;
-  'habilits'?: Habilits;
-  'experiences'?: Experience[];
+interface UserContextType {
+  name: string;
+  years: number;
+  email: AsideInfo;
+  linkedin: AsideInfo;
+  whatsapp: AsideInfo;
+  title: string;
+  titles: string[];
+  about: string[]; 
+  avatar: string;
+  avatarBody: string;
+  habilits: Habilits;
+  experiences: Experience[];
 }
 
-const UserContext = createContext<UserContext>({
+const UserContext = createContext<UserContextType>({
   name: "",
   years: 0,
   email: { type: "email", title: "", link: "" },
@@ -56,53 +64,46 @@ const UserContext = createContext<UserContext>({
   whatsapp: { type: "whatsapp", title: "", link: "" },
   title: "",
   titles: [],
-  about: "",
+  about: [],
   avatar: "",
+  avatarBody: "",
   habilits: { hardskills: [], softskills: [] },
   experiences: [],
 });
 
 const habilits: Habilits = {
   hardskills: [
-    // Linguagens
-    { title: "Java", icon: FaJava, color: "#DC2626" },       // vermelho
-    { title: "Python", icon: FaPython, color: "#3B82F6" },   // azul
-    { title: "PHP", icon: FaPhp, color: "#4F46E5" },         // indigo
-    { title: "Node.js", icon: FaNodeJs, color: "#22C55E" },  // verde
-    { title: "TypeScript", icon: SiTypescript, color: "#2563EB" }, // azul
-    { title: "Golang", icon: SiGo, color: "#06B6D4" },       // cyan
-    { title: "CSharp", icon: TbBrandCSharp, color: "#7C3AED" },  // roxo
-
-    // Frameworks/Bibliotecas
-    { title: "Spring Boot", icon: SiSpringboot, color: "#15803D" }, // verde escuro
-    { title: "Django", icon: SiDjango, color: "#166534" },         // verde escuro
-    { title: "React", icon: FaReact, color: "#22D3EE" },           // cyan claro
-    { title: "Next.js", icon: SiNextdotjs, color: "#ffffffff" },     // preto
-    { title: "Ionic", icon: SiIonic, color: "#6366F1" },           // indigo
-    { title: "Material UI", icon: SiMui, color: "#60A5FA" },       // azul claro
-
-    // Banco de Dados
-    { title: "PostgreSQL", icon: SiPostgresql, color: "#0EA5E9" }, // azul
-    { title: "MongoDB", icon: SiMongodb, color: "#16A34A" },       // verde
-    { title: "Firebase", icon: SiFirebase, color: "#FACC15" },     // amarelo
-
-    // Infraestrutura
-    { title: "Docker", icon: FaDocker, color: "#3B82F6" },         // azul
-    { title: "AWS S3", icon: FaAws, color: "#F97316" },            // laranja
-    { title: "RabbitMQ", icon: SiRabbitmq, color: "#EA580C" },     // laranja escuro
-
-    // IA e Automação
-    { title: "OpenAI", icon: SiOpenai, color: "#17407aff" },         // cinza escuro
-    { title: "Gemini", icon: SiGooglegemini , color: "#2563EB" },  // azul
-    { title: "LangChain", icon: SiLangchain , color: "#166534" },  // verde escuro
+    { title: "Java", icon: FaJava, color: "#DC2626" },
+    { title: "Python", icon: FaPython, color: "#3B82F6" },
+    { title: "PHP", icon: FaPhp, color: "#4F46E5" },
+    { title: "Node.js", icon: FaNodeJs, color: "#22C55E" },
+    { title: "TypeScript", icon: SiTypescript, color: "#2563EB" },
+    { title: "Golang", icon: SiGo, color: "#06B6D4" },
+    { title: "C#", icon: TbBrandCSharp, color: "#7C3AED" },
+    { title: "Spring Boot", icon: SiSpringboot, color: "#15803D" },
+    { title: "Django", icon: SiDjango, color: "#166534" },
+    { title: "React", icon: FaReact, color: "#22D3EE" },
+    { title: "Next.js", icon: SiNextdotjs, color: "#FFFFFF" },
+    { title: "Ionic", icon: SiIonic, color: "#6366F1" },
+    { title: "Material UI", icon: SiMui, color: "#60A5FA" },
+    { title: "PostgreSQL", icon: SiPostgresql, color: "#0EA5E9" },
+    { title: "MongoDB", icon: SiMongodb, color: "#16A34A" },
+    { title: "Firebase", icon: SiFirebase, color: "#FACC15" },
+    { title: "Docker", icon: FaDocker, color: "#3B82F6" },
+    { title: "Git", icon: FaGitAlt , color: "#fa5d15ff" },
+    { title: "AWS S3", icon: FaAws, color: "#F97316" },
+    { title: "RabbitMQ", icon: SiRabbitmq, color: "#EA580C" },
+    { title: "OpenAI", icon: SiOpenai, color: "#17407A" },
+    { title: "Gemini", icon: SiGooglegemini, color: "#2563EB" },
+    { title: "LangChain", icon: SiLangchain, color: "#166534" },
   ],
   softskills: [
-    { title: "Proatividade", icon: FaRocket, color: "#DC2626" },         // vermelho
-    { title: "Comunicação Clara", icon: FaComments, color: "#3B82F6" }, // azul
-    { title: "Aprendizado Rápido", icon: GiBrain, color: "#7C3AED" },   // roxo
-    { title: "Foco em Boas Práticas", icon: MdCheckCircle, color: "#16A34A" }, // verde
-    { title: "Criatividade", icon: FaLightbulb, color: "#FACC15" },     // amarelo
-    { title: "Trabalho em Equipe", icon: FaHandsHelping, color: "#EC4899" }, // rosa
+    { title: "Proatividade", icon: FaRocket, color: "#DC2626" },
+    { title: "Comunicação Clara", icon: FaComments, color: "#3B82F6" },
+    { title: "Aprendizado Rápido", icon: GiBrain, color: "#7C3AED" },
+    { title: "Foco em Boas Práticas", icon: MdCheckCircle, color: "#16A34A" },
+    { title: "Criatividade", icon: FaLightbulb, color: "#FACC15" },
+    { title: "Trabalho em Equipe", icon: FaHandsHelping, color: "#EC4899" },
   ],
 };
 
@@ -114,7 +115,7 @@ const experiences: Experience[] = [
     role: "Técnico em Eletrônica",
     description: [],
     icon: FaGraduationCap,
-    color: "#1c61f7ff",
+    color: "#1c61f7",
   },
   {
     company: "PUC Minas",
@@ -122,21 +123,17 @@ const experiences: Experience[] = [
     role: "Graduação em Análise e Desenvolvimento de Sistemas",
     description: [],
     icon: FaGraduationCap,
-    color: "#062cdaff",
+    color: "#062cda",
   },
-
   // Experiência Acadêmica
   {
     company: "PUC Minas",
     period: "Fevereiro 2024 - Março 2024",
     role: "Monitor de Algoritmos e Estruturas de Dados",
-    description: [
-      "Reforço para alunos e apoio ao professor."
-    ],
+    description: ["Reforço para alunos e apoio ao professor."],
     icon: FaChalkboardTeacher,
-    color: "#062cdaff",
+    color: "#062cda",
   },
-
   // Experiência Profissional
   {
     company: "LITE COLTEC - COPASA",
@@ -147,7 +144,7 @@ const experiences: Experience[] = [
       "Projeto resultou em patente registrada."
     ],
     icon: FaBriefcase,
-    color: "#1c61f7ff",
+    color: "#1c61f7",
   },
   {
     company: "ENGAGE ELETRO",
@@ -157,7 +154,7 @@ const experiences: Experience[] = [
       "Suporte a ERP, relatórios (Excel/Power BI) e treinamentos internos."
     ],
     icon: FaBriefcase,
-    color: "#070070ff",
+    color: "#070070",
   },
   {
     company: "4MTI",
@@ -167,7 +164,7 @@ const experiences: Experience[] = [
       "Crawlers em PHP para coleta de dados e manutenção supervisionada em banco de dados."
     ],
     icon: FaBriefcase,
-    color: "#fa3200ff",
+    color: "#fa3200",
   },
   {
     company: "4MTI",
@@ -180,49 +177,64 @@ const experiences: Experience[] = [
       "Efetivado de estagiário a júnior em poucos meses."
     ],
     icon: FaBriefcase,
-    color: "#fa3200ff",
+    color: "#fa3200",
   },
 ];
 
-const UserProvider = ({ children }: any) => {
-    const user = {
-        'name': 'Daniel Dias',
-        'years': 21,
-        'email': {
-            'type': 'Email',
-            'title': 'danielhabdias@gmail.com',
-            'link': 'mailto:danielhabdias@gmail.com?subject=Proposta de trabalho&body=Olá somos a Empresa...'
-        },
-        'linkedin': {
-            'type': 'Linkedin',
-            'title': 'Daniel Dias',
-            'link': 'https://www.linkedin.com/in/daniel-henrique-alves-bicalho-dias-0143ab240'
-        },
-        'whatsapp': {
-            'type': 'Whatsapp',
-            'title': 'Talk to me',
-            'link': 'https://wa.me/5531994332959'
-        },
-        'title': 'Full-Stack Developer',
-        'titles': [
-            'Full-Stack Developer',
-            'Front-End Developer',
-            'Back-End Developer'
-        ],
-        'about': `Sou Desenvolvedor Full-Stack com foco em Back-End, formado em Análise e Desenvolvimento de Sistemas. Atualmente, atuo como Desenvolvedor Júnior na 4MTI, onde fui efetivado rapidamente após meu período como estagiário, demonstrando rápida adaptação e dedicação.\n
-        Ao longo da minha trajetória, participei de projetos relevantes, desenvolvendo soluções para ingestão de grandes volumes de dados e automação de processos, além de atuar com tecnologia embarcada durante projetos acadêmicos e profissionais. Também tive experiência como monitor de Algoritmos e Estruturas de Dados durante a graduação, sendo reconhecido por desempenho acadêmico.\n
-        Tenho grande interesse em Inteligência Artificial, aplicando APIs de OpenAI e Gemini em projetos de automação e soluções inteligentes. Estou em constante aprendizado, buscando me manter atualizado nas tendências de tecnologia e com planos de pós-graduação em Inteligência Artificial e Engenharia de Software.\n
-        Além do conhecimento técnico, valorizo a proatividade, aprendizado rápido, boa comunicação, colaboração em equipe e foco em boas práticas de código, buscando sempre soluções eficientes e de qualidade.`,
-        'avatar': '/avatar.webp',
-        'habilits': habilits,
-        'experiences': experiences
-    };
+const about: string[] = [
+  `💻 Desenvolvedor <span style="color:#00ffff">Full-Stack</span>, com foco em <span style="color:#00ffff">Back-End</span>, formado em <span style="color:#00ffff">Análise e Desenvolvimento de Sistemas</span>.`,
+  `🚀 Atualmente atuo como <span style="color:#00ffff">Desenvolvedor Júnior</span> na 4MTI, efetivado rapidamente após estágio, demonstrando rápida adaptação e dedicação.`,
+  `🤖 Tenho experiência no desenvolvimento de <span style="color:#00ffff">web crawlers</span> e ingestão de grandes volumes de dados em <span style="color:#00ffff">PostgreSQL</span>.`,
+  `🌐 Apesar do foco em back-end, possuo conhecimentos em front-end, criando interfaces funcionais e esteticamente agradáveis.`,
+  `🛠️ Participei de projetos relevantes, incluindo a COPASA, com soluções em tecnologia embarcada (C/C++) para microcontroladores.`,
+  `📚 Durante a graduação, atuei como monitor de <span style="color:#00ffff">Algoritmos e Estruturas de Dados</span> e fui reconhecido por destaque acadêmico.`,
+  `🤖 Apaixonado por <span style="color:#00ffff">Inteligência Artificial</span>, aplicando APIs de <span style="color:#00ffff">OpenAI</span> e <span style="color:#00ffff">Gemini</span> com uso de <span style="color:#00ffff">LangChain</span> e pipelines RAG.`,
+  `🔧 Adoto boas práticas de desenvolvimento, priorizando código limpo, manutenível e escalável.`,
+  `📊 Experiência em análise de dados e interpretação de métricas para apoiar decisões estratégicas.`,
+  `💡 Proponho soluções criativas e inovadoras para desafios complexos, sempre alinhado aos objetivos do projeto.`,
+  `🤝 Valorizo trabalho colaborativo e comunicação eficiente em equipes multidisciplinares.`,
+  `🌱 Estudo constantemente novas tecnologias, frameworks e metodologias ágeis.`,
+  `🛠️ Experiência prática em integração de sistemas e automação de processos, aumentando eficiência operacional.`,
+  `🎯 Busco otimizar processos e reduzir erros através de testes, documentação e monitoramento contínuo.`,
+  `🧠 Interesse em <span style="color:#00ffff">Inteligência Artificial</span> e aprendizado de máquina, explorando aplicações práticas.`,
+  `⚡ Adaptação rápida a novos desafios e ambientes de trabalho dinâmicos.`,
+  `📚 Comprometido com aprendizado contínuo e desenvolvimento pessoal, focado em evolução técnica e estratégica.`,
+  `🎯 Valorizo <span style="color:#00ffff">proatividade</span>, <span style="color:#00ffff">aprendizado rápido</span>, comunicação clara e colaboração em equipe, buscando soluções eficientes e de qualidade.`
+];
 
-    return (
-        <UserContext.Provider value={user}>
-            {children}
-        </UserContext.Provider>
-    );
+const UserProvider = ({ children }: { children: ReactNode }) => {
+  const user: UserContextType = {
+    name: "Daniel Dias",
+    years: 21,
+    email: {
+      type: "Email",
+      title: "danielhabdias@gmail.com",
+      link: "mailto:danielhabdias@gmail.com?subject=Proposta de trabalho&body=Olá somos a Empresa..."
+    },
+    linkedin: {
+      type: "Linkedin",
+      title: "Daniel Dias",
+      link: "https://www.linkedin.com/in/daniel-henrique-alves-bicalho-dias-0143ab240"
+    },
+    whatsapp: {
+      type: "Whatsapp",
+      title: "Talk to me",
+      link: "https://wa.me/5531994332959"
+    },
+    title: "Full-Stack Developer",
+    titles: ["Full-Stack Developer", "Front-End Developer", "Back-End Developer"],
+    about,
+    avatar: "/avatar.webp",
+    avatarBody: "/avatarBody.png",
+    habilits,
+    experiences,
+  };
+
+  return (
+    <UserContext.Provider value={user}>
+      {children}
+    </UserContext.Provider>
+  );
 };
 
 export { UserContext, UserProvider };

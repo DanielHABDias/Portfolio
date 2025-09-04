@@ -1,54 +1,106 @@
-'use client';
+"use client";
 
-import useUser from "@/hooks/useUser";
-import { Grid } from "@mui/material";
-import { RadarChart } from "@mui/x-charts"
+import { Grid, Box, Paper, Stack, Typography, Link, Divider } from "@mui/material";
+import { FaUser, FaBriefcase, FaEnvelope, FaLinkedin, FaWhatsapp, FaGraduationCap, FaLaptopCode } from "react-icons/fa";
 import Typed from "./Typed";
 import Title from "./Title";
-
-const style =  {
-    height: "100%",
-    width: "100%"
-}
-
-const styleRadar = {
-  bgcolor: 'rgba(255, 255, 255, 0.08)',
-  borderRadius: 2, 
-  padding: 2, 
-  margin: 2,
-  opacity: 1
-};
+import useUser from "@/hooks/useUser";
 
 export default function About() {
-    const user = useUser(); 
-    return (
-        <Grid container spacing={1} sx={style}>
-            <Grid size={12}>
-                <Title text="How I Am?"/>
-            </Grid>
-            <Grid size={8}>
-                <Grid size={12}>
-                    <Typed
-                        strings={
-                            [
-                                user.about
-                            ]
-                        }
-                        loop={false}
-                    />
-                </Grid>
-            </Grid>
-            <Grid size={4}>
-                <RadarChart
-                    height={250}
-                    series={[{ label: 'Habilits', data: [90, 90, 85, 95, 60, 78] }]}
-                    radar={{
-                        max: 100,
-                        metrics: ['Programação', 'Comunicação', 'Colaboração', 'Lógica', 'Design', 'Inovação'],
-                    }}
-                    sx={styleRadar}
-                />
-            </Grid>
+  const user = useUser();
+  const aboutBlocks = user.about;
+
+  return (
+    <Grid container spacing={2} sx={{ height: "100%", width: "100%", padding: 2 }}>
+      <Grid container size={{ xs: 12, md: 12 }} spacing={2}>
+        <Grid size={{ xs: 12, md: 6 }}>
+          <img
+            src={user.avatarBody}
+            alt={user.name}
+            style={{
+              width: "100%",
+              height: "auto",
+              filter: "drop-shadow(0 4px 20px #00ffff)",
+              borderRadius: 8,
+            }}
+          />
         </Grid>
-    );
+
+        <Grid size={{ xs: 12, md: 6 }}>
+          <Paper
+            elevation={6}
+            sx={{
+              p: 3,
+              bgcolor: "rgba(255,255,255,0.05)",
+              borderRadius: 3,
+              height: "100%",
+              width: "100%",
+              boxShadow: "0 4px 20px rgba(0,0,0,0.5)",
+              color: "white",
+            }}
+          >
+            <Stack spacing={2}>
+              <Title text={user.name} lineColor="#00ffff" />
+              <Typography variant="h6" sx={{ color: "#ccc" }}>
+                {user.title}
+              </Typography>
+
+              <Divider sx={{ borderColor: "rgba(255,255,255,0.2)" }} />
+
+              <Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap">
+                <Stack direction="row" spacing={1} alignItems="center">
+                  <FaUser />
+                  <Typography>{`${user.years} years old`}</Typography>
+                </Stack>
+                <Stack direction="row" spacing={1} alignItems="center">
+                  <FaGraduationCap />
+                  <Typography>PUC Minas - ADS</Typography>
+                </Stack>
+                <Stack direction="row" spacing={1} alignItems="center">
+                  <FaBriefcase />
+                  <Typography>4MTI - Full-Stack Júnior</Typography>
+                </Stack>
+              </Stack>
+
+              <Divider sx={{ borderColor: "rgba(255,255,255,0.2)" }} />
+
+              <Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap">
+                <FaLaptopCode />
+                <Typography>
+                    {user.habilits?.hardskills.slice(0, 5).map(skill => skill.title).join(", ")}
+                </Typography>
+              </Stack>
+
+              <Stack direction="row" spacing={2}>
+                <Link href={user.email.link} target="_blank" sx={{ color: "#00ffff" }}>
+                  <FaEnvelope size={24} />
+                </Link>
+                <Link href={user.linkedin.link} target="_blank" sx={{ color: "#0A66C2" }}>
+                  <FaLinkedin size={24} />
+                </Link>
+                <Link href={user.whatsapp.link} target="_blank" sx={{ color: "#25D366" }}>
+                  <FaWhatsapp size={24} />
+                </Link>
+              </Stack>
+            </Stack>
+          </Paper>
+        </Grid>
+      </Grid>
+
+      <Grid size={{ xs: 12, md: 12 }}>
+        <Box
+          sx={{
+            backgroundColor: "rgba(255, 255, 255, 0.05)",
+            borderRadius: 2,
+            padding: 3,
+            boxShadow: "0 4px 20px rgba(0,0,0,0.5)",
+            overflow: "hidden",
+            color: "white",
+          }}
+        >
+          <Typed strings={aboutBlocks} loop={true} showCursor={true} />
+        </Box>
+      </Grid>
+    </Grid>
+  );
 }

@@ -14,7 +14,7 @@ export default function Typed({ strings, loop=true, showCursor=true }: TypedProp
     strings.forEach((string) => {
         tempo += string.length * 0.06; 
     });
-    tempo = tempo / 60; 
+    tempo = tempo / 80; 
     let velocidade: number = strings.length / tempo; 
     return (
         <Typography
@@ -24,6 +24,7 @@ export default function Typed({ strings, loop=true, showCursor=true }: TypedProp
             <ReactTyped
                 strings={strings}
                 typeSpeed={velocidade}
+                backDelay={4000}
                 backSpeed={velocidade}
                 showCursor={showCursor}
                 cursorChar="█"

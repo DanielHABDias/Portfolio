@@ -3,7 +3,7 @@
 import useUser from "@/hooks/useUser";
 import Typed from "./Typed";
 import Title from "./Title";
-import { Grid, Avatar, Divider } from "@mui/material";
+import { Grid, Avatar, Divider, Box, Chip, Typography } from "@mui/material";
 import React from "react";
 import AlternateEmailRoundedIcon from '@mui/icons-material/AlternateEmailRounded';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -43,6 +43,24 @@ export default function Aside ({size} : {size: object}) : React.ReactNode {
                 />
                 <Title text={user.name}/>
                 <Typed strings={user.titles}/>
+
+                <Typography variant="body2" textAlign="center">
+                    {`Age: ${user.years} years`}
+                </Typography>
+                <Box sx={{ mt: 2, display: "flex", flexWrap: "wrap", gap: 1, justifyContent: "center" }}>
+                    {user.habilits?.hardskills.slice(0, 5).map((skill, i) => (
+                        <Chip
+                            key={i}
+                            label={skill.title}
+                            sx={{
+                            bgcolor: skill.color,
+                            color: "#fff",
+                            fontWeight: 600,
+                            boxShadow: `0 2px 8px ${skill.color}`,
+                            }}
+                        />
+                    ))}
+                </Box>
                 <Divider variant="middle" sx={{ width: "100%", margin: 2 }}/>
             </Grid>
             <Grid size={6}>
