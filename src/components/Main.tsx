@@ -8,6 +8,7 @@ import { useState } from "react";
 import About from "./About";
 import Skills from "./Skills";
 import Experience from "./Experience";
+import Contact from "./Contact";
 import { keyframes } from "@emotion/react";
 
 const style = {
@@ -88,7 +89,7 @@ export default function Main({ size }: { size: object }): React.ReactNode {
         {session === "About" && <About />}
         {session === "Skills" && <Skills />}
         {session === "Experience" && <Experience />}
-        {session === "Contact-me" && <div>Conteúdo da Seção Contato</div>}
+        {session === "Contact" && <Contact />}
       </Grid>
     </Grid>
   );

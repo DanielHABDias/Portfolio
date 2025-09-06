@@ -3,7 +3,7 @@
 import useUser from "@/hooks/useUser";
 import Typed from "./Typed";
 import Title from "./Title";
-import { Grid, Avatar, Divider, Box, Chip, Typography } from "@mui/material";
+import { Grid, Avatar, Divider, Box, Chip, Typography, Button } from "@mui/material";
 import React from "react";
 import AsideInfo from "./AsideInfo";
 
@@ -15,11 +15,28 @@ const style = {
     borderRadius: "10px"
 };
 
+const styleButton = {
+    width: "80%", 
+    bgcolor: "rgba(0, 0, 0, 0.74)", 
+    color: "white",
+    borderRadius: "10px",
+    boxShadow: "0 4px 8px 0 #00ffff88, 0 6px 20px 0 #00ffff88",
+}
+
+const handleDownload = (user: any) => {
+    const link = document.createElement('a');
+    link.href = user.curriculum;
+    link.download = 'curriculo_' + user.name.replace(/[^a-zA-Z0-9]/g, '').replace(/\s+/g, '_') + '.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+};
+
 export default function Aside ({size} : {size: object}) : React.ReactNode {
     const user = useUser();
     return (
         <Grid sx={style} size={size}>
-            <Grid size={12} sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
+            <Grid size={{ xs: 12, md: 12}} sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
                 <Avatar 
                     sx={{
                         width: "10rem", 
@@ -51,11 +68,12 @@ export default function Aside ({size} : {size: object}) : React.ReactNode {
                 </Box>
                 <Divider variant="middle" sx={{ width: "100%", margin: 2 }}/>
             </Grid>
-            <Grid size={6}>
-                <AsideInfo info={user.email} />
-                <AsideInfo info={user.linkedin} />
-                <AsideInfo info={user.github} />
-                <AsideInfo info={user.whatsapp} />
+            <Grid size={{ xs: 12, md: 12 }}>
+                {user.contacts.map((contact, i) => (<AsideInfo info={contact} />))}
+            </Grid>
+            <Grid size={{ xs: 12, md: 12 }} sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
+                <Divider variant="middle" sx={{ width: "100%", margin: 2 }}/>
+                <Button variant="contained" onClick={() => handleDownload(user)} sx={styleButton}>Baixar Currículo</Button>
             </Grid>
         </Grid>
     )

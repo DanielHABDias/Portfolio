@@ -55,7 +55,7 @@ export default function About() {
               <div>
                 <Title text={user.name} lineColor="#00ffff" />
                 <Typography variant="h6" sx={{ color: "#00ffff", fontWeight: 600 }}>
-                  {user.title}
+                  {user.titles[0]}
                 </Typography>
               </div>
 

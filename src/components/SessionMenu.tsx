@@ -59,7 +59,7 @@ export default function SessionMenu({ value, setValue }: any) {
       <ToggleButton value="Experience" sx={styleButtons}>
         Experience
       </ToggleButton>
-      <ToggleButton value="Contact-me" sx={styleButtons}>
+      <ToggleButton value="Contact" sx={styleButtons}>
         Contact
       </ToggleButton>
     </ToggleButtonGroup>

@@ -34,7 +34,7 @@ export default function Skills() {
                     "&:hover": { 
                         transform: "scale(1.05)", 
                         boxShadow: 6,
-                        color: "rgba(0, 0, 0, 1)",
+                        color: "rgba(255, 255, 255, 1)",
                         backgroundColor: skill.color,
                     },
                 }}
@@ -79,7 +79,7 @@ export default function Skills() {
                     "&:hover": { 
                         transform: "scale(1.05)", 
                         boxShadow: 6,
-                        color: "rgba(0, 0, 0, 1)",
+                        color: "rgba(255, 255, 255, 1)",
                         backgroundColor: skill.color,
                     },
                 }}
