@@ -6,9 +6,11 @@ const style = {
   bgcolor: "transparent",
   color: "white",
   borderRadius: "999px",
-  p: 0.5,
+  p: { xs: 0.3, sm: 0.5 },
   border: "1px solid rgba(255,255,255,0.15)",
   backdropFilter: "blur(6px)",
+  flexWrap: "nowrap",
+  justifyContent: "start",
 };
 
 const styleButtons = {
@@ -17,16 +19,21 @@ const styleButtons = {
   textTransform: "uppercase",
   fontWeight: 600,
   letterSpacing: "0.05em",
-  px: 2.5,
-  py: 1,
+  px: { xs: 1.5, sm: 2.5 },
+  py: { xs: 0.8, sm: 1 },
+  fontSize: { xs: "0.7rem", sm: "0.8rem", md: "0.9rem" },
   transition: "all 0.3s ease",
   color: "rgba(255,255,255,0.7)",
 
   "&.Mui-selected": {
-    bgcolor: "linear-gradient(90deg, #00ffff, #0ef)",
+    background: "linear-gradient(90deg, #00ffff, #0ef)",
     color: "#000",
     boxShadow: "0 0 12px #00ffff88",
     fontWeight: 700,
+    "&:hover": {
+      bgcolor: "rgba(0, 255, 255, 0.1)",
+      color: "white",
+    },
   },
 
   "&:hover": {
@@ -58,6 +65,12 @@ export default function SessionMenu({ value, setValue }: any) {
       </ToggleButton>
       <ToggleButton value="Experience" sx={styleButtons}>
         Experience
+      </ToggleButton>
+      <ToggleButton value="Projects" sx={styleButtons}>
+        Projects
+      </ToggleButton>
+      <ToggleButton value="Achievements" sx={styleButtons}>
+        Achievements
       </ToggleButton>
       <ToggleButton value="Contact" sx={styleButtons}>
         Contact

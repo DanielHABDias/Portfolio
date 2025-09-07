@@ -8,19 +8,16 @@ import {
   FaLaptopCode, 
   FaLightbulb, 
 } from "react-icons/fa";
-import Typed from "./Typed";
 import Title from "./Title";
 import useUser from "@/hooks/useUser";
 
 export default function About() {
   const user = useUser();
-  const aboutBlocks = user.about;
 
   return (
     <Grid container spacing={2} sx={{ height: "100%", width: "100%", padding: 2 }}>
       <Grid container size={{ xs: 12, md: 12 }} spacing={2}>
         
-        {/* Avatar */}
         <Grid size={{ xs: 12, md: 6 }}>
           <img
             src={user.avatarBody}
@@ -34,7 +31,6 @@ export default function About() {
           />
         </Grid>
 
-        {/* Card lateral */}
         <Grid size={{ xs: 12, md: 6 }}>
           <Paper
             elevation={6}
@@ -135,7 +131,20 @@ export default function About() {
             color: "white",
           }}
         >
-          <Typed strings={aboutBlocks} loop={true} showCursor={true} />
+          <Title text="Sobre Mim" lineColor="#00ffff" />
+          {user.about && user.about.map((item) => {
+            return (
+              <Typography
+                paragraph
+                sx={{
+                  color: "rgba(255,255,255,0.9)",
+                  fontSize: { xs: "0.96rem", md: "1rem" },
+                  lineHeight: 1.7,
+                }}
+                dangerouslySetInnerHTML={{ __html: item }}
+              />
+            );
+          })}
         </Box>
       </Grid>
     </Grid>

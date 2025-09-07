@@ -8,6 +8,8 @@ import { useState } from "react";
 import About from "./About";
 import Skills from "./Skills";
 import Experience from "./Experience";
+import Projects from "./Projects";
+import Achievements from "./Contact";
 import Contact from "./Contact";
 import { keyframes } from "@emotion/react";
 
@@ -66,10 +68,10 @@ export default function Main({ size }: { size: object }): React.ReactNode {
   return (
     <Grid sx={style} size={size}>
       <Box sx={headerStyle}>
-        <Grid size={{ xs: 12, md: 8 }}>
+        <Grid size={{ xs: 12, md: 5 }}>
           <Title text={session} />
         </Grid>
-        <Grid size={{ xs: 12, md: 4 }} sx={{ display: "flex", justifyContent: "center" }}>
+        <Grid size={{ xs: 12, md: 7 }} sx={{ display: "flex", justifyContent: "center" }}>
           <SessionMenu value={session} setValue={setSession} />
         </Grid>
 
@@ -89,6 +91,8 @@ export default function Main({ size }: { size: object }): React.ReactNode {
         {session === "About" && <About />}
         {session === "Skills" && <Skills />}
         {session === "Experience" && <Experience />}
+        {session === "Projects" && <Projects />}
+        {session === "Achievements" && <Achievements />}
         {session === "Contact" && <Contact />}
       </Grid>
     </Grid>

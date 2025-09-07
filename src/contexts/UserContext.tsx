@@ -13,14 +13,19 @@ import { TbBrandCSharp } from "react-icons/tb";
 import { 
   SiTypescript, SiGo, SiSpringboot, SiDjango, SiNextdotjs, SiIonic, 
   SiMui, SiPostgresql, SiMongodb, SiFirebase, SiRabbitmq, 
-  SiOpenai, SiGooglegemini, SiLangchain, SiGmail, SiJunit5 
+  SiOpenai, SiGooglegemini, SiLangchain, SiGmail, SiJunit5, SiVercel
 } from "react-icons/si";
 
 type Project = {
   title: string;
   description: string;
-  link: string;
-  icon: React.ElementType;
+  links: {
+    github?: string;
+    demo?: string;
+  };
+  skills: Skill[];
+  img: string;
+  situation: "ongoing" | "finished";
 }
 
 type Contact = {
@@ -53,9 +58,6 @@ type Experience = {
 
 type Location = {
   address: string;
-  number: string;
-  street: string;
-  cep: string;
   country: string;
   city: string;
   state: string;
@@ -80,7 +82,7 @@ interface UserContextType {
 const UserContext = createContext<UserContextType>({
   name: "",
   years: 0,
-  location: { address: "", number: "", street: "", cep: "", country: "", city: "", state: "" },
+  location: { address: "", country: "", city: "", state: "" },
   curriculum: "",
   projects: [],
   contacts: [],
@@ -111,6 +113,7 @@ const skills: Skills = {
     { title: "ChromaDB", icon: FaDatabase , color: "#e90e0eff" },
     { title: "MongoDB", icon: SiMongodb, color: "#16A34A" },
     { title: "Firebase", icon: SiFirebase, color: "#FACC15" },
+    { title: "Vercel", icon: SiVercel, color: "#000000" },
     { title: "Docker", icon: FaDocker, color: "#3B82F6" },
     { title: "Git", icon: FaGitAlt , color: "#fa5d15ff" },
     { title: "AWS S3", icon: FaAws, color: "#F97316" },
@@ -205,7 +208,27 @@ const experiences: Experience[] = [
   },
 ];
 
-const projects: Project[] = [];
+const projects: Project[] = [
+  {
+    title: "Portifólio",
+    description: "Portifólio pessoal desenvolvido em Next.js para expor minhas habilidades e projetos de forma interativa e moderna.",
+    links: {
+      github: "https://github.com/KloseBH/portifolio",
+      demo: "https://portifolio-klosebh.vercel.app/"
+    },
+    skills: [
+      { title: "Next.js", icon: SiNextdotjs, color: "#070000ff" },
+      { title: "React", icon: FaReact, color: "#61DAFB" },
+      { title: "TypeScript", icon: SiTypescript, color: "#2563EB" },
+      { title: "Python", icon: FaPython, color: "#3B82F6" },
+      { title: "LangChain", icon: SiLangchain, color: "#166534" },
+      { title: "Vercel", icon: SiVercel, color: "#000000" },
+      { title: "Material UI", icon: SiMui, color: "#60A5FA" }
+    ],
+    img: "/projects/portifolio.png",
+    situation: "ongoing"
+  }
+];
 
 const contacts: Contact[] = [
   { type: "Email", title: "danielhabdias@gmail.com", link: "mailto:danielhabdias@gmail.com?subject=Proposta de trabalho&body=Olá somos a Empresa...", icon: SiGmail, color: "#DC2626" },
@@ -215,24 +238,9 @@ const contacts: Contact[] = [
 ];
 
 const about: string[] = [
-  `💻 Desenvolvedor <span style="color:#00ffff">Full-Stack</span>, com foco em <span style="color:#00ffff">Back-End</span>, formado em <span style="color:#00ffff">Análise e Desenvolvimento de Sistemas</span>.`,
-  `🚀 Atualmente atuo como <span style="color:#00ffff">Desenvolvedor Júnior</span> na 4MTI, efetivado rapidamente após estágio, demonstrando rápida adaptação e dedicação.`,
-  `🤖 Tenho experiência no desenvolvimento de <span style="color:#00ffff">web crawlers</span> e ingestão de grandes volumes de dados em <span style="color:#00ffff">PostgreSQL</span>.`,
-  `🌐 Apesar do foco em back-end, possuo conhecimentos em front-end, criando interfaces funcionais e esteticamente agradáveis.`,
-  `🛠️ Participei de projetos relevantes, incluindo a COPASA, com soluções em tecnologia embarcada (C/C++) para microcontroladores.`,
-  `📚 Durante a graduação, atuei como monitor de <span style="color:#00ffff">Algoritmos e Estruturas de Dados</span> e fui reconhecido por destaque acadêmico.`,
-  `🤖 Apaixonado por <span style="color:#00ffff">Inteligência Artificial</span>, aplicando APIs de <span style="color:#00ffff">OpenAI</span> e <span style="color:#00ffff">Gemini</span> com uso de <span style="color:#00ffff">LangChain</span> e pipelines RAG.`,
-  `🔧 Adoto boas práticas de desenvolvimento, priorizando código limpo, manutenível e escalável.`,
-  `📊 Experiência em análise de dados e interpretação de métricas para apoiar decisões estratégicas.`,
-  `💡 Proponho soluções criativas e inovadoras para desafios complexos, sempre alinhado aos objetivos do projeto.`,
-  `🤝 Valorizo trabalho colaborativo e comunicação eficiente em equipes multidisciplinares.`,
-  `🌱 Estudo constantemente novas tecnologias, frameworks e metodologias ágeis.`,
-  `🛠️ Experiência prática em integração de sistemas e automação de processos, aumentando eficiência operacional.`,
-  `🎯 Busco otimizar processos e reduzir erros através de testes, documentação e monitoramento contínuo.`,
-  `🧠 Interesse em <span style="color:#00ffff">Inteligência Artificial</span> e aprendizado de máquina, explorando aplicações práticas.`,
-  `⚡ Adaptação rápida a novos desafios e ambientes de trabalho dinâmicos.`,
-  `📚 Comprometido com aprendizado contínuo e desenvolvimento pessoal, focado em evolução técnica e estratégica.`,
-  `🎯 Valorizo <span style="color:#00ffff">proatividade</span>, <span style="color:#00ffff">aprendizado rápido</span>, comunicação clara e colaboração em equipe, buscando soluções eficientes e de qualidade.`
+  `💻 Sou <span style="color:#00ffff">Desenvolvedor Full-Stack</span>, com foco em <span style="color:#00ffff">Back-End</span>, formado em <span style="color:#00ffff">Análise e Desenvolvimento de Sistemas</span>. Atualmente atuo como <span style="color:#00ffff">Desenvolvedor Júnior</span> na 4MTI, onde fui efetivado rapidamente após estágio graças à minha dedicação e rápida adaptação.`,
+  `🚀 Tenho experiência em <span style="color:#00ffff">web crawlers</span>, ingestão de grandes volumes de dados em <span style="color:#00ffff">PostgreSQL</span> e projetos de tecnologia embarcada (<span style="color:#00ffff">C/C++</span>). Também possuo conhecimentos em front-end, criando interfaces funcionais e modernas. Durante a graduação, fui monitor de <span style="color:#00ffff">Algoritmos e Estruturas de Dados</span> e recebi reconhecimento acadêmico.`,
+  `🤖 Apaixonado por <span style="color:#00ffff">Inteligência Artificial</span>, aplico APIs como <span style="color:#00ffff">OpenAI</span> e <span style="color:#00ffff">Gemini</span> com uso de <span style="color:#00ffff">LangChain</span> e pipelines RAG. Prezo por <span style="color:#00ffff">boas práticas</span>, código limpo e soluções escaláveis. 🌱 Busco evolução constante, valorizo <span style="color:#00ffff">proatividade</span>, colaboração e comunicação clara para gerar impacto positivo em cada projeto.`
 ];
 
 const UserProvider = ({ children }: { children: ReactNode }) => {
@@ -240,14 +248,11 @@ const UserProvider = ({ children }: { children: ReactNode }) => {
     name: "Daniel Dias",
     years: 21,
     location: {
-      address: "R. Orion Rigel Vigne, 107 - Jardim Guanabara, Belo Horizonte - MG, 31742-159",
-      number: "107",
-      street: "Rua Orion Rigel Vigne",
-      cep: "31742-168",
+      address: "Jardim Guanabara, Belo Horizonte - MG",
       country: "Brasil",
       city: "Belo Horizonte",
       state: "MG",
-      iframe: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3753.2328831240466!2d-43.93775511366096!3d-19.830096787582544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa6854e4ac9699b%3A0x8b8b2ffe5d5fb1f4!2sR.%20Orion%20Rigel%20Vigne%2C%20107%20-%20A%20-%20Jardim%20Guanabara%2C%20Belo%20Horizonte%20-%20MG%2C%2031742-159!5e0!3m2!1spt-BR!2sbr!4v1757184775431!5m2!1spt-BR!2sbr"
+      iframe: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7506.583706445522!2d-43.94567652152003!3d-19.82760029284191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa6854346fe4ae1%3A0xf18da6a35a54630!2sJardim%20Guanabara%2C%20Belo%20Horizonte%20-%20MG!5e0!3m2!1spt-BR!2sbr!4v1757267345126!5m2!1spt-BR!2sbr"
     },
     curriculum: "/curriculum.pdf",
     projects: projects,
