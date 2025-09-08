@@ -20,7 +20,7 @@ export default function About() {
     <Grid container spacing={2} sx={{ height: "100%", width: "100%", padding: 2 }}>
       <Grid container size={{ xs: 12, md: 12 }} spacing={2}>
         
-        <Grid size={{ xs: 12, md: 6 }}>
+        <Grid size={{ xs: 0, md: 6 }}>
           <Image
             src={user.avatarBody}
             alt={user.name}

@@ -8,22 +8,27 @@ import Button from "../atoms/Button";
 import { Grid, Avatar, Divider, Box, Chip, Typography } from "@mui/material";
 import React from "react";
 import AsideInfo from "../molecules/AsideInfo";
+import { useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
-const style = {
-    padding: 4, 
-    minheight: "100%", 
-    boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", 
-    background: "linear-gradient(90deg, rgba(29, 29, 29, 1) 0%, rgba(32, 32, 32, 1) 35%, rgba(44, 44, 44, 1) 100%)",
-    borderRadius: "10px"
+const desktopAsideContainerStyle = {
+    padding: 4,
+    minHeight: "100%",
+    background: "linear-gradient(135deg, #1d1d1d 0%, #202020 40%, #2c2c2c 100%)",
+    borderRadius: "10px",
+    display: "flex",
+    flexDirection: "column",
+    gap: 2,
 };
 
-const styleButton = {
-    width: "80%", 
-    bgcolor: "rgba(0, 0, 0, 0.74)", 
-    color: "white",
-    borderRadius: "10px",
-    boxShadow: "0 4px 8px 0 #00ffff88, 0 6px 20px 0 #00ffff88",
-}
+const mobileAsideContainerStyle = {
+    padding: { xs: 2, md: 4 },
+    minHeight: "fit-content",
+    backgroundColor: "transparent",
+    display: "flex",
+    flexDirection: "column",
+    gap: 2,
+};
 
 const handleDownload = (user: Types.UserContextType) => {
     const link = document.createElement('a');
@@ -36,17 +41,23 @@ const handleDownload = (user: Types.UserContextType) => {
 
 export default function Aside ({size} : {size: object}) : React.ReactNode {
     const user: Types.UserContextType = useUser();
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
     return (
-        <Grid sx={style} size={size}>
-            <Grid size={{ xs: 12, md: 12}} sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
-                <Avatar 
+        <Grid
+            size={size}
+            sx={isMobile ? mobileAsideContainerStyle : desktopAsideContainerStyle}
+        >
+            <Grid size={{ xs: 12, md: 12 }} sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", gap: 1 }}>
+                <Avatar
                     sx={{
-                        width: "10rem", 
-                        height: "10rem",
+                        width: { xs: "8rem", md: "10rem" },
+                        height: { xs: "8rem", md: "10rem" },
                         marginBottom: "0.5rem"
-                    }} 
-                    alt={user.name} 
-                    src={user.avatar} 
+                    }}
+                    alt={user.name}
+                    src={user.avatar}
                 />
                 <Title text={user.name}/>
                 <Typed strings={user.titles}/>
@@ -68,14 +79,14 @@ export default function Aside ({size} : {size: object}) : React.ReactNode {
                         />
                     ))}
                 </Box>
-                <Divider variant="middle" sx={{ width: "100%", margin: 2 }}/>
+                <Divider variant="middle" sx={{ width: "100%", marginY: 2 }}/>
             </Grid>
             <Grid size={{ xs: 12, md: 12 }}>
                 {user.contacts.map((contact: Types.Contact, i: number) => { return <AsideInfo info={contact} key={i} />})}
             </Grid>
             <Grid size={{ xs: 12, md: 12 }} sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
-                <Divider variant="middle" sx={{ width: "100%", margin: 2 }}/>
-                <Button handle={() => handleDownload(user)}>Baixar Currículo</Button>
+                <Divider variant="middle" sx={{ width: "100%", marginY: 2 }}/>
+                <Button width={isMobile ? "80%" : "100%"} handle={() => handleDownload(user)}>Baixar Currículo</Button>
             </Grid>
         </Grid>
     )

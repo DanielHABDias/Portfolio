@@ -17,7 +17,7 @@ export default function Skills() {
       </Grid>
       {hardskills.map((skill: Types.Skill, index: number) => {
         return (
-          <Grid size={2} key={index}>
+          <Grid size={{ xs: 6, md: 2 }} key={index}>
             <Card
                 sx={{
                     display: "flex",
@@ -61,7 +61,7 @@ export default function Skills() {
       </Grid>
       {softskills.map((skill: Types.Skill, index: number) => {
         return (
-          <Grid size={2} key={index}>
+          <Grid size={{ xs: 6, md: 2 }} key={index}>
             <Card
                 sx={{
                     display: "flex",
