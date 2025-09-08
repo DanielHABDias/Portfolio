@@ -4,11 +4,12 @@ import { Button as MuiButton } from "@mui/material";
 
 type ButtonProps = {
     children: React.ReactNode,
-    handle?: (...args: any) => void,
+    handle?: (args?: object) => void,
     type?: "submit" | "reset" | "button",
     size?: "small" | "medium" | "large",
     width?: string
 }
+
 
 export default function Button({ children, handle, type = "button", size="medium", width="100%" }: ButtonProps) {
     const onClick = () => { if (handle) handle() }

@@ -1,6 +1,5 @@
 "use client";
 
-import * as Types from "@/types/user";
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 
 const style = {
