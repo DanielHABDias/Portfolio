@@ -14,7 +14,7 @@ import { TbBrandCSharp } from "react-icons/tb";
 import { 
   SiTypescript, SiGo, SiSpringboot, SiDjango, SiNextdotjs, SiIonic, 
   SiMui, SiPostgresql, SiMongodb, SiFirebase, SiRabbitmq, 
-  SiOpenai, SiGooglegemini, SiLangchain, SiGmail, SiJunit5, SiVercel
+  SiOpenai, SiGooglegemini, SiLangchain, SiGmail, SiJunit5, SiVercel, SiRender
 } from "react-icons/si";
 
 const UserContext = createContext<UserContextType>({
@@ -52,6 +52,7 @@ const skills: Skills = {
     { title: "MongoDB", icon: SiMongodb, color: "#16A34A" },
     { title: "Firebase", icon: SiFirebase, color: "#FACC15" },
     { title: "Vercel", icon: SiVercel, color: "#000000" },
+    { title: "Render", icon: SiRender, color: "#000000" },
     { title: "Docker", icon: FaDocker, color: "#3B82F6" },
     { title: "Git", icon: FaGitAlt , color: "#fa5d15ff" },
     { title: "AWS S3", icon: FaAws, color: "#F97316" },
@@ -149,10 +150,10 @@ const experiences: Experience[] = [
 const projects: Project[] = [
   {
     title: "Portifólio",
-    description: "Portifólio pessoal desenvolvido em Next.js para expor minhas habilidades e projetos de forma interativa e moderna.Portifólio pessoal desenvolvido em Next.js para expor minhas habilidades e projetos de forma interativa e moderna.Portifólio pessoal desenvolvido em Next.js para expor minhas habilidades e projetos de forma interativa e moderna.Portifólio pessoal desenvolvido em Next.js para expor minhas habilidades e projetos de forma interativa e moderna.Portifólio pessoal desenvolvido em Next.js para expor minhas habilidades e projetos de forma interativa e moderna.Portifólio pessoal desenvolvido em Next.js para expor minhas habilidades e projetos de forma interativa e moderna.Portifólio pessoal desenvolvido em Next.js para expor minhas habilidades e projetos de forma interativa e moderna.Portifólio pessoal desenvolvido em Next.js para expor minhas habilidades e projetos de forma interativa e moderna.Portifólio pessoal desenvolvido em Next.js para expor minhas habilidades e projetos de forma interativa e moderna.Portifólio pessoal desenvolvido em Next.js para expor minhas habilidades e projetos de forma interativa e moderna.",
+    description: "Sou Daniel Dias, desenvolvedor full-stack com foco em back-end, e este é meu portfólio online. O front-end foi construído com Next.js, React, TypeScript e MUI, organizado em sessões de About, Skills, Experience, Project, Achievements e Contact, garantindo performance, responsividade e boa experiência ao usuário. O back-end, desenvolvido em Python com FastAPI, oferece funcionalidades dinâmicas, incluindo um chat com IA sobre mim e envio de e-mails via formulário. O site está hospedado no Vercel (front-end) e Render (back-end), permitindo fácil integração e manutenção. O portfólio destaca meus projetos, habilidades e conquistas, oferecendo navegação intuitiva e interatividade completa.",
     links: {
       github: "https://github.com/KloseBH/portifolio",
-      demo: "https://portifolio-klosebh.vercel.app/"
+      demo: "https://portifolio-danielhabdias.vercel.app"
     },
     skills: [
       { title: "Next.js", icon: SiNextdotjs, color: "#070000ff" },
@@ -160,8 +161,9 @@ const projects: Project[] = [
       { title: "TypeScript", icon: SiTypescript, color: "#2563EB" },
       { title: "Python", icon: FaPython, color: "#3B82F6" },
       { title: "LangChain", icon: SiLangchain, color: "#166534" },
+      { title: "Material UI", icon: SiMui, color: "#60A5FA" },
       { title: "Vercel", icon: SiVercel, color: "#000000" },
-      { title: "Material UI", icon: SiMui, color: "#60A5FA" }
+      { title: "Render", icon: SiRender, color: "#000000" },
     ],
     img: "/projects/portifolio.png",
     situation: "ongoing"
