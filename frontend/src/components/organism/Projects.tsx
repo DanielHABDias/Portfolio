@@ -31,7 +31,7 @@ export default function Projects() {
       }}
     >
       {projects.map((project: Types.Project, index: number) => (
-        <Grid size={{ xs: 12, md: 6 }} key={index}>
+        <Grid size={{ xs: 12, md: 4 }} key={index}>
           <CardProject project={project} handleOpen={handleOpen}/>
         </Grid>
       ))}

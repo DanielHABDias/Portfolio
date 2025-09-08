@@ -1,6 +1,6 @@
 "use client";
 
-import { UserContextType, Contact, Skills, Experience, Project } from "@/types/user";
+import { UserContextType, Contact, Skills, Experience, Project, Achievement } from "@/types/user";
 import { createContext, ReactNode } from "react";
 import { 
   FaJava, FaPython, FaPhp, FaNodeJs, FaReact, FaDocker, FaAws, 
@@ -23,6 +23,7 @@ const UserContext = createContext<UserContextType>({
   location: { address: "", country: "", city: "", state: "" },
   curriculum: "",
   projects: [],
+  achievements: [],
   contacts: [],
   titles: [],
   about: [],
@@ -152,7 +153,7 @@ const projects: Project[] = [
     title: "Portifólio",
     description: "Sou Daniel Dias, desenvolvedor full-stack com foco em back-end, e este é meu portfólio online. O front-end foi construído com Next.js, React, TypeScript e MUI, organizado em sessões de About, Skills, Experience, Project, Achievements e Contact, garantindo performance, responsividade e boa experiência ao usuário. O back-end, desenvolvido em Python com FastAPI, oferece funcionalidades dinâmicas, incluindo um chat com IA sobre mim e envio de e-mails via formulário. O site está hospedado no Vercel (front-end) e Render (back-end), permitindo fácil integração e manutenção. O portfólio destaca meus projetos, habilidades e conquistas, oferecendo navegação intuitiva e interatividade completa.",
     links: {
-      github: "https://github.com/KloseBH/portifolio",
+      github: "https://github.com/DanielHABDias/portifolio",
       demo: "https://portifolio-danielhabdias.vercel.app"
     },
     skills: [
@@ -168,6 +169,45 @@ const projects: Project[] = [
     img: "/projects/portifolio.png",
     situation: "ongoing"
   }
+];
+
+const achievements: Achievement[] = [
+  {
+    title: "Patente Registrada UFMG-COPASA",
+    description: "Projeto UFMG-COPASA com microcontroladores e LoraWAN (C/C++) desenvolvido com sucesso no LITE COLTEC - UFMG e patente registrada.",
+    document: "/achievements/patente_lite.pdf",
+    img: "/achievements/patente_lite.png"
+  },
+  {
+    title: "Diploma de Conclusão de Curso em ADS",
+    description: "Diploma de Conclusão de Curso em ADS ofercido pela PUC Minas concluido em 2025.",
+    document: "/achievements/diploma_puc.pdf",
+    img: "/achievements/diploma_puc.png"
+  },
+  {
+    title: "Destaque Acadêmico em ADS",
+    description: "Fui destaque acadêmico do primeiro periodo de ADS na PUC Minas.",
+    document: "/achievements/destaque_puc.pdf",
+    img: "/achievements/destaque_puc.png"
+  },
+  {
+    title: "Certificado do Curso IA Master",
+    description: "Certificado do Curso IA Master, onde me aprofundei em IA e como utiliza-la para criação de soluções inteligentes.",
+    document: "/achievements/ia_master.pdf",
+    img: "/achievements/ia_master.png"
+  },
+  {
+    title: "Certificado do Curso Django Master",
+    description: "Certificado do Curso Django Master, onde me aprofundei em Django e como utiliza-la para criação de aplicações web dinâmicas.",
+    document: "/achievements/django_master.pdf",
+    img: "/achievements/django_master.png"
+  },
+  {
+    title: "Certificado do Curso Integration Master",
+    description: "Certificado do Curso Integration Master, onde me aprofundei questões de integração.",
+    document: "/achievements/integration_master.pdf",
+    img: "/achievements/integration_master.png"
+  },
 ];
 
 const contacts: Contact[] = [
@@ -196,6 +236,7 @@ const UserProvider = ({ children }: { children: ReactNode }) => {
     },
     curriculum: "/curriculum.pdf",
     projects: projects,
+    achievements: achievements,
     contacts : contacts,
     titles: ["Full-Stack Developer", "Front-End Developer", "Back-End Developer"],
     about,

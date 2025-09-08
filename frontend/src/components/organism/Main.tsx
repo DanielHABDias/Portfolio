@@ -8,7 +8,7 @@ import About from "./About";
 import Skills from "./Skills";
 import Experience from "./Experience";
 import Projects from "./Projects";
-import Achievements from "./Contact";
+import Achievements from "./Achievements";
 import Contact from "./Contact";
 import { keyframes } from "@emotion/react";
 
