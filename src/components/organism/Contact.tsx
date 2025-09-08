@@ -11,8 +11,8 @@ import {
   Button,
 } from "@mui/material";
 import useUser from "@/hooks/useUser"; 
-import Title from "./Title";
-import GoogleMap from "./GoogleMap";
+import Title from "../atoms/Title";
+import GoogleMap from "../molecules/GoogleMap";
 
 export default function Contact() {
   const user = useUser(); 

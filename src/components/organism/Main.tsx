@@ -1,8 +1,8 @@
 "use client";
 
 import useUser from "@/hooks/useUser";
-import SessionMenu from "./SessionMenu";
-import Title from "./Title";
+import SessionMenu from "../molecules/SessionMenu";
+import Title from "../atoms/Title";
 import { Grid, Box } from "@mui/material";
 import { useState } from "react";
 import About from "./About";

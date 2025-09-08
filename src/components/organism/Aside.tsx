@@ -1,11 +1,11 @@
 "use client";
 
 import useUser from "@/hooks/useUser";
-import Typed from "./Typed";
-import Title from "./Title";
+import Typed from "../atoms/Typed";
+import Title from "../atoms/Title";
 import { Grid, Avatar, Divider, Box, Chip, Typography, Button } from "@mui/material";
 import React from "react";
-import AsideInfo from "./AsideInfo";
+import AsideInfo from "../molecules/AsideInfo";
 
 const style = {
     padding: 4, 

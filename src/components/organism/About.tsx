@@ -8,7 +8,7 @@ import {
   FaLaptopCode, 
   FaLightbulb, 
 } from "react-icons/fa";
-import Title from "./Title";
+import Title from "../atoms/Title";
 import useUser from "@/hooks/useUser";
 
 export default function About() {

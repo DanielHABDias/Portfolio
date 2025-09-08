@@ -2,6 +2,6 @@
 
 import dynamic from 'next/dynamic';
 
-const Body = dynamic(() => import('@/components/Body'), { ssr: false });
+const Body = dynamic(() => import('@/components/organism/Body'), { ssr: false });
 
 export { Body };

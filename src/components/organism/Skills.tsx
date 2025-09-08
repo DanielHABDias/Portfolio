@@ -2,7 +2,7 @@
 
 import { Grid, Card, CardContent, Typography } from "@mui/material";
 import useUser from "@/hooks/useUser"; 
-import Title from "./Title";
+import Title from "../atoms/Title";
 
 export default function Skills() {
   const user = useUser();

@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { Grid, Modal } from "@mui/material";
 import useUser from "@/hooks/useUser";
-import CardProject from "./CardProject";
-import ModalProject from "./ModalProject";
+import CardProject from "../molecules/CardProject";
+import ModalProject from "../molecules/ModalProject";
 
 export default function Projects() {
   const projects = useUser()?.projects;
