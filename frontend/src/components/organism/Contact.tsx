@@ -9,10 +9,10 @@ import {
   Chip,
   Link,
   Typography,
-  Button,
 } from "@mui/material";
 import useUser from "@/hooks/useUser"; 
 import Title from "../atoms/Title";
+import Button from "../atoms/Button";
 import GoogleMap from "../molecules/GoogleMap";
 
 export default function Contact() {
@@ -203,21 +203,7 @@ export default function Contact() {
                 },
               }}
             />
-            <Button
-              type="submit"
-              variant="contained"
-              size="large"
-              sx={{
-                mt: 2,
-                bgcolor: "#61dafb", 
-                "&:hover": {
-                  bgcolor: "#4db8e6", 
-                },
-                color: "#1a1a1a", 
-                fontWeight: 700,
-                boxShadow: "0px 4px 15px rgba(97, 218, 251, 0.4)", 
-              }}
-            >
+            <Button type="submit">
               Enviar Mensagem
             </Button>
           </Box>

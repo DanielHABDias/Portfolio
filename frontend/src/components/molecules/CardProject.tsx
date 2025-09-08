@@ -5,7 +5,7 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
+import Button from '../atoms/Button';
 import Typography from '@mui/material/Typography';
 import { Avatar, AvatarGroup } from '@mui/material';
 
@@ -85,17 +85,11 @@ export default function CardProject({ project, handleOpen }: { project:Types.Pro
                     ))}
                 </AvatarGroup>
                 <Button
-                    size="small"
-                    sx={{
-                        "&:hover": { bgcolor: "#000000ff" },
-                        bgcolor: "#000000a8",
-                        color: "#fcfbfbff", 
-                        fontWeight: 700,
-                        boxShadow: "0px 4px 15px rgba(0, 8, 10, 0.4)", 
-                    }}
-                    onClick={() => handleOpen(project)}
+                  size="small"
+                  width="50%"
+                  handle={() => handleOpen(project)}
                 >
-                    Details
+                  Details
                 </Button>
             </CardActions>
         </Card>

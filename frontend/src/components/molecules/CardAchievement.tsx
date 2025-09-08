@@ -5,7 +5,8 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
+import Button from '../atoms/Button';
+import { IoMdDownload } from "react-icons/io";
 import Typography from '@mui/material/Typography';
 
 const style = { 
@@ -49,17 +50,11 @@ export default function CardAchievement({ achievement, handleDownload }: { achie
             </CardContent>
             <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
                 <Button
-                    size="small"
-                    sx={{
-                        "&:hover": { bgcolor: "#000000ff" },
-                        bgcolor: "#000000a8",
-                        color: "#fcfbfbff", 
-                        fontWeight: 700,
-                        boxShadow: "0px 4px 15px rgba(0, 8, 10, 0.4)", 
-                    }}
-                    onClick={() => handleDownload(achievement)}
+                  size="small"
+                  width="50%"
+                  handle={() => handleDownload(achievement)}
                 >
-                    Download
+                  <IoMdDownload size={20}/> Download
                 </Button>
             </CardActions>
         </Card>

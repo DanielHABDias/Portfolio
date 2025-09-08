@@ -4,7 +4,8 @@ import * as Types from "@/types/user";
 import useUser from "@/hooks/useUser";
 import Typed from "../atoms/Typed";
 import Title from "../atoms/Title";
-import { Grid, Avatar, Divider, Box, Chip, Typography, Button } from "@mui/material";
+import Button from "../atoms/Button";
+import { Grid, Avatar, Divider, Box, Chip, Typography } from "@mui/material";
 import React from "react";
 import AsideInfo from "../molecules/AsideInfo";
 
@@ -74,7 +75,7 @@ export default function Aside ({size} : {size: object}) : React.ReactNode {
             </Grid>
             <Grid size={{ xs: 12, md: 12 }} sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
                 <Divider variant="middle" sx={{ width: "100%", margin: 2 }}/>
-                <Button variant="contained" onClick={() => handleDownload(user)} sx={styleButton}>Baixar Currículo</Button>
+                <Button handle={() => handleDownload(user)}>Baixar Currículo</Button>
             </Grid>
         </Grid>
     )
