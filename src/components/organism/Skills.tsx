@@ -1,20 +1,21 @@
 "use client";
 
+import * as Types from "@/types/user";
 import { Grid, Card, CardContent, Typography } from "@mui/material";
 import useUser from "@/hooks/useUser"; 
 import Title from "../atoms/Title";
 
 export default function Skills() {
-  const user = useUser();
-  const hardskills = user?.skills?.hardskills || [];
-  const softskills = user?.skills?.softskills || [];
+  const user: Types.UserContextType = useUser();
+  const hardskills: Types.Skill[] = user?.skills?.hardskills || [];
+  const softskills: Types.Skill[] = user?.skills?.softskills || [];
 
   return (
     <Grid container spacing={4} sx={{ p: 4 }}>
       <Grid size={12} sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
         <Title text="Hard Skills" lineColor="#ff0000" />
       </Grid>
-      {hardskills.map((skill, index) => {
+      {hardskills.map((skill: Types.Skill, index: number) => {
         return (
           <Grid size={2} key={index}>
             <Card
@@ -55,11 +56,10 @@ export default function Skills() {
         );
       })}
 
-      {/* Softskills */}
       <Grid size={12} sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", mt: 4}}>
         <Title text="Soft Skills" lineColor="pink" />
       </Grid>
-      {softskills.map((skill, index) => {
+      {softskills.map((skill: Types.Skill, index: number) => {
         return (
           <Grid size={2} key={index}>
             <Card

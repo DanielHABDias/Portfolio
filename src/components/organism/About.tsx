@@ -1,5 +1,6 @@
 "use client";
 
+import * as Types from "@/types/user";
 import { Grid, Box, Paper, Stack, Typography, Divider } from "@mui/material";
 import { 
   FaUser, 
@@ -12,7 +13,7 @@ import Title from "../atoms/Title";
 import useUser from "@/hooks/useUser";
 
 export default function About() {
-  const user = useUser();
+  const user: Types.UserContextType = useUser();
 
   return (
     <Grid container spacing={2} sx={{ height: "100%", width: "100%", padding: 2 }}>
@@ -90,7 +91,7 @@ export default function About() {
                   </Typography>
                 </Stack>
                 <Typography sx={{ color: "#ccc" }}>
-                  {user.skills?.hardskills.slice(0, 5).map((skill) => skill.title).join(", ")}
+                  {user.skills?.hardskills.slice(0, 5).map((skill: Types.Skill) => skill.title).join(", ")}
                 </Typography>
               </Stack>
 
@@ -105,7 +106,7 @@ export default function About() {
                 </Stack>
                 
                 <Stack spacing={1} sx={{ color: "#ccc" }}>
-                  {user.skills?.softskills.slice(0, 5).map((skill, index) => (
+                  {user.skills?.softskills.slice(0, 5).map((skill: Types.Skill) => (
                     <Stack direction="row" spacing={1} alignItems="center">
                       <skill.icon color={skill.color} />
                       <Typography>{skill.title}</Typography>

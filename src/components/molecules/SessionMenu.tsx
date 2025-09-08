@@ -42,7 +42,7 @@ const styleButtons = {
   },
 };
 
-export default function SessionMenu({ value, setValue }: any) {
+export default function SessionMenu({ value, setValue }: { value: string; setValue: any }) {
   return (
     <ToggleButtonGroup
       value={value}

@@ -1,22 +1,23 @@
 "use client";
 
+import * as Types from "@/types/user";
 import { useState } from "react";
-import { Grid, Modal } from "@mui/material";
+import { Grid } from "@mui/material";
 import useUser from "@/hooks/useUser";
 import CardProject from "../molecules/CardProject";
 import ModalProject from "../molecules/ModalProject";
 
 export default function Projects() {
-  const projects = useUser()?.projects;
-  const [open, setOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState({});
+  const projects: Types.Project[] = useUser()?.projects;
+  const [open, setOpen] = useState<boolean>(false);
+  const [selectedProject, setSelectedProject] = useState<Types.Project|null>(null);
   
-  const handleOpen = (project: any) => {
+  const handleOpen = (project: Types.Project) => {
     setSelectedProject(project);
     setOpen(true);
   }
   const handleClose = () => {
-    setSelectedProject({});
+    setSelectedProject(null);
     setOpen(false);
   }
 
@@ -29,12 +30,12 @@ export default function Projects() {
         padding: { xs: 2, md: 4 }
       }}
     >
-      {projects.map((project: any) => (
+      {projects.map((project: Types.Project) => (
         <Grid size={{ xs: 12, md: 6 }}>
           <CardProject project={project} handleOpen={handleOpen}/>
         </Grid>
       ))}
-      {open && <ModalProject open={open} handleClose={handleClose} selectedProject={selectedProject}/>}
+      {open && selectedProject && <ModalProject open={open} handleClose={handleClose} selectedProject={selectedProject}/>}
     </Grid>
   );
 }

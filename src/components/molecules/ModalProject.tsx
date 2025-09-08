@@ -1,100 +1,169 @@
 "use client";
 
-import { Box, Button, Modal, Typography, Card, CardContent, CardMedia, CardActions, AvatarGroup, Avatar } from "@mui/material";
+import * as Types from "@/types/user";
+import {
+  Box,
+  Button,
+  Modal,
+  Typography,
+  AvatarGroup,
+  Avatar,
+  IconButton,
+  Stack,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 const style = {
-    position: "absolute" as "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "40rem",
-    height: "auto",
-    bgcolor: "rgba(14, 12, 12, 1)",
-    color: "white" ,
-    boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-    borderRadius: 2,
-    p: 4,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-}
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: { xs: "90%", md: "40rem" },
+  bgcolor: "rgba(14, 12, 12, 1)",
+  color: "white",
+  boxShadow:
+    "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+  borderRadius: 2,
+  overflow: "hidden",
+};
 
-export default function ModalProject({ open, handleClose, selectedProject }: any) {
-    return (
-        <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-titulo"
-            aria-describedby="modal-descricao"
-        >
-            <Card sx={style}>
-                <CardMedia
-                    sx={{ height: 140 }}
-                    image={selectedProject.img}
-                    title={selectedProject.title}
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                    {selectedProject.title}
-                    </Typography>
-                    <Typography variant="body2">
-                    {selectedProject.description}
-                    </Typography>
-                </CardContent>
-                <CardActions sx={{ display: "flex", justifyContent: "space-between", flexDirection: "column", gap:1 }}>
-                    <AvatarGroup
-                        max={20}
-                        total={selectedProject.skills.length}
-                        spacing={-1} 
-                        sx={{
-                            "& .MuiAvatar-root": {
-                            width: 28,
-                            height: 28,
-                            fontSize: 12, 
-                            border: "2px solid #f0f0f0", 
-                            boxShadow: "0 1px 4px rgba(0,0,0,0.2)",
-                            },
-                            "& .MuiAvatarGroup-avatar": {
-                            bgcolor: "transparent",
-                            },
-                            "& .MuiAvatarGroup-avatar:hover": {
-                            transform: "scale(1.1)",
-                            transition: "0.2s",
-                            },
-                        }}
-                        >
-                        {selectedProject.skills.map((skill: any) => (
-                            <Avatar
-                                key={skill.title}
-                                sx={{
-                                    bgcolor: skill.color,
-                                    width: 28,
-                                    height: 28,
-                                    boxShadow: `0 2px 6px ${skill.color}66`, 
-                                }}
-                                >
-                                <skill.icon fontSize="small" />
-                            </Avatar>
-                        ))}
-                    </AvatarGroup>
-                    <Button
-                        size="small"
-                        sx={{
-                            "&:hover": {
-                                bgcolor: "#000000ff", 
-                            },
-                            bgcolor: "#000000a8",
-                            color: "#fcfbfbff", 
-                            fontWeight: 700,
-                            boxShadow: "0px 4px 15px rgba(0, 8, 10, 0.4)", 
-                        }}
-                        onClick={() => handleClose()}
-                    >
-                        Fechar
-                    </Button>
-                </CardActions>
-            </Card>
-        </Modal>
-    )
+export default function ModalProject({
+  open,
+  handleClose,
+  selectedProject,
+}: {
+  open: boolean;
+  handleClose: () => void;
+  selectedProject?: Types.Project;
+}) {
+  if (!selectedProject) return null;
+
+  return (
+    <Modal
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="modal-titulo"
+      aria-describedby="modal-descricao"
+    >
+      <Box sx={style}>
+        <Box sx={{ position: "relative" }}>
+          <img
+            src={selectedProject.img}
+            alt={selectedProject.title}
+            loading="lazy"
+            style={{
+              width: "100%",
+              height: "220px",
+              objectFit: "cover",
+            }}
+          />
+          <IconButton
+            onClick={handleClose}
+            sx={{
+              position: "absolute",
+              top: 8,
+              right: 8,
+              color: "white",
+              bgcolor: "rgba(0,0,0,0.4)",
+              "&:hover": { bgcolor: "rgba(0,0,0,0.6)" },
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </Box>
+
+        <Box sx={{ p: 3, display: "flex", flexDirection: "column", gap: 2, alignItems: "flex-start" }}>
+          <Typography id="modal-titulo" variant="h5" sx={{ fontWeight: 700 }}>
+            {selectedProject.title}
+          </Typography>
+
+          <AvatarGroup
+            max={10}
+            total={selectedProject.skills.length}
+            spacing={-4}
+            sx={{
+              "& .MuiAvatar-root": {
+                width: 32,
+                height: 32,
+                fontSize: 14,
+                border: "2px solid #111",
+                bgcolor: "rgba(255,255,255,0.05)",
+              },
+            }}
+          >
+            {selectedProject.skills.map((skill: Types.Skill, i: number) => (
+              <Avatar key={i} alt={skill.title}>
+                <skill.icon size={16} color={skill.color} />
+              </Avatar>
+            ))}
+          </AvatarGroup>
+
+          <Typography
+            id="modal-descricao"
+            variant="body1"
+            sx={{ color: "rgba(255,255,255,0.85)", lineHeight: 1.6 }}
+          >
+            {selectedProject.description}
+          </Typography>
+
+          <Stack direction="row" spacing={2} justifyContent="center" mt={2} width={"100%"}>
+            <Button
+              component="a"
+              fullWidth
+              variant="outlined"
+              startIcon={<FaGithub />}
+              href={selectedProject.links.github || undefined}
+              target="_blank"
+              rel="noopener noreferrer"
+              disabled={!selectedProject.links.github}
+              sx={{
+                borderColor: !selectedProject.links.github
+                  ? "grey.600"
+                  : "#00ffff",
+                color: !selectedProject.links.github ? "grey.500" : "#00ffff",
+                "&:hover": {
+                  borderColor: !selectedProject.links.github
+                    ? "grey.600"
+                    : "#00e6e6",
+                  bgcolor: !selectedProject.links.github
+                    ? "transparent"
+                    : "rgba(0,255,255,0.1)",
+                },
+              }}
+            >
+              Github
+            </Button>
+
+            <Button
+              component="a"
+              fullWidth
+              variant="outlined"
+              startIcon={<FaExternalLinkAlt />}
+              href={selectedProject.links.demo || undefined}
+              target="_blank"
+              rel="noopener noreferrer"
+              disabled={!selectedProject.links.demo}
+              sx={{
+                borderColor: !selectedProject.links.demo
+                  ? "grey.600"
+                  : "#00ffff",
+                color: !selectedProject.links.demo ? "grey.500" : "#00ffff",
+                "&:hover": {
+                  borderColor: !selectedProject.links.demo
+                    ? "grey.600"
+                    : "#00e6e6",
+                  bgcolor: !selectedProject.links.demo
+                    ? "transparent"
+                    : "rgba(0,255,255,0.1)",
+                },
+              }}
+            >
+              Demo
+            </Button>
+          </Stack>
+        </Box>
+      </Box>
+    </Modal>
+  );
 }

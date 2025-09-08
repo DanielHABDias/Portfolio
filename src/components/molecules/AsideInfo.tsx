@@ -1,18 +1,8 @@
 "use client";
 
-import { Padding } from "@mui/icons-material";
+import * as Types from "@/types/user";
 import { Link } from "@mui/material";
 import { Typography } from "@mui/material";
-
-type AsideInfoProps = {
-    info: {
-      type: string;
-      title: string;
-      link: string;
-      icon: React.ElementType;
-      color: string;
-    };
-};
 
 const styleIcon = {
   fontSize: "1.5rem",
@@ -26,7 +16,7 @@ const styleIcon = {
   justifyContent: "center",
 } 
 
-export default function AsideInfo({ info }: AsideInfoProps) {
+export default function AsideInfo({ info }: { info: Types.Contact }) {
   return (
     <div style={{ display: "flex", flexDirection: "row", alignItems: "center", marginBottom: "1.5rem"}}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "start", justifyContent: "center", width: "100%"}}>

@@ -1,5 +1,6 @@
 "use client";
 
+import * as Types from "@/types/user";
 import React from "react";
 import {
   Timeline,
@@ -14,8 +15,8 @@ import { Typography, Paper, darken } from "@mui/material";
 import useUser from "@/hooks/useUser";
 
 export default function Experience() {
-  const user = useUser();
-  const experiences = user?.experiences
+  const user: Types.UserContextType = useUser();
+  const experiences: Types.Experience[] = user?.experiences
     ? [...user.experiences].reverse()
     : [];
 
@@ -81,7 +82,7 @@ export default function Experience() {
                   {exp.company}
                 </Typography>
                 <ul style={{ marginTop: 8, paddingLeft: 16 }}>
-                  {exp.description.map((desc, i) => (
+                  {exp.description.map((desc: string, i: number) => (
                     <li key={i}>
                       <Typography variant="body2">{desc}</Typography>
                     </li>

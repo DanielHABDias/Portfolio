@@ -1,5 +1,6 @@
 "use client";
 
+import * as Types from "@/types/user";
 import React, { useState } from "react";
 import {
   Grid,
@@ -15,7 +16,7 @@ import Title from "../atoms/Title";
 import GoogleMap from "../molecules/GoogleMap";
 
 export default function Contact() {
-  const user = useUser(); 
+  const user: Types.UserContextType = useUser(); 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -68,7 +69,7 @@ export default function Contact() {
                 mt: 2,
               }}
             >
-              {user.contacts?.map((contact, i) => (
+              {user.contacts?.map((contact: Types.Contact, i: number) => (
                 <Link
                   href={contact.link}
                   underline="none" 

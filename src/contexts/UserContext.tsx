@@ -1,5 +1,6 @@
 "use client";
 
+import { UserContextType, Contact, Skills, Experience, Project } from "@/types/user";
 import { createContext, ReactNode } from "react";
 import { 
   FaJava, FaPython, FaPhp, FaNodeJs, FaReact, FaDocker, FaAws, 
@@ -15,69 +16,6 @@ import {
   SiMui, SiPostgresql, SiMongodb, SiFirebase, SiRabbitmq, 
   SiOpenai, SiGooglegemini, SiLangchain, SiGmail, SiJunit5, SiVercel
 } from "react-icons/si";
-
-type Project = {
-  title: string;
-  description: string;
-  links: {
-    github?: string;
-    demo?: string;
-  };
-  skills: Skill[];
-  img: string;
-  situation: "ongoing" | "finished";
-}
-
-type Contact = {
-  type: string;
-  title: string;
-  link: string;
-  icon: React.ElementType;
-  color: string;
-}
-
-type Skill = {
-  icon: React.ElementType;
-  title: string;
-  color: string;
-}
-
-type Skills = {
-  hardskills: Skill[];
-  softskills: Skill[];
-}
-
-type Experience = {
-  company: string;
-  period: string;
-  role: string;
-  description: string[];
-  icon: React.ElementType;
-  color: string;
-}
-
-type Location = {
-  address: string;
-  country: string;
-  city: string;
-  state: string;
-  iframe?: string;
-}
-
-interface UserContextType {
-  name: string;
-  years: number;
-  location: Location; 
-  curriculum: string;
-  projects: Project[];
-  contacts: Contact[];
-  titles: string[];
-  about: string[]; 
-  avatar: string;
-  avatarBody: string;
-  skills: Skills;
-  experiences: Experience[];
-}
 
 const UserContext = createContext<UserContextType>({
   name: "",
@@ -211,7 +149,7 @@ const experiences: Experience[] = [
 const projects: Project[] = [
   {
     title: "Portifólio",
-    description: "Portifólio pessoal desenvolvido em Next.js para expor minhas habilidades e projetos de forma interativa e moderna.",
+    description: "Portifólio pessoal desenvolvido em Next.js para expor minhas habilidades e projetos de forma interativa e moderna.Portifólio pessoal desenvolvido em Next.js para expor minhas habilidades e projetos de forma interativa e moderna.Portifólio pessoal desenvolvido em Next.js para expor minhas habilidades e projetos de forma interativa e moderna.Portifólio pessoal desenvolvido em Next.js para expor minhas habilidades e projetos de forma interativa e moderna.Portifólio pessoal desenvolvido em Next.js para expor minhas habilidades e projetos de forma interativa e moderna.Portifólio pessoal desenvolvido em Next.js para expor minhas habilidades e projetos de forma interativa e moderna.Portifólio pessoal desenvolvido em Next.js para expor minhas habilidades e projetos de forma interativa e moderna.Portifólio pessoal desenvolvido em Next.js para expor minhas habilidades e projetos de forma interativa e moderna.Portifólio pessoal desenvolvido em Next.js para expor minhas habilidades e projetos de forma interativa e moderna.Portifólio pessoal desenvolvido em Next.js para expor minhas habilidades e projetos de forma interativa e moderna.",
     links: {
       github: "https://github.com/KloseBH/portifolio",
       demo: "https://portifolio-klosebh.vercel.app/"

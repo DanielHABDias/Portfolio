@@ -62,7 +62,6 @@ const neonLineSx = {
 };
 
 export default function Main({ size }: { size: object }): React.ReactNode {
-  const user = useUser();
   const [session, setSession] = useState<string>("About");
 
   return (
