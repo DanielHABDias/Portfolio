@@ -53,9 +53,9 @@ export default function ModalProject({
             src={selectedProject.img}
             alt={selectedProject.title}
             loading="lazy"
+            width={4000}
+            height={4000}
             style={{
-              width: "100%",
-              height: "220px",
               objectFit: "cover",
             }}
           />

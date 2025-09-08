@@ -24,9 +24,10 @@ export default function About() {
           <Image
             src={user.avatarBody}
             alt={user.name}
+            width={3000}
+            height={4000}
             style={{
-              width: "100%",
-              height: "auto",
+              objectFit: "cover",
               filter: "drop-shadow(0 4px 20px #00ffff)",
               borderRadius: 8,
             }}
