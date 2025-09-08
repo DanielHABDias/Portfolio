@@ -30,8 +30,8 @@ export default function Projects() {
         padding: { xs: 2, md: 4 }
       }}
     >
-      {projects.map((project: Types.Project) => (
-        <Grid size={{ xs: 12, md: 6 }}>
+      {projects.map((project: Types.Project, index: number) => (
+        <Grid size={{ xs: 12, md: 6 }} key={index}>
           <CardProject project={project} handleOpen={handleOpen}/>
         </Grid>
       ))}

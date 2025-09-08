@@ -12,10 +12,11 @@ import {
   Stack,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import Image from "next/image";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 const style = {
-  position: "absolute" as "absolute",
+  position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
@@ -48,7 +49,7 @@ export default function ModalProject({
     >
       <Box sx={style}>
         <Box sx={{ position: "relative" }}>
-          <img
+          <Image
             src={selectedProject.img}
             alt={selectedProject.title}
             loading="lazy"

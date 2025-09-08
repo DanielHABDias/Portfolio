@@ -70,7 +70,7 @@ export default function Aside ({size} : {size: object}) : React.ReactNode {
                 <Divider variant="middle" sx={{ width: "100%", margin: 2 }}/>
             </Grid>
             <Grid size={{ xs: 12, md: 12 }}>
-                {user.contacts.map((contact: Types.Contact, i: number) => { return <AsideInfo info={contact} />})}
+                {user.contacts.map((contact: Types.Contact, i: number) => { return <AsideInfo info={contact} key={i} />})}
             </Grid>
             <Grid size={{ xs: 12, md: 12 }} sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
                 <Divider variant="middle" sx={{ width: "100%", margin: 2 }}/>

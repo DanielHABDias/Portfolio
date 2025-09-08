@@ -11,7 +11,7 @@ import {
   TimelineDot,
   TimelineOppositeContent,
 } from "@mui/lab";
-import { Typography, Paper, darken } from "@mui/material";
+import { Typography, Paper } from "@mui/material";
 import useUser from "@/hooks/useUser";
 
 export default function Experience() {

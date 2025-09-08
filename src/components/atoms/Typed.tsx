@@ -15,7 +15,7 @@ export default function Typed({ strings, loop=true, showCursor=true }: TypedProp
         tempo += string.length * 0.06; 
     });
     tempo = tempo / 80; 
-    let velocidade: number = strings.length / tempo; 
+    const velocidade: number = strings.length / tempo; 
     return (
         <Typography
             variant="h6"

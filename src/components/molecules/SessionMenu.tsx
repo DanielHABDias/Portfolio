@@ -1,5 +1,6 @@
 "use client";
 
+import * as Types from "@/types/user";
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 
 const style = {
@@ -42,7 +43,7 @@ const styleButtons = {
   },
 };
 
-export default function SessionMenu({ value, setValue }: { value: string; setValue: any }) {
+export default function SessionMenu({ value, setValue }: { value: string; setValue: React.Dispatch<React.SetStateAction<string>> }) {
   return (
     <ToggleButtonGroup
       value={value}

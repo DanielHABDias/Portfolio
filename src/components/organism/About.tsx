@@ -1,6 +1,7 @@
 "use client";
 
 import * as Types from "@/types/user";
+import Image from "next/image";
 import { Grid, Box, Paper, Stack, Typography, Divider } from "@mui/material";
 import { 
   FaUser, 
@@ -20,7 +21,7 @@ export default function About() {
       <Grid container size={{ xs: 12, md: 12 }} spacing={2}>
         
         <Grid size={{ xs: 12, md: 6 }}>
-          <img
+          <Image
             src={user.avatarBody}
             alt={user.name}
             style={{
@@ -106,8 +107,8 @@ export default function About() {
                 </Stack>
                 
                 <Stack spacing={1} sx={{ color: "#ccc" }}>
-                  {user.skills?.softskills.slice(0, 5).map((skill: Types.Skill) => (
-                    <Stack direction="row" spacing={1} alignItems="center">
+                  {user.skills?.softskills.slice(0, 5).map((skill: Types.Skill, index: number) => (
+                    <Stack direction="row" spacing={1} alignItems="center" key={index}>
                       <skill.icon color={skill.color} />
                       <Typography>{skill.title}</Typography>
                     </Stack>
@@ -133,7 +134,7 @@ export default function About() {
           }}
         >
           <Title text="Sobre Mim" lineColor="#00ffff" />
-          {user.about && user.about.map((item) => {
+          {user.about && user.about.map((item: string, index: number) => {
             return (
               <Typography
                 paragraph
@@ -143,6 +144,7 @@ export default function About() {
                   lineHeight: 1.7,
                 }}
                 dangerouslySetInnerHTML={{ __html: item }}
+                key={index}
               />
             );
           })}

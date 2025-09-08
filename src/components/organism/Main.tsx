@@ -1,6 +1,5 @@
 "use client";
 
-import useUser from "@/hooks/useUser";
 import SessionMenu from "../molecules/SessionMenu";
 import Title from "../atoms/Title";
 import { Grid, Box } from "@mui/material";
