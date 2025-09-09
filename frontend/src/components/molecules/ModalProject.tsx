@@ -10,6 +10,8 @@ import {
   Avatar,
   IconButton,
   Stack,
+  useTheme,
+  useMediaQuery,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
@@ -29,15 +31,10 @@ const style = {
   overflow: "hidden",
 };
 
-export default function ModalProject({
-  open,
-  handleClose,
-  selectedProject,
-}: {
-  open: boolean;
-  handleClose: () => void;
-  selectedProject?: Types.Project;
-}) {
+export default function ModalProject({ open, handleClose, selectedProject,}: { open: boolean; handleClose: () => void; selectedProject?: Types.Project; }) {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
+  
   if (!selectedProject) return null;
 
   return (
@@ -99,14 +96,27 @@ export default function ModalProject({
               </Avatar>
             ))}
           </AvatarGroup>
-
-          <Typography
-            id="modal-descricao"
-            variant="body1"
-            sx={{ color: "rgba(255,255,255,0.85)", lineHeight: 1.6 }}
-          >
-            {selectedProject.description}
-          </Typography>
+          
+          {isSmallScreen && (
+            <Typography
+              id="modal-descricao"
+              variant="body1"
+              overflow={"auto"}
+              sx={{ color: "rgba(255,255,255,0.85)", lineHeight: 1.0 }}
+              height={100}
+            >
+              {selectedProject.description}
+            </Typography>
+          )}
+          {!isSmallScreen && (
+            <Typography
+              id="modal-descricao"
+              variant="body1"
+              sx={{ color: "rgba(255,255,255,0.85)", lineHeight: 1.6 }}
+            >
+              {selectedProject.description}
+            </Typography>
+          )}
 
           <Stack direction="row" spacing={2} justifyContent="center" mt={2} width={"100%"}>
             <Button
