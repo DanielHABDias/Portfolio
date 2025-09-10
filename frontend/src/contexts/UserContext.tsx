@@ -14,7 +14,8 @@ import { TbBrandCSharp } from "react-icons/tb";
 import { 
   SiTypescript, SiGo, SiSpringboot, SiDjango, SiNextdotjs, SiIonic, 
   SiMui, SiPostgresql, SiMongodb, SiFirebase, SiRabbitmq, 
-  SiOpenai, SiGooglegemini, SiLangchain, SiGmail, SiJunit5, SiVercel, SiRender
+  SiOpenai, SiGooglegemini, SiLangchain, SiGmail, SiJunit5, SiVercel, SiRender,
+  SiFastapi, SiNestjs 
 } from "react-icons/si";
 
 const UserContext = createContext<UserContextType>({
@@ -44,8 +45,10 @@ const skills: Skills = {
     { title: "CSharp", icon: TbBrandCSharp, color: "#7C3AED" },
     { title: "Spring Boot", icon: SiSpringboot, color: "#15803D" },
     { title: "Django", icon: SiDjango, color: "#166534" },
+    { title: "FastAPI", icon: SiFastapi , color: "#087cb3ff" },
     { title: "React", icon: FaReact, color: "#22D3EE" },
     { title: "Next.js", icon: SiNextdotjs, color: "#070000ff" },
+    { title: "NestJS", icon: SiNextdotjs, color: "#eb148aff" },
     { title: "Ionic", icon: SiIonic, color: "#6366F1" },
     { title: "Material UI", icon: SiMui, color: "#60A5FA" },
     { title: "PostgreSQL", icon: SiPostgresql, color: "#0EA5E9" },
@@ -153,8 +156,8 @@ const projects: Project[] = [
     title: "Portifólio",
     description: "Sou Daniel Dias, desenvolvedor full-stack com foco em back-end, e este é meu portfólio online. O front-end foi construído com Next.js, React, TypeScript e MUI, organizado em sessões de About, Skills, Experience, Project, Achievements e Contact, garantindo performance, responsividade e boa experiência ao usuário. O back-end, desenvolvido em Python com FastAPI, oferece funcionalidades dinâmicas, incluindo um chat com IA sobre mim e envio de e-mails via formulário. O site está hospedado no Vercel (front-end) e Render (back-end), permitindo fácil integração e manutenção. O portfólio destaca meus projetos, habilidades e conquistas, oferecendo navegação intuitiva e interatividade completa.",
     links: {
-      github: "https://github.com/DanielHABDias/portifolio",
-      demo: "https://portifolio-danielhabdias.vercel.app"
+      github: "https://github.com/DanielHABDias/portfolio",
+      demo: "https://portfolio-danielhabdias.vercel.app"
     },
     skills: [
       { title: "Next.js", icon: SiNextdotjs, color: "#070000ff" },
@@ -166,7 +169,7 @@ const projects: Project[] = [
       { title: "Vercel", icon: SiVercel, color: "#000000" },
       { title: "Render", icon: SiRender, color: "#000000" },
     ],
-    img: "/projects/portifolio.png",
+    img: "/projects/portfolio.png",
     situation: "ongoing"
   }
 ];
@@ -212,8 +215,8 @@ const achievements: Achievement[] = [
 
 const contacts: Contact[] = [
   { type: "Email", title: "danielhabdias@gmail.com", link: "mailto:danielhabdias@gmail.com?subject=Proposta de trabalho&body=Olá somos a Empresa...", icon: SiGmail, color: "#DC2626" },
-  { type: "Linkedin", title: "Daniel Dias", link: "https://www.linkedin.com/in/daniel-henrique-alves-bicalho-dias-0143ab240", icon: FaLinkedin, color: "#0A66C2" },
-  { type: "Github", title: "KloseBH", link: "https://github.com/KloseBH", icon: FaGithub, color: "#181717" },
+  { type: "Linkedin", title: "Daniel Dias", link: "www.linkedin.com/in/danielhabdias", icon: FaLinkedin, color: "#0A66C2" },
+  { type: "Github", title: "KloseBH", link: "https://github.com/DanielHABDias", icon: FaGithub, color: "#181717" },
   { type: "Whatsapp", title: "Talk to me", link: "https://wa.me/5531994332959", icon: FaWhatsapp, color: "#25D366" },
 ];
 

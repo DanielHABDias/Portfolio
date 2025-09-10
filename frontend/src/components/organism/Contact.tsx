@@ -38,17 +38,17 @@ export default function Contact() {
     <Grid
         container
         spacing={6}
+        justifyContent={"center"}
         sx={{
             color: "#f0f0f0", 
             display: "flex",
             alignItems: "center", 
             justifyContent: "center", 
             padding: { xs: 2, md: 4 }, 
-            maxWidth: "lg",
             width: "100%",
             flexDirection: { xs: "column", md: "row" },
         }}
-        size={{ xs: 12, md: 12 }}
+        size={12}
     >
         <Grid size={{ xs: 12, md: 6 }}>
           <Box

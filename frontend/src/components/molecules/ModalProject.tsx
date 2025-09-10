@@ -10,7 +10,6 @@ import {
   Avatar,
   IconButton,
   Stack,
-  useTheme,
   useMediaQuery,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
@@ -32,8 +31,7 @@ const style = {
 };
 
 export default function ModalProject({ open, handleClose, selectedProject,}: { open: boolean; handleClose: () => void; selectedProject?: Types.Project; }) {
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery("(max-width: 1024px)");
   
   if (!selectedProject) return null;
 
@@ -97,7 +95,7 @@ export default function ModalProject({ open, handleClose, selectedProject,}: { o
             ))}
           </AvatarGroup>
           
-          {isSmallScreen && (
+          {isMobile && (
             <Typography
               id="modal-descricao"
               variant="body1"
@@ -108,7 +106,7 @@ export default function ModalProject({ open, handleClose, selectedProject,}: { o
               {selectedProject.description}
             </Typography>
           )}
-          {!isSmallScreen && (
+          {!isMobile && (
             <Typography
               id="modal-descricao"
               variant="body1"

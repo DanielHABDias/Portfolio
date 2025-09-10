@@ -1,13 +1,12 @@
 "use client";
 
 import { Grid, useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles"; 
 import Aside from "./Aside";
 import Main from "./Main";
 
 export default function Body() {
-    const theme = useTheme();
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
+    const isMobile = useMediaQuery("(max-width: 1024px)");
+
 
     const containerStyle = {
         height: "90vh",
@@ -29,7 +28,7 @@ export default function Body() {
         width: "100vw", 
     };
 
-    if (isSmallScreen) {
+    if (isMobile) {
         return (
             <Grid sx={smallScreenContainerStyle}>
                 <Aside size={{ xs: 12, md: 3 }}/> 

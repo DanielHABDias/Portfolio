@@ -30,6 +30,9 @@ export default function About() {
               objectFit: "cover",
               filter: "drop-shadow(0 4px 20px #00ffff)",
               borderRadius: 8,
+              width: "100%",
+              height: "100%",
+              margin: "auto",
             }}
           />
         </Grid>

@@ -1,7 +1,6 @@
 "use client";
 
 import SessionMenu from "../molecules/SessionMenu";
-import Title from "../atoms/Title";
 import { Grid, Box, Divider, Typography } from "@mui/material";
 import { useState } from "react";
 import About from "./About";
@@ -12,7 +11,6 @@ import Achievements from "./Achievements";
 import Contact from "./Contact";
 import { keyframes } from "@emotion/react";
 import { useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import { Fragment } from "react";
 
 
@@ -30,7 +28,7 @@ const desktopMainContainerStyle = {
 
 const desktopHeaderStyle = {
   display: "flex",
-  justifyContent: "space-between",
+  justifyContent: "center",
   alignItems: "center",
   flexDirection: "row", 
   gap: 2,
@@ -97,8 +95,7 @@ const sessionComponents = {
 
 export default function Main({ size }: { size: object }): React.ReactNode {
   const [session, setSession] = useState<string>("About");
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery("(max-width: 1024px)");
 
   if (isMobile) {
     return (
@@ -121,10 +118,7 @@ export default function Main({ size }: { size: object }): React.ReactNode {
   return (
     <Grid size={size} sx={desktopMainContainerStyle}>
       <Box sx={desktopHeaderStyle}>
-        <Grid  size={{ xs: 12, md: 5 }}>
-          <Title text={session} />
-        </Grid>
-        <Grid size={{ xs: 12, md: 7 }} sx={{ display: "flex", justifyContent: "flex-end" }}>
+        <Grid size={12} sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
           <SessionMenu value={session} setValue={setSession} />
         </Grid>
         <Box sx={neonLineSx} />

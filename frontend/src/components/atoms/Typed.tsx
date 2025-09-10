@@ -19,7 +19,12 @@ export default function Typed({ strings, loop=true, showCursor=true }: TypedProp
     return (
         <Typography
             variant="h6"
-            sx={{ fontFamily: "Courier New, monospace", fontWeight: 700 }}
+            sx={{ 
+                fontFamily: "Courier New, monospace", 
+                fontWeight: 700,
+                "@media (max-width: 1024px)": { whiteSpace: "wrap" },
+                whiteSpace: "nowrap"
+            }}
         >
             <ReactTyped
                 strings={strings}

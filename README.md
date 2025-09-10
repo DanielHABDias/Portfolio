@@ -1,6 +1,6 @@
 # Daniel Dias – Portfólio Full-Stack
 
-[💻 Acesse o Portfólio Online](https://portifolio-danielhabdias.vercel.app)
+[💻 Acesse o Portfólio Online](https://portfolio-danielhabdias.vercel.app)
 
 Olá! Eu sou **Daniel Dias**, desenvolvedor **full-stack** com foco em **back-end**, apaixonado por criar soluções escaláveis e eficientes. Este é o meu portfólio, mostrando meus projetos, habilidades e experiência.
 
@@ -72,7 +72,7 @@ Vercel (Front-end), e Render (Back-end)
 
 ## 🌐 Link do Projeto
 
-- [Portfólio Online](https://portifolio-danielhabdias.vercel.app)  
+- [Portfólio Online](https://portfolio-danielhabdias.vercel.app)  
 
 ---
 

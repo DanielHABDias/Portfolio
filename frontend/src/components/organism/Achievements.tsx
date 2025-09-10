@@ -22,12 +22,13 @@ export default function Achievements() {
         size={12}
         container
         spacing={3}
+        justifyContent={{xs: "center", md: "start"}}
         sx={{
             padding: { xs: 2, md: 4 }
         }}
         >
         {achievements.map((achievement: Types.Achievement, index: number) => (
-            <Grid size={{ xs: 12, md: 4 }} key={index}>
+            <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
                 <CardAchievement achievement={achievement} handleDownload={handleDownload}/>
             </Grid>
         ))}

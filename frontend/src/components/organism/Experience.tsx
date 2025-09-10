@@ -11,7 +11,7 @@ import {
   TimelineDot,
   TimelineOppositeContent,
 } from "@mui/lab";
-import { Typography, Paper, useMediaQuery, useTheme, Box } from "@mui/material";
+import { Typography, Paper, useMediaQuery, Box } from "@mui/material";
 import useUser from "@/hooks/useUser";
 
 export default function Experience() {
@@ -20,8 +20,7 @@ export default function Experience() {
     ? [...user.experiences].reverse()
     : [];
 
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery("(max-width: 1024px)");
 
   const renderDesktopTimeline = () => (
     <Timeline position="alternate" sx={{ py: 6, px: { xs: 1, sm: 3, md: 6 } }}> 
@@ -195,5 +194,5 @@ export default function Experience() {
     </Box>
   );
 
-  return isSmallScreen ? renderMobileCards() : renderDesktopTimeline();
+  return isMobile ? renderMobileCards() : renderDesktopTimeline();
 }

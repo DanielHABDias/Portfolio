@@ -9,7 +9,6 @@ import { Grid, Avatar, Divider, Box, Chip, Typography } from "@mui/material";
 import React from "react";
 import AsideInfo from "../molecules/AsideInfo";
 import { useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 
 const desktopAsideContainerStyle = {
     padding: 4,
@@ -41,8 +40,7 @@ const handleDownload = (user: Types.UserContextType) => {
 
 export default function Aside ({size} : {size: object}) : React.ReactNode {
     const user: Types.UserContextType = useUser();
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+    const isMobile = useMediaQuery("(max-width: 1024px)");
 
     return (
         <Grid
