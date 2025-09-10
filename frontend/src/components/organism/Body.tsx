@@ -3,10 +3,14 @@
 import { Grid, useMediaQuery } from "@mui/material";
 import Aside from "./Aside";
 import Main from "./Main";
+// import { useEffect } from "react";
 
 export default function Body() {
     const isMobile = useMediaQuery("(max-width: 1024px)");
 
+    // useEffect(() => {
+    //     // Ligar API do back-end
+    // }, []);
 
     const containerStyle = {
         height: "90vh",

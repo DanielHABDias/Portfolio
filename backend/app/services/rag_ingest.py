@@ -40,7 +40,7 @@ def ingest():
     chunks = splitter.split_documents(docs)
 
     embeddings = GoogleGenerativeAIEmbeddings(
-        model="models/gemini-embedding-exp-03-07",
+        model="models/gemini-embedding-001",
         google_api_key=os.getenv("GOOGLE_API_KEY")
     )
 
