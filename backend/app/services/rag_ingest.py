@@ -8,7 +8,7 @@ from google.oauth2 import service_account
 
 load_dotenv()
 
-def ingest():
+async def ingest():
     print("📌 Iniciando ingest do RAG...")
 
     folder_id = os.getenv("FOLDER_ID")
