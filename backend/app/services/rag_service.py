@@ -31,7 +31,7 @@ If the answer is not found in the context, respond with:
 
 ⚠️ Never answer questions unrelated to Daniel Dias.  
 
-Always respond in the language of the question. The answer must be in one paragraph.  
+Always respond in the language of the question. The Answer should be a concise paragraph.  
 
 Context:  
 {context}
