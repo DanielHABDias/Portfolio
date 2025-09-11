@@ -7,11 +7,12 @@ type ButtonProps = {
     handle?: (args?: object) => void,
     type?: "submit" | "reset" | "button",
     size?: "small" | "medium" | "large",
-    width?: string
+    width?: string,
+    disabled?: boolean
 }
 
 
-export default function Button({ children, handle, type = "button", size="medium", width="100%" }: ButtonProps) {
+export default function Button({ children, handle, type = "button", size="medium", width="100%", disabled=false }: ButtonProps) {
     const onClick = () => { if (handle) handle() }
     const style = {
         width: width,
@@ -21,7 +22,7 @@ export default function Button({ children, handle, type = "button", size="medium
         boxShadow: "0 4px 8px 0 #00ffff88, 0 6px 20px 0 #00ffff88",
     }
     return (
-        <MuiButton variant="contained" onClick={onClick} sx={style} type={type} size={size}>
+        <MuiButton variant="contained" onClick={onClick} sx={style} type={type} size={size} disabled={disabled}>
             {children}
         </MuiButton>
     )

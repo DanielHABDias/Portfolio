@@ -164,13 +164,14 @@ const projects: Project[] = [
       { title: "React", icon: FaReact, color: "#61DAFB" },
       { title: "TypeScript", icon: SiTypescript, color: "#2563EB" },
       { title: "Python", icon: FaPython, color: "#3B82F6" },
+      { title: "FastAPI", icon: SiFastapi , color: "#087cb3ff" },
       { title: "LangChain", icon: SiLangchain, color: "#166534" },
       { title: "Material UI", icon: SiMui, color: "#60A5FA" },
       { title: "Vercel", icon: SiVercel, color: "#000000" },
       { title: "Render", icon: SiRender, color: "#000000" },
     ],
     img: "/projects/portfolio.png",
-    situation: "ongoing"
+    situation: "in progress"
   }
 ];
 

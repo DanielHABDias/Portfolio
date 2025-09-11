@@ -11,10 +11,12 @@ import {
   IconButton,
   Stack,
   useMediaQuery,
+  Chip,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import LabelProject from "../atoms/LabelProject";
 
 const style = {
   position: "absolute",
@@ -70,8 +72,20 @@ export default function ModalProject({ open, handleClose, selectedProject,}: { o
         </Box>
 
         <Box sx={{ p: 3, display: "flex", flexDirection: "column", gap: 2, alignItems: "flex-start" }}>
-          <Typography id="modal-titulo" variant="h5" sx={{ fontWeight: 700 }}>
+          <Typography
+            id="modal-titulo"
+            variant="h5"
+            sx={{
+              fontWeight: 700,
+              display: "flex",           
+              alignItems: "center",      
+              justifyContent: "space-between", 
+              width: "100%",             
+              gap: 1 
+            }}
+          >
             {selectedProject.title}
+            <LabelProject project={selectedProject} />
           </Typography>
 
           <AvatarGroup
@@ -125,15 +139,19 @@ export default function ModalProject({ open, handleClose, selectedProject,}: { o
               href={selectedProject.links.github || undefined}
               target="_blank"
               rel="noopener noreferrer"
-              disabled={!selectedProject.links.github}
+              disableRipple={!selectedProject.links.github}
               sx={{
                 borderColor: !selectedProject.links.github
-                  ? "grey.600"
+                  ? "#ccc" 
                   : "#00ffff",
-                color: !selectedProject.links.github ? "grey.500" : "#00ffff",
+                color: !selectedProject.links.github
+                  ? "#666" 
+                  : "#00ffff",
+                opacity: !selectedProject.links.github ? 0.5 : 1,
+                cursor: !selectedProject.links.github ? "default" : "pointer",
                 "&:hover": {
                   borderColor: !selectedProject.links.github
-                    ? "grey.600"
+                    ? "#ccc" 
                     : "#00e6e6",
                   bgcolor: !selectedProject.links.github
                     ? "transparent"
@@ -152,15 +170,19 @@ export default function ModalProject({ open, handleClose, selectedProject,}: { o
               href={selectedProject.links.demo || undefined}
               target="_blank"
               rel="noopener noreferrer"
-              disabled={!selectedProject.links.demo}
+              disableRipple={!selectedProject.links.demo}
               sx={{
                 borderColor: !selectedProject.links.demo
-                  ? "grey.600"
+                  ? "#ccc" 
                   : "#00ffff",
-                color: !selectedProject.links.demo ? "grey.500" : "#00ffff",
+                color: !selectedProject.links.demo
+                  ? "#666" 
+                  : "#00ffff",
+                opacity: !selectedProject.links.demo ? 0.5 : 1,
+                cursor: !selectedProject.links.demo ? "default" : "pointer",
                 "&:hover": {
                   borderColor: !selectedProject.links.demo
-                    ? "grey.600"
+                    ? "#ccc" 
                     : "#00e6e6",
                   bgcolor: !selectedProject.links.demo
                     ? "transparent"

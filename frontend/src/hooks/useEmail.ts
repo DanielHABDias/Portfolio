@@ -1,0 +1,61 @@
+import { useState } from 'react';
+
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
+interface UseEmailResult {
+  isLoading: boolean;
+  error: string | null;
+  successMessage: string | null;
+  sendEmail: (data: FormData) => Promise<void>;
+  resetFeedback: () => void; 
+}
+
+export const useEmail = (): UseEmailResult => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
+  const sendEmail = async (formData: FormData) => {
+    setIsLoading(true);
+    setError(null);
+    setSuccessMessage(null);
+
+    console.log("Enviando e-mail:", formData);
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || `Erro do servidor: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("Resposta do servidor:", data);
+      setSuccessMessage("Mensagem enviada com sucesso! " + (data.message || ""));
+
+    } catch (err: any) {
+      console.error("Erro ao enviar email:", err);
+      setError(err.message || "Ocorreu um erro ao enviar sua mensagem. Tente novamente.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const resetFeedback = () => {
+    setError(null);
+    setSuccessMessage(null);
+  };
+
+  return { isLoading, error, successMessage, sendEmail, resetFeedback };
+};

@@ -9,7 +9,7 @@ type Project = {
   };
   skills: Skill[];
   img: string;
-  situation: "ongoing" | "finished";
+  situation: "in progress" | "completed";
 }
 
 export type { Project }

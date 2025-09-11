@@ -1,13 +1,9 @@
 "use client";
 
 import * as Types from "@/types/user";
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '../atoms/Button';
-import Typography from '@mui/material/Typography';
-import { Avatar, AvatarGroup } from '@mui/material';
+import { Card, CardActions, CardContent, CardMedia, Typography, Avatar, AvatarGroup } from "@mui/material";
+import Button from "../atoms/Button";
+import LabelProject from "../atoms/LabelProject";
 
 const style = { 
     maxWidth: 345, 
@@ -30,8 +26,9 @@ export default function CardProject({ project, handleOpen }: { project:Types.Pro
                 title={project.title}
             />
             <CardContent sx={{ flexGrow: 1 }}>
-                <Typography gutterBottom variant="h5" component="div">
+                <Typography gutterBottom variant="h5" component="div" sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                   {project.title}
+                  <LabelProject project={project} />
                 </Typography>
                 <Typography
                   variant="body2"
