@@ -76,19 +76,23 @@ export const useChat = (): UseChatResult => {
       };
       setMessages((prevMessages) => [...prevMessages, aiMessage]);
 
-    } catch (err: any) {
-      console.error("Erro ao enviar mensagem para a IA:", err);
-      setError(err.message || "Ocorreu um erro ao conversar com a IA. Tente novamente.");
-      
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        {
-          id: Date.now().toString() + '-error',
-          text: err.message || "Não foi possível conectar com a IA.",
-          sender: 'ai', 
-          timestamp: new Date(),
-        },
-      ]);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error("Erro ao enviar mensagem para a IA:", err);
+        setError(err.message || "Ocorreu um erro ao conversar com a IA. Tente novamente.");
+        
+        setMessages((prevMessages) => [
+            ...prevMessages,
+            {
+            id: Date.now().toString() + '-error',
+            text: err.message || "Não foi possível conectar com a IA.",
+            sender: 'ai', 
+            timestamp: new Date(),
+            },
+        ]);
+      }else{
+        console.error("Ocorreu um erro desconhecido:", err);
+      }
     } finally {
       setIsLoading(false);
       scrollToBottom(); 

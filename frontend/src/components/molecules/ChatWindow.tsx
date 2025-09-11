@@ -35,7 +35,7 @@ export default function ChatWindow({ onClose, isOpen=false }: ChatWindowProps) {
       if (chatContainerRef.current) {
         chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
       }
-    }, [messages]);
+    }, [chatContainerRef]);
 
     return (
       <Paper

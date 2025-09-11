@@ -12,14 +12,14 @@ import ChatWindow from "../molecules/ChatWindow";
 
 export default function Body() {
     const isMobile = useMediaQuery("(max-width: 1024px)");
-    const { error, onAPI } = useAPI();
+    const { successMessage, onAPI } = useAPI();
     const [isChatOpen, setIsChatOpen] = useState(false); 
 
-    if(error){
-        useEffect(() => {
-            onAPI();
-        }, [onAPI]);
-    }
+    useEffect(() => {
+        if (!successMessage) {
+        onAPI();
+        }
+    }, [successMessage, onAPI]);
 
     const containerStyle = {
         height: "90vh",
