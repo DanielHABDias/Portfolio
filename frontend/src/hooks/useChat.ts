@@ -99,7 +99,7 @@ export const useChat = (): UseChatResult => {
       setIsLoading(false);
       scrollToBottom(); 
     }
-  }, [scrollToBottom]);
+  }, [scrollToBottom, baseUri]);
 
   const clearChat = useCallback(() => {
     setMessages([]);
