@@ -20,6 +20,7 @@ type Location = {
 }
 
 interface UserContextType {
+  backend: string;
   name: string;
   years: number;
   location: Location; 

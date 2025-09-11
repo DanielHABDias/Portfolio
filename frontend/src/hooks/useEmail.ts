@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import useUser from './useUser';
 
 interface FormData {
   name: string;
@@ -15,6 +16,7 @@ interface UseEmailResult {
 }
 
 export const useEmail = (): UseEmailResult => {
+  const baseUri = useUser().backend;
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
@@ -27,7 +29,7 @@ export const useEmail = (): UseEmailResult => {
     console.log("Enviando e-mail:", formData);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/send-email", {
+      const response = await fetch(baseUri + "send-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

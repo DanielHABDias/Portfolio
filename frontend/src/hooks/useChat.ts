@@ -1,4 +1,5 @@
 import { useState, useCallback, useRef } from 'react';
+import useUser from './useUser';
 
 export interface ChatMessage {
   id: string; 
@@ -18,6 +19,7 @@ interface UseChatResult {
 }
 
 export const useChat = (): UseChatResult => {
+  const baseUri = useUser().backend;
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -51,7 +53,7 @@ export const useChat = (): UseChatResult => {
 
     try {
       
-      const response = await fetch("http://127.0.0.1:8000/chat", { 
+      const response = await fetch(baseUri + "chat", { 
         method: "POST",
         headers: {
           "Content-Type": "application/json",

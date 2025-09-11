@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { use, useState } from 'react';
+import useUser from './useUser';
 
 interface UseAPIResult {
   isLoading: boolean;
@@ -9,6 +10,7 @@ interface UseAPIResult {
 }
 
 export const useAPI = (): UseAPIResult => {
+  const baseUri = useUser().backend;
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
@@ -21,7 +23,7 @@ export const useAPI = (): UseAPIResult => {
     console.log("Ligando API no Render...");
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/", {
+      const response = await fetch(baseUri, {
         method: "GET"
       });
 

@@ -19,6 +19,7 @@ import {
 } from "react-icons/si";
 
 const UserContext = createContext<UserContextType>({
+  backend: "",
   name: "",
   years: 0,
   location: { address: "", country: "", city: "", state: "" },
@@ -229,6 +230,7 @@ const about: string[] = [
 
 const UserProvider = ({ children }: { children: ReactNode }) => {
   const user: UserContextType = {
+    backend: "https://portfolio-2k0u.onrender.com/",
     name: "Daniel Dias",
     years: 21,
     location: {
