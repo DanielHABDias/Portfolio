@@ -1,4 +1,5 @@
 import os
+import asyncio
 from dotenv import load_dotenv
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
@@ -9,6 +10,12 @@ from google.oauth2 import service_account
 load_dotenv()
 
 async def ingest():
+    try:
+        asyncio.get_running_loop()
+    except RuntimeError:
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+    
     print("📌 Iniciando ingest do RAG...")
 
     folder_id = os.getenv("FOLDER_ID")
