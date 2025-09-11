@@ -13,12 +13,15 @@ import ChatWindow from "../molecules/ChatWindow";
 export default function Body() {
     const isMobile = useMediaQuery("(max-width: 1024px)");
     const { successMessage, onAPI } = useAPI();
+    const [isLoaded, setIsLoaded] = useState(false);
     const [isChatOpen, setIsChatOpen] = useState(false); 
 
     useEffect(() => {
         if (!successMessage) {
-        onAPI();
+            onAPI();
+            setTimeout(() => {}, 50000);
         }
+        if(successMessage) setIsLoaded(true);
     }, [successMessage, onAPI]);
 
     const containerStyle = {
@@ -52,7 +55,7 @@ export default function Body() {
                     <Aside size={{ xs: 12, md: 3 }} />
                     <Main size={{ xs: 12, md: 9 }} />
                 </Grid>
-                <FloatingAvatar onClick={handleAvatarClick} isOpen={isChatOpen} />
+                <FloatingAvatar onClick={handleAvatarClick} isOpen={isChatOpen} isLoaded={isLoaded}/>
                 <ChatWindow onClose={handleAvatarClick} isOpen={isChatOpen} />
             </>
         );
@@ -64,7 +67,7 @@ export default function Body() {
                 <Aside size={{ xs: 12, md: 3 }} />
                 <Main size={{ xs: 12, md: 9 }} />
             </Grid>
-            <FloatingAvatar onClick={handleAvatarClick} isOpen={isChatOpen} />
+            <FloatingAvatar onClick={handleAvatarClick} isOpen={isChatOpen} isLoaded={isLoaded}/>
             <ChatWindow onClose={handleAvatarClick} isOpen={isChatOpen} />
         </>
     );

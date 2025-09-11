@@ -1,57 +1,76 @@
 "use client";
 
 import useUser from '@/hooks/useUser';
-import React from 'react';
-import { Avatar, Fab, Box, useTheme } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { Avatar, Fab, Box, useTheme, CircularProgress } from '@mui/material';
 import ChatIcon from '@mui/icons-material/Chat';
 
 interface FloatingAvatarProps {
   onClick: () => void;
   isOpen: boolean;
+  isLoaded?: boolean;
 }
 
-export default function FloatingAvatar({ onClick, isOpen }: FloatingAvatarProps) {
-    const avatarSrc = useUser().avatar;
-    const theme = useTheme();
+export default function FloatingAvatar({ onClick, isOpen, isLoaded=false }: FloatingAvatarProps) {
+  const avatarSrc = useUser().avatar;
+  const theme = useTheme();
+  const [pulse, setPulse] = useState(false);
 
-    return (
-        <Box
+  useEffect(() => {
+    if (isLoaded) {
+      setPulse(true);
+      const timer = setTimeout(() => setPulse(false), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [isLoaded]);
+
+  return (
+    <Box
+      sx={{
+        position: 'fixed',
+        bottom: 20,
+        right: { xs: 10, sm: 20, md: 20 },
+        zIndex: 1600,
+      }}
+    >
+      <Fab
+        color="primary"
+        aria-label="chat"
+        onClick={onClick}
+        disabled={!isLoaded} 
+        sx={{
+          width: 60,
+          height: 60,
+          boxShadow: theme.shadows[6],
+          backgroundColor: theme.palette.primary.main,
+          '&:hover': {
+            backgroundColor: theme.palette.primary.dark,
+          },
+          transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)',
+          transition: 'transform 0.3s ease-in-out',
+          animation: pulse ? 'pulse 0.6s ease-in-out 3' : 'none',
+          '@keyframes pulse': {
+            '0%': { transform: 'scale(1)' },
+            '50%': { transform: 'scale(1.15)' },
+            '100%': { transform: 'scale(1)' },
+          },
+        }}
+      >
+        {!isLoaded ? (
+          <CircularProgress size={30} sx={{ color: theme.palette.primary.contrastText }} />
+        ) : isOpen ? (
+          <ChatIcon sx={{ transform: 'rotate(-90deg)' }} />
+        ) : (
+          <Avatar
+            src={avatarSrc}
             sx={{
-                position: 'fixed',
-                bottom: 20,
-                right: { xs: 10, sm: 20, md: 20 },
-                zIndex: 1600,
+              width: 54,
+              height: 54,
+              border: `2px solid ${theme.palette.primary.contrastText}`,
             }}
-        >
-            <Fab
-                color="primary"
-                aria-label="chat"
-                onClick={onClick}
-                sx={{
-                    width: 60, 
-                    height: 60,
-                    boxShadow: theme.shadows[6],
-                    backgroundColor: theme.palette.primary.main,
-                    '&:hover': {
-                        backgroundColor: theme.palette.primary.dark,
-                    },
-                    transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)',
-                    transition: 'transform 0.3s ease-in-out',
-                }}
-            >
-                {isOpen ? (
-                <ChatIcon sx={{ transform: 'rotate(-90deg)' }} /> 
-                ) : (
-                <Avatar
-                    src={avatarSrc}
-                    sx={{
-                    width: 54,
-                    height: 54,
-                    border: `2px solid ${theme.palette.primary.contrastText}`,
-                    }}
-                />
-                )}
-            </Fab>
-        </Box>
-    );
+          />
+        )}
+      </Fab>
+    </Box>
+  );
 }
