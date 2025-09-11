@@ -11,7 +11,6 @@ import {
   IconButton,
   Stack,
   useMediaQuery,
-  Chip,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";

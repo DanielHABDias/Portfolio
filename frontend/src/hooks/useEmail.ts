@@ -44,9 +44,13 @@ export const useEmail = (): UseEmailResult => {
       console.log("Resposta do servidor:", data);
       setSuccessMessage("Mensagem enviada com sucesso! " + (data.message || ""));
 
-    } catch (err: any) {
-      console.error("Erro ao enviar email:", err);
-      setError(err.message || "Ocorreu um erro ao enviar sua mensagem. Tente novamente.");
+    } catch (err: unknown) {
+        if (err instanceof Error) {
+            console.error("Erro ao enviar email:", err.message);
+            setError(err.message || "Ocorreu um erro ao enviar sua mensagem. Tente novamente.");
+        } else {
+            console.error("Ocorreu um erro desconhecido:", err);
+        }
     } finally {
       setIsLoading(false);
     }

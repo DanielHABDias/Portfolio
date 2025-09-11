@@ -48,7 +48,7 @@ const skills: Skills = {
     { title: "FastAPI", icon: SiFastapi , color: "#087cb3ff" },
     { title: "React", icon: FaReact, color: "#22D3EE" },
     { title: "Next.js", icon: SiNextdotjs, color: "#070000ff" },
-    { title: "NestJS", icon: SiNextdotjs, color: "#eb148aff" },
+    { title: "NestJS", icon: SiNestjs, color: "#eb148aff" },
     { title: "Ionic", icon: SiIonic, color: "#6366F1" },
     { title: "Material UI", icon: SiMui, color: "#60A5FA" },
     { title: "PostgreSQL", icon: SiPostgresql, color: "#0EA5E9" },

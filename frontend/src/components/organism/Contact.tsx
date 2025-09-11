@@ -38,7 +38,12 @@ export default function Contact() {
         });
       }
     } catch (err) {
-      setOpenSnackbar(true);
+      if (err instanceof Error) {
+        console.error("Erro ao enviar email:", err.message);
+        setOpenSnackbar(true);
+      } else {
+        console.error("Ocorreu um erro desconhecido:", err);
+      }
     }
   };
 
