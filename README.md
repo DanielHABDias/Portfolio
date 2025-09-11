@@ -45,6 +45,8 @@ O back-end é responsável por fornecer funcionalidades dinâmicas ao portfólio
 
 O back-end pode ser integrado facilmente a qualquer front-end moderno, como o Next.js.
 
+O back-end é acionado utilizando um [cron](https://console.cron-job.org/jobs) para não ficar inativo. O cron roda a cada 10 min.
+
 ---
 
 ## 🚀 Funcionalidades
