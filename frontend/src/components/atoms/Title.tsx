@@ -1,11 +1,14 @@
 "use client";
 
-import { Typography } from "@mui/material";
+import { Typography, useMediaQuery } from "@mui/material";
 
 export default function Title({ text, lineColor }: { text: string, lineColor?: string }) {
+    const isMiniDesktop = useMediaQuery("(min-width: 1025px) and (max-width: 1325px)");
+
     return (
         <Typography
-            variant="h4"
+            align= {isMiniDesktop ? "center" : "inherit"}
+            variant= {isMiniDesktop ? "h5" : "h4"}
             component="h1"
             sx={{ 
                 marginBottom: 2, 
@@ -15,7 +18,8 @@ export default function Title({ text, lineColor }: { text: string, lineColor?: s
                     textDecorationThickness: "3px", 
                 }),
                 fontFamily: "Courier New, monospace", 
-                fontWeight: 700 
+                fontWeight: 700,
+                "@media (max-width: 1024px)": { whiteSpace: "wrap" },
             }}
         >
             {text.toUpperCase()}

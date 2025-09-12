@@ -36,7 +36,7 @@ async def ingest():
     loader = GoogleDriveLoader(
         folder_id=folder_id,
         credentials=creds, 
-        recursive=False,
+        recursive=True,
         file_types=["application/pdf", "application/vnd.google-apps.document"]
     )
 

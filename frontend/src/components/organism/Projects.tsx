@@ -32,9 +32,7 @@ export default function Projects() {
       }}
     >
       {projects.map((project: Types.Project, index: number) => (
-        <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
-          <CardProject project={project} handleOpen={handleOpen}/>
-        </Grid>
+        <CardProject project={project} handleOpen={handleOpen} key={index}/>
       ))}
       {open && selectedProject && <ModalProject open={open} handleClose={handleClose} selectedProject={selectedProject}/>}
     </Grid>

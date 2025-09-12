@@ -1,13 +1,9 @@
 "use client";
 
 import * as Types from "@/types/user";
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
+import { Grid, Card, CardActions, CardContent, CardMedia, Typography, useMediaQuery } from "@mui/material";
 import Button from '../atoms/Button';
 import { IoMdDownload } from "react-icons/io";
-import Typography from '@mui/material/Typography';
 
 const style = { 
     maxWidth: 345, 
@@ -22,7 +18,9 @@ const style = {
 }
 
 export default function CardAchievement({ achievement, handleDownload }: { achievement:Types.Achievement, handleDownload: (achievement:Types.Achievement) => void }) {
+    const isMiniDesktop = useMediaQuery("(min-width: 1025px) and (max-width: 1600px)");
     return (
+      <Grid size={{ xs: 12, sm: 6, md: isMiniDesktop ? 4 : 3 }}>
         <Card sx={style}>
             <CardMedia
                 sx={{ height: 140 }}
@@ -58,5 +56,6 @@ export default function CardAchievement({ achievement, handleDownload }: { achie
                 </Button>
             </CardActions>
         </Card>
+      </Grid>
     );
 }

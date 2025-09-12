@@ -1,7 +1,7 @@
 "use client";
 
 import * as Types from "@/types/user";
-import { Card, CardActions, CardContent, CardMedia, Typography, Avatar, AvatarGroup } from "@mui/material";
+import { Card, CardActions, CardContent, CardMedia, Typography, Avatar, AvatarGroup, Grid, useMediaQuery } from "@mui/material";
 import Button from "../atoms/Button";
 import LabelProject from "../atoms/LabelProject";
 
@@ -18,7 +18,9 @@ const style = {
 }
 
 export default function CardProject({ project, handleOpen }: { project:Types.Project, handleOpen: (project:Types.Project) => void }) {
+  const isMiniDesktop = useMediaQuery("(min-width: 1025px) and (max-width: 1600px)");
     return (
+      <Grid size={{ xs: 12, sm: 6, md: isMiniDesktop ? 4 : 3 }}>
         <Card sx={style}>
             <CardMedia
                 sx={{ height: 140 }}
@@ -47,7 +49,7 @@ export default function CardProject({ project, handleOpen }: { project:Types.Pro
             </CardContent>
             <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
                 <AvatarGroup
-                    max={4}
+                    max={isMiniDesktop ? 3 : 4}
                     total={project.skills.length}
                     spacing={-1} 
                     sx={{
@@ -90,5 +92,6 @@ export default function CardProject({ project, handleOpen }: { project:Types.Pro
                 </Button>
             </CardActions>
         </Card>
+      </Grid>
     );
 }

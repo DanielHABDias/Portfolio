@@ -1,6 +1,6 @@
 "use client";
 
-import { ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { ToggleButton, ToggleButtonGroup, useMediaQuery } from "@mui/material";
 
 const style = {
   bgcolor: "transparent",
@@ -43,6 +43,8 @@ const styleButtons = {
 };
 
 export default function SessionMenu({ value, setValue }: { value: string; setValue: React.Dispatch<React.SetStateAction<string>> }) {
+  const isMiniDesktop = useMediaQuery("(min-width: 1025px) and (max-width: 1600px)");
+  styleButtons.fontSize = { xs: "0.7rem", sm: "0.8rem", md: isMiniDesktop ? "0.8rem" : "0.9rem" };
   return (
     <ToggleButtonGroup
       value={value}

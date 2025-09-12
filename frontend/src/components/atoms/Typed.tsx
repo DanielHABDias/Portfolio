@@ -1,6 +1,6 @@
 "use client";
 
-import { Typography } from "@mui/material";
+import { Typography, useMediaQuery } from "@mui/material";
 import { ReactTyped } from "react-typed";
 
 type TypedProps = {
@@ -10,6 +10,7 @@ type TypedProps = {
 };
 
 export default function Typed({ strings, loop=true, showCursor=true }: TypedProps) {
+    const isMiniDesktop = useMediaQuery("(min-width: 1025px) and (max-width: 1325px)");
     let tempo: number = 0;
     strings.forEach((string) => {
         tempo += string.length * 0.06; 
@@ -22,8 +23,8 @@ export default function Typed({ strings, loop=true, showCursor=true }: TypedProp
             sx={{ 
                 fontFamily: "Courier New, monospace", 
                 fontWeight: 700,
-                "@media (max-width: 1024px)": { whiteSpace: "wrap" },
-                whiteSpace: "nowrap"
+                whiteSpace: "nowrap",
+                transform: isMiniDesktop ? "scale(0.8)" : "scale(1)",
             }}
         >
             <ReactTyped

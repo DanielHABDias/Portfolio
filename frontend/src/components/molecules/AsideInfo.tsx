@@ -2,7 +2,7 @@
 
 import * as Types from "@/types/user";
 import { Link } from "@mui/material";
-import { Typography } from "@mui/material";
+import { Typography, useMediaQuery } from "@mui/material";
 
 const styleIcon = {
   fontSize: "1.5rem",
@@ -17,6 +17,7 @@ const styleIcon = {
 } 
 
 export default function AsideInfo({ info }: { info: Types.Contact }) {
+  const isMiniDesktop = useMediaQuery("(min-width: 1025px) and (max-width: 1325px)");
   return (
     <div style={{ display: "flex", flexDirection: "row", alignItems: "center", marginBottom: "1.5rem"}}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "start", justifyContent: "center", width: "100%"}}>
@@ -27,7 +28,7 @@ export default function AsideInfo({ info }: { info: Types.Contact }) {
           <Typography sx={styleIcon}>
             <info.icon style={{ color: info.color }}/>
           </Typography>
-          {info.title}
+          {!isMiniDesktop ? info.title  : info.type}
         </Link>
       </div>
     </div>

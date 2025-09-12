@@ -6,23 +6,41 @@ import { Grid, useMediaQuery } from "@mui/material";
 import Aside from "./Aside";
 import Main from "./Main";
 import { useAPI } from "@/hooks/useAPI";
+import { useRAG } from "@/hooks/useRAG";
 import { useEffect, useState } from "react"; 
 import FloatingAvatar from "../atoms/FloatingAvatar"; 
 import ChatWindow from "../molecules/ChatWindow";     
 
 export default function Body() {
     const isMobile = useMediaQuery("(max-width: 1024px)");
-    const { successMessage, onAPI } = useAPI();
+    const { onAPI } = useAPI();
+    const { onRAG } = useRAG();
     const [isLoaded, setIsLoaded] = useState(false);
     const [isChatOpen, setIsChatOpen] = useState(false); 
 
     useEffect(() => {
-        if (!successMessage) {
-            onAPI();
-            setTimeout(() => {}, 50000);
-        }
-        if(successMessage) setIsLoaded(true);
-    }, [successMessage, onAPI]);
+        const runAPI = async () => {
+            await onAPI();           
+            setIsLoaded(true);      
+        };
+        runAPI();
+    }, []);
+
+    useEffect(() => {
+        const runRAG = async () => {
+            const lastRAG = localStorage.getItem("LastRAG");
+            const now = Date.now();
+            const expireTime = 24 * 60 * 60 * 1000;
+
+            if (!lastRAG || now - Number(lastRAG) > expireTime) {
+                await onRAG();
+                localStorage.setItem("LastRAG", String(now));
+                setIsLoaded(true);       
+            }
+        };
+
+        runRAG();
+    }, []);
 
     const containerStyle = {
         height: "90vh",

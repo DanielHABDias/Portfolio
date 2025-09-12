@@ -2,7 +2,7 @@
 
 import useUser from '@/hooks/useUser';
 import React, { useEffect, useState } from 'react';
-import { Avatar, Fab, Box, useTheme, CircularProgress } from '@mui/material';
+import { Avatar, Fab, Box, useTheme, CircularProgress, useMediaQuery } from '@mui/material';
 import ChatIcon from '@mui/icons-material/Chat';
 
 interface FloatingAvatarProps {
@@ -12,6 +12,7 @@ interface FloatingAvatarProps {
 }
 
 export default function FloatingAvatar({ onClick, isOpen, isLoaded=false }: FloatingAvatarProps) {
+  const isMobile = useMediaQuery("(max-width: 1024px)");
   const avatarSrc = useUser().avatar;
   const theme = useTheme();
   const [pulse, setPulse] = useState(false);
@@ -39,8 +40,8 @@ export default function FloatingAvatar({ onClick, isOpen, isLoaded=false }: Floa
         onClick={onClick}
         disabled={!isLoaded} 
         sx={{
-          width: 60,
-          height: 60,
+          width: isMobile ? 60 : 80,
+          height: isMobile ? 60 : 80,
           boxShadow: theme.shadows[6],
           backgroundColor: theme.palette.primary.main,
           '&:hover': {
@@ -64,8 +65,8 @@ export default function FloatingAvatar({ onClick, isOpen, isLoaded=false }: Floa
           <Avatar
             src={avatarSrc}
             sx={{
-              width: 54,
-              height: 54,
+              width: isMobile ? 54 : 74,
+              height: isMobile ? 54 : 74,
               border: `2px solid ${theme.palette.primary.contrastText}`,
             }}
           />

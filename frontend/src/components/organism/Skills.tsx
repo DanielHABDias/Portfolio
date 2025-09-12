@@ -1,9 +1,10 @@
 "use client";
 
 import * as Types from "@/types/user";
-import { Grid, Card, CardContent, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import useUser from "@/hooks/useUser"; 
 import Title from "../atoms/Title";
+import CardSkill from "../molecules/CardSkill";
 
 export default function Skills() {
   const user: Types.UserContextType = useUser();
@@ -17,42 +18,7 @@ export default function Skills() {
       </Grid>
       {hardskills.map((skill: Types.Skill, index: number) => {
         return (
-          <Grid size={{ xs: 6, md: 2 }} key={index}>
-            <Card
-                sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    textAlign: "center",
-                    backgroundColor: "rgba(255, 255, 255, 0.08)",
-                    borderRadius: 3,
-                    boxShadow: `0px 4px 20px ${skill.color}`,
-                    color: skill.color,
-                    transition: "0.3s",
-                    height: "100%", 
-                    width: "100%",
-                    "&:hover": { 
-                        transform: "scale(1.05)", 
-                        boxShadow: 6,
-                        color: "rgba(255, 255, 255, 1)",
-                        backgroundColor: skill.color,
-                    },
-                }}
-            >
-                <CardContent
-                    sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        p: 1,
-                    }}
-                    >
-                    <skill.icon style={{ fontSize: "2.5rem", marginBottom: "0.5rem" }} />
-                    <Typography variant="body2">{skill.title}</Typography>
-                </CardContent>
-            </Card>
-           </Grid>
+          <CardSkill key={index} skill={skill} />
         );
       })}
 
@@ -61,42 +27,7 @@ export default function Skills() {
       </Grid>
       {softskills.map((skill: Types.Skill, index: number) => {
         return (
-          <Grid size={{ xs: 6, md: 2 }} key={index}>
-            <Card
-                sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    textAlign: "center",
-                    backgroundColor: "rgba(255, 255, 255, 0.08)",
-                    borderRadius: 3,
-                    boxShadow: `0px 4px 20px ${skill.color}`,
-                    color: skill.color,
-                    transition: "0.3s",
-                    height: "100%", 
-                    width: "100%",
-                    "&:hover": { 
-                        transform: "scale(1.05)", 
-                        boxShadow: 6,
-                        color: "rgba(255, 255, 255, 1)",
-                        backgroundColor: skill.color,
-                    },
-                }}
-            >
-                <CardContent
-                    sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        p: 1,
-                    }}
-                    >
-                    <skill.icon style={{ fontSize: "2.5rem", marginBottom: "0.5rem" }} />
-                    <Typography variant="body2">{skill.title}</Typography>
-                </CardContent>
-            </Card>
-           </Grid>
+          <CardSkill key={index} skill={skill} />
         );
       })}
     </Grid>
