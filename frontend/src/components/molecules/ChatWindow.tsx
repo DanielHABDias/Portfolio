@@ -56,7 +56,7 @@ export default function ChatWindow({ onClose, isOpen = false }: ChatWindowProps)
       <Box
         sx={{
           p: 1.5,
-          bgcolor: theme.palette.primary.main,
+          bgcolor: theme.palette.grey[800],
           color: theme.palette.primary.contrastText,
           display: 'flex',
           justifyContent: 'space-between',
@@ -115,7 +115,7 @@ export default function ChatWindow({ onClose, isOpen = false }: ChatWindowProps)
                 maxWidth: '75%',
                 bgcolor:
                   msg.sender === 'user'
-                    ? theme.palette.primary.light
+                    ? theme.palette.text.primary
                     : '#424242',
                 color: '#fff',
                 boxShadow: msg.sender === 'user' ? '0 2px 5px rgba(0,0,0,0.2)' : 'none',
@@ -196,10 +196,10 @@ export default function ChatWindow({ onClose, isOpen = false }: ChatWindowProps)
           onClick={handleSendMessage}
           disabled={isLoading || !inputMessage.trim()}
           sx={{
-            bgcolor: theme.palette.primary.main,
+            bgcolor: theme.palette.grey[800],
             color: theme.palette.primary.contrastText,
             '&:hover': {
-              bgcolor: theme.palette.primary.dark,
+              bgcolor: theme.palette.grey[600],
             },
             width: 40,
             height: 40,

@@ -28,7 +28,7 @@ export default function About() {
             height={4000}
             style={{
               objectFit: "cover",
-              filter: "drop-shadow(0 4px 20px #00ffff)",
+              filter: "drop-shadow(0 4px 20px #ffffffff)",
               borderRadius: 8,
               width: "100%",
               height: "100%",
@@ -73,7 +73,7 @@ export default function About() {
                 <Stack direction="row" spacing={1} alignItems="center">
                   <FaGraduationCap />
                   <Typography sx={{ color: "#ccc" }}>
-                    Graduando em <strong>Análise e Desenvolvimento de Sistemas</strong> pela{" "}
+                    Graduado em <strong>Análise e Desenvolvimento de Sistemas</strong> pela{" "}
                     <span style={{ color: "#00ffff", fontWeight: 600 }}>PUC Minas</span>
                   </Typography>
                 </Stack>

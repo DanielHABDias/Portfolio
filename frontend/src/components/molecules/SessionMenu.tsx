@@ -26,9 +26,9 @@ const styleButtons = {
   color: "rgba(255,255,255,0.7)",
 
   "&.Mui-selected": {
-    background: "linear-gradient(90deg, #00ffff, #0ef)",
+    background: "linear-gradient(90deg, #ffffffff, rgba(180, 180, 180, 1))",
     color: "#000",
-    boxShadow: "0 0 12px #00ffff88",
+    boxShadow: "0 0 12px #ffffff88",
     fontWeight: 700,
     "&:hover": {
       bgcolor: "rgba(0, 255, 255, 0.1)",
@@ -37,8 +37,8 @@ const styleButtons = {
   },
 
   "&:hover": {
-    bgcolor: "rgba(0, 255, 255, 0.1)",
-    color: "#00ffff",
+    bgcolor: "rgba(255, 255, 255, 0.1)",
+    color: "#ffffffff",
   },
 };
 

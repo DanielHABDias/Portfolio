@@ -43,9 +43,9 @@ export default function FloatingAvatar({ onClick, isOpen, isLoaded=false }: Floa
           width: isMobile ? 60 : 80,
           height: isMobile ? 60 : 80,
           boxShadow: theme.shadows[6],
-          backgroundColor: theme.palette.primary.main,
+          backgroundColor: theme.palette.grey[800],
           '&:hover': {
-            backgroundColor: theme.palette.primary.dark,
+            backgroundColor: theme.palette.grey[600],
           },
           transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)',
           transition: 'transform 0.3s ease-in-out',
@@ -58,7 +58,7 @@ export default function FloatingAvatar({ onClick, isOpen, isLoaded=false }: Floa
         }}
       >
         {!isLoaded ? (
-          <CircularProgress size={30} sx={{ color: theme.palette.primary.contrastText }} />
+          <CircularProgress size={30} sx={{ color: theme.palette.grey[800] }} />
         ) : isOpen ? (
           <ChatIcon sx={{ transform: 'rotate(-90deg)' }} />
         ) : (
@@ -67,7 +67,7 @@ export default function FloatingAvatar({ onClick, isOpen, isLoaded=false }: Floa
             sx={{
               width: isMobile ? 54 : 74,
               height: isMobile ? 54 : 74,
-              border: `2px solid ${theme.palette.primary.contrastText}`,
+              border: `2px solid ${theme.palette.grey}`,
             }}
           />
         )}

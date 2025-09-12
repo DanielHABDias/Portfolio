@@ -36,7 +36,7 @@ const desktopHeaderStyle = {
   borderRadius: "16px 16px 0px 0px",
   background: "rgba(255,255,255,0.05)",
   backdropFilter: "blur(8px)",
-  boxShadow: "0 4px 20px rgba(0,255,255,0.15)",
+  boxShadow: "0 4px 20px rgba(255, 255, 255, 0.15)",
   position: "relative",
   overflow: "hidden",
 };
@@ -51,10 +51,10 @@ const neonLineSx = {
   left: 0,
   height: 3,
   width: "100%",
-  background: `linear-gradient(90deg, transparent 0%, rgba(0,255,255,0.4) 20%, #00ffff 50%, rgba(0,255,255,0.4) 80%, transparent 100%)`,
+  background: `linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 20%, #fdfdfdff 50%, rgba(255, 255, 255, 0.4) 80%, transparent 100%)`,
   backgroundSize: "300% 100%",
   animation: `${glowMove} 5s linear infinite`,
-  boxShadow: "0 0 12px #00ffff, 0 0 24px rgba(0,255,255,.5)",
+  boxShadow: "0 0 12px #ffffffff, 0 0 24px rgba(138, 138, 138, 0.5)",
 };
 
 const desktopContentWrapperStyle = {

@@ -19,7 +19,7 @@ export default function Button({ children, handle, type = "button", size="medium
         bgcolor: "rgba(0, 0, 0, 0.74)",
         color: "white",
         borderRadius: "10px",
-        boxShadow: "0 4px 8px 0 #00ffff88, 0 6px 20px 0 #00ffff88",
+        boxShadow: "0 4px 8px 0 #ffffffc7, 0 6px 20px 0 rgba(252, 252, 252, 0.51)",
     }
     return (
         <MuiButton variant="contained" onClick={onClick} sx={style} type={type} size={size} disabled={disabled}>
