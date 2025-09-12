@@ -61,7 +61,7 @@ export default function Aside ({size} : {size: object}) : React.ReactNode {
                 <Typed strings={user.titles}/>
 
                 <Typography variant="body2" textAlign="center">
-                    {`Age: ${user.years} years`}
+                    {`${user.years} anos`}
                 </Typography>
                 <Box sx={{ mt: 2, display: "flex", flexWrap: "wrap", gap: 1, justifyContent: "center" }}>
                     {user.skills?.hardskills.slice(0, 5).map((skill: Types.Skill, i: number) => (

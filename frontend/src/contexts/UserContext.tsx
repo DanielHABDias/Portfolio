@@ -4,7 +4,6 @@ import { UserContextType, Contact, Skills, Experience, Project, Achievement } fr
 import { createContext, ReactNode } from "react";
 import { 
   FaJava, FaPython, FaPhp, FaNodeJs, FaReact, FaDocker, FaAws, 
-  FaGraduationCap, FaChalkboardTeacher, FaBriefcase,
   FaLightbulb, FaComments, FaRocket, FaHandsHelping, FaGitAlt,
   FaGithub, FaLinkedin, FaWhatsapp, FaDatabase 
 } from "react-icons/fa";
@@ -85,7 +84,7 @@ const experiences: Experience[] = [
     period: "02/2020 – 12/2022",
     role: "Técnico em Eletrônica",
     description: [],
-    icon: FaGraduationCap,
+    type: "academic",
     color: "#1c61f7",
   },
   {
@@ -93,7 +92,7 @@ const experiences: Experience[] = [
     period: "02/2023 – 12/2025",
     role: "Graduação em Análise e Desenvolvimento de Sistemas",
     description: [],
-    icon: FaGraduationCap,
+    type: "academic",
     color: "#062cda",
   },
   // Experiência Acadêmica
@@ -102,7 +101,7 @@ const experiences: Experience[] = [
     period: "Fevereiro 2024 - Março 2024",
     role: "Monitor de Algoritmos e Estruturas de Dados",
     description: ["Reforço para alunos e apoio ao professor."],
-    icon: FaChalkboardTeacher,
+    type: "professional",
     color: "#062cda",
   },
   // Experiência Profissional
@@ -114,7 +113,7 @@ const experiences: Experience[] = [
       "Projeto UFMG-COPASA com microcontroladores e LoraWAN (C/C++).",
       "Projeto resultou em patente registrada."
     ],
-    icon: FaBriefcase,
+    type: "search",
     color: "#1c61f7",
   },
   {
@@ -124,7 +123,7 @@ const experiences: Experience[] = [
     description: [
       "Suporte a ERP, relatórios (Excel/Power BI) e treinamentos internos."
     ],
-    icon: FaBriefcase,
+    type: "professional",
     color: "#070070",
   },
   {
@@ -134,7 +133,7 @@ const experiences: Experience[] = [
     description: [
       "Crawlers em PHP para coleta de dados e manutenção supervisionada em banco de dados."
     ],
-    icon: FaBriefcase,
+    type: "professional",
     color: "#fa3200",
   },
   {
@@ -147,7 +146,7 @@ const experiences: Experience[] = [
       "Modelagem orientada a objetos (SOLID), PostgreSQL e suporte em infraestrutura.",
       "Efetivado de estagiário a júnior em poucos meses."
     ],
-    icon: FaBriefcase,
+    type: "professional",
     color: "#fa3200",
   },
 ];
@@ -173,7 +172,33 @@ const projects: Project[] = [
     ],
     img: "/projects/portfolio.png",
     situation: "in progress"
-  }
+  },
+  {
+    title: "RabbitGo",
+    description: "Um serviço simples de mensageria desenvolvido em Go, utilizando RabbitMQ para troca assíncrona e confiável de mensagens entre aplicações.",
+    links: {
+      github: "https://github.com/DanielHABDias/rabbitgo",
+    },
+    skills: [
+      { title: "Golang", icon: SiGo, color: "#00ADD8" },
+      { title: "RabbitMQ", icon: SiRabbitmq, color: "#EA580C" },
+    ],
+    img: "/projects/rabbitgo.png",
+    situation: "completed"
+  },
+  {
+    title: "APJobs",
+    description: "APJobs é uma API simples para consulta de vagas de emprego, combinando web scraping e APIs públicas para oferecer buscas personalizadas por título, localização, tempo de publicação e paginação. O objetivo é exclusivamente educacional e demonstrativo, sem fins comerciais, respeitando sempre as políticas e limites das plataformas utilizadas.",
+    links: {
+      github: "https://github.com/DanielHABDias/apjobs",
+    },
+    skills: [
+      { title: "Node.js", icon: FaNodeJs, color: "#22C55E" },
+      { title: "React", icon: FaReact, color: "#61DAFB" },
+    ],
+    img: "/projects/apjobs.png",
+    situation: "completed"
+  },
 ];
 
 const achievements: Achievement[] = [
@@ -223,16 +248,19 @@ const contacts: Contact[] = [
 ];
 
 const about: string[] = [
-  `💻 Sou <span style="color:#00ffff">Desenvolvedor Full-Stack</span>, com foco em <span style="color:#00ffff">Back-End</span>, formado em <span style="color:#00ffff">Análise e Desenvolvimento de Sistemas</span>. Atualmente atuo como <span style="color:#00ffff">Desenvolvedor Júnior</span> na 4MTI, onde fui efetivado rapidamente após estágio graças à minha dedicação e rápida adaptação.`,
-  `🚀 Tenho experiência em <span style="color:#00ffff">web crawlers</span>, ingestão de grandes volumes de dados em <span style="color:#00ffff">PostgreSQL</span> e projetos de tecnologia embarcada (<span style="color:#00ffff">C/C++</span>). Também possuo conhecimentos em front-end, criando interfaces funcionais e modernas. Durante a graduação, fui monitor de <span style="color:#00ffff">Algoritmos e Estruturas de Dados</span> e recebi reconhecimento acadêmico.`,
-  `🤖 Apaixonado por <span style="color:#00ffff">Inteligência Artificial</span>, aplico APIs como <span style="color:#00ffff">OpenAI</span> e <span style="color:#00ffff">Gemini</span> com uso de <span style="color:#00ffff">LangChain</span> e pipelines RAG. Prezo por <span style="color:#00ffff">boas práticas</span>, código limpo e soluções escaláveis. 🌱 Busco evolução constante, valorizo <span style="color:#00ffff">proatividade</span>, colaboração e comunicação clara para gerar impacto positivo em cada projeto.`
+  `💻 Sou <span class="highlight">Desenvolvedor Full-Stack</span>, com foco em <span class="highlight">Back-End</span>, formado em <span class="highlight">Análise e Desenvolvimento de Sistemas</span>. Atualmente atuo como <span class="highlight">Desenvolvedor Júnior</span> na 4MTI, onde fui efetivado rapidamente após estágio graças à minha dedicação e rápida adaptação.`,
+  `🚀 Tenho experiência em <span class="highlight">web crawlers</span>, ingestão de grandes volumes de dados em <span class="highlight">PostgreSQL</span> e projetos de tecnologia embarcada (<span class="highlight">C/C++</span>). Também possuo conhecimentos em front-end, criando interfaces funcionais e modernas. Durante a graduação, fui monitor de <span class="highlight">Algoritmos e Estruturas de Dados</span> e recebi reconhecimento acadêmico.`,
+  `🤖 Apaixonado por <span class="highlight">Inteligência Artificial</span>, aplico APIs como <span class="highlight">OpenAI</span> e <span class="highlight">Gemini</span> com uso de <span class="highlight">LangChain</span> e pipelines RAG. Prezo por <span class="highlight">boas práticas</span>, código limpo e soluções escaláveis. 🌱 Busco evolução constante, valorizo <span class="highlight">proatividade</span>, colaboração e comunicação clara para gerar impacto positivo em cada projeto.`
 ];
 
 const UserProvider = ({ children }: { children: ReactNode }) => {
+  const now = new Date();
+  const dataNascimento = new Date('2004-11-22'); 
+  const idade = now.getFullYear() - dataNascimento.getFullYear();
   const user: UserContextType = {
     backend: "https://portfolio-2k0u.onrender.com/",
     name: "Daniel Dias",
-    years: 21,
+    years: idade,
     location: {
       address: "Jardim Guanabara, Belo Horizonte - MG",
       country: "Brasil",

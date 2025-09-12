@@ -3,7 +3,7 @@ type Experience = {
   period: string;
   role: string;
   description: string[];
-  icon: React.ElementType;
+  type: "academic" | "professional" | "search";
   color: string;
 }
 

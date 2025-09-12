@@ -15,6 +15,8 @@ import useUser from "@/hooks/useUser";
 
 export default function About() {
   const user: Types.UserContextType = useUser();
+  const lastProfessionalExperience = user.experiences?.filter((exp) => exp.type === "professional")?.slice(-1)?.[0];
+  const lastAcademicExperience = user.experiences?.filter((exp) => exp.type === "academic")?.slice(-1)?.[0];
 
   return (
     <Grid container spacing={2} sx={{ height: "100%", width: "100%", padding: 2 }}>
@@ -55,8 +57,8 @@ export default function About() {
           >
             <Stack spacing={3}>
               <div>
-                <Title text={user.name} lineColor="#00ffff" />
-                <Typography variant="h6" sx={{ color: "#00ffff", fontWeight: 600 }}>
+                <Title text={user.name} lineColor="rgba(255, 255, 255, 0.56)" />
+                <Typography variant="h6" sx={{ fontWeight: 600 }} className="highlight">
                   {user.titles[0]}
                 </Typography>
               </div>
@@ -73,15 +75,15 @@ export default function About() {
                 <Stack direction="row" spacing={1} alignItems="center">
                   <FaGraduationCap />
                   <Typography sx={{ color: "#ccc" }}>
-                    Graduado em <strong>Análise e Desenvolvimento de Sistemas</strong> pela{" "}
-                    <span style={{ color: "#00ffff", fontWeight: 600 }}>PUC Minas</span>
+                    <strong>{lastAcademicExperience.role}</strong> -{" "}
+                    <span className="highlight">{lastAcademicExperience.company}</span>
                   </Typography>
                 </Stack>
                 <Stack direction="row" spacing={1} alignItems="center">
                   <FaBriefcase />
                   <Typography sx={{ color: "#ccc" }}>
-                    Atualmente: <span style={{ color: "#00ffff", fontWeight: 600 }}>4MTI</span> – 
-                    Desenvolvedor Full-Stack Júnior
+                    Atualmente: <span className="highlight">{lastProfessionalExperience.company}</span> – 
+                    {lastProfessionalExperience.role}
                   </Typography>
                 </Stack>
               </Stack>
@@ -137,7 +139,7 @@ export default function About() {
             color: "white",
           }}
         >
-          <Title text="Sobre Mim" lineColor="#00ffff" />
+          <Title text="Sobre Mim" lineColor="rgba(255, 255, 255, 0.56)" />
           {user.about && user.about.map((item: string, index: number) => {
             return (
               <Typography

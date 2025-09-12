@@ -14,7 +14,7 @@ export default function Skills() {
   return (
     <Grid container spacing={4} sx={{ p: 4 }}>
       <Grid size={12} sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
-        <Title text="Hard Skills" lineColor="#00ffff" />
+        <Title text="Hard Skills" lineColor="rgba(255, 255, 255, 0.56)" />
       </Grid>
       {hardskills.map((skill: Types.Skill, index: number) => {
         return (
@@ -23,7 +23,7 @@ export default function Skills() {
       })}
 
       <Grid size={12} sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", mt: 4}}>
-        <Title text="Soft Skills" lineColor="#00ffff" />
+        <Title text="Soft Skills" lineColor="rgba(255, 255, 255, 0.56)" />
       </Grid>
       {softskills.map((skill: Types.Skill, index: number) => {
         return (

@@ -142,19 +142,19 @@ export default function ModalProject({ open, handleClose, selectedProject,}: { o
               sx={{
                 borderColor: !selectedProject.links.github
                   ? "#ccc" 
-                  : "#00ffff",
+                  : "#ffffffff",
                 color: !selectedProject.links.github
                   ? "#666" 
-                  : "#00ffff",
+                  : "#ffffffff",
                 opacity: !selectedProject.links.github ? 0.5 : 1,
                 cursor: !selectedProject.links.github ? "default" : "pointer",
                 "&:hover": {
                   borderColor: !selectedProject.links.github
                     ? "#ccc" 
-                    : "#00e6e6",
+                    : "#ffffffff",
                   bgcolor: !selectedProject.links.github
                     ? "transparent"
-                    : "rgba(0,255,255,0.1)",
+                    : "rgba(255, 255, 255, 0.1)",
                 },
               }}
             >
@@ -173,19 +173,19 @@ export default function ModalProject({ open, handleClose, selectedProject,}: { o
               sx={{
                 borderColor: !selectedProject.links.demo
                   ? "#ccc" 
-                  : "#00ffff",
+                  : "#ffffffff",
                 color: !selectedProject.links.demo
                   ? "#666" 
-                  : "#00ffff",
+                  : "#ffffffff",
                 opacity: !selectedProject.links.demo ? 0.5 : 1,
                 cursor: !selectedProject.links.demo ? "default" : "pointer",
                 "&:hover": {
                   borderColor: !selectedProject.links.demo
                     ? "#ccc" 
-                    : "#00e6e6",
+                    : "#ffffffff",
                   bgcolor: !selectedProject.links.demo
                     ? "transparent"
-                    : "rgba(0,255,255,0.1)",
+                    : "rgba(255, 255, 255, 0.1)",
                 },
               }}
             >

@@ -1,7 +1,7 @@
 "use client";
 
 import * as Types from "@/types/user";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid, TextField, Box, Chip, Link, Typography, CircularProgress, Alert, Snackbar } from "@mui/material";
 import useUser from "@/hooks/useUser";
 import { useEmail } from "@/hooks/useEmail";
@@ -29,23 +29,24 @@ export default function Contact() {
 
     try {
       await sendEmail(formData); 
-      if (successMessage) { 
-        setOpenSnackbar(true);
-        setFormData({
-          name: "",
-          email: "",
-          message: "",
-        });
-      }
     } catch (err) {
       if (err instanceof Error) {
         console.error("Erro ao enviar email:", err.message);
-        setOpenSnackbar(true);
       } else {
         console.error("Ocorreu um erro desconhecido:", err);
       }
     }
   };
+
+  useEffect(() => {
+    if (error || successMessage) {
+      setOpenSnackbar(true);
+    }
+
+    if (successMessage) {
+      setFormData({ name: "", email: "", message: "" });
+    }
+  }, [error, successMessage]);
 
   const handleCloseSnackbar = (event?: React.SyntheticEvent | Event, reason?: string) => {
     if (reason === 'clickaway') {

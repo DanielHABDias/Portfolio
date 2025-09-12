@@ -69,7 +69,7 @@ export default function ChatWindow({ onClose, isOpen = false }: ChatWindowProps)
           Chat
         </Typography>
         <Box>
-          <IconButton size="small" color="inherit" onClick={clearChat} disabled={isLoading || messages.length === 0 || !messages}>
+          <IconButton size="small" color="error" onClick={clearChat} disabled={isLoading || messages.length === 0 || !messages}>
             <DeleteForeverIcon />
           </IconButton>
           <IconButton size="small" color="inherit" onClick={onClose}>
@@ -196,10 +196,10 @@ export default function ChatWindow({ onClose, isOpen = false }: ChatWindowProps)
           onClick={handleSendMessage}
           disabled={isLoading || !inputMessage.trim()}
           sx={{
-            bgcolor: theme.palette.grey[800],
+            bgcolor: theme.palette.success.light,
             color: theme.palette.primary.contrastText,
             '&:hover': {
-              bgcolor: theme.palette.grey[600],
+              bgcolor: theme.palette.success.dark,
             },
             width: 40,
             height: 40,

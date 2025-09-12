@@ -23,3 +23,9 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.highlight {
+  font-weight: 600;
+  color: #61dafb;
+  text-shadow: 0 0 1px rgba(97, 218, 251, 0.3);
+}

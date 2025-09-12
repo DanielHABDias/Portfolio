@@ -2,17 +2,10 @@
 
 import * as Types from "@/types/user";
 import React from "react";
-import {
-  Timeline,
-  TimelineItem,
-  TimelineSeparator,
-  TimelineConnector,
-  TimelineContent,
-  TimelineDot,
-  TimelineOppositeContent,
-} from "@mui/lab";
+import { Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot, TimelineOppositeContent } from "@mui/lab";
 import { Typography, Paper, useMediaQuery, Box } from "@mui/material";
 import useUser from "@/hooks/useUser";
+import { FaGraduationCap, FaChalkboardTeacher, FaBriefcase } from "react-icons/fa";
 
 export default function Experience() {
   const user: Types.UserContextType = useUser();
@@ -25,7 +18,12 @@ export default function Experience() {
   const renderDesktopTimeline = () => (
     <Timeline position="alternate" sx={{ py: 6, px: { xs: 1, sm: 3, md: 6 } }}> 
       {experiences.map((exp, index) => {
-        const Icon = exp.icon;
+        const Icon =
+        exp.type === "academic"
+          ? FaGraduationCap
+          : exp.type === "search"
+            ? FaChalkboardTeacher
+            : FaBriefcase;
         const color = exp.color || "#00ffff";
 
         return (
@@ -119,7 +117,12 @@ export default function Experience() {
   const renderMobileCards = () => (
     <Box sx={{ p: 2, display: "flex", flexDirection: "column", gap: 3 }}>
       {experiences.map((exp, index) => {
-        const Icon = exp.icon;
+        const Icon =
+        exp.type === "academic"
+          ? FaGraduationCap
+          : exp.type === "search"
+            ? FaChalkboardTeacher
+            : FaBriefcase;
         const color = exp.color || "#00ffff";
 
         return (
