@@ -45,6 +45,7 @@ export default function ModalProject({ open, handleClose, selectedProject,}: { o
     >
       <Box sx={style}>
         <Box sx={{ position: "relative" }}>
+          {!selectedProject.video &&
           <Image
             src={selectedProject.img}
             alt={selectedProject.title}
@@ -54,7 +55,23 @@ export default function ModalProject({ open, handleClose, selectedProject,}: { o
             style={{
               objectFit: "cover",
             }}
-          />
+          />}
+          {selectedProject.video &&
+          <a href={selectedProject.video} target="_blank" rel="noopener noreferrer">
+            <video
+              src={selectedProject.video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{
+                width: "100%",
+                height: "300px",
+                objectFit: "cover",
+                cursor: "pointer",
+              }}
+            />
+          </a>}
           <IconButton
             onClick={handleClose}
             sx={{

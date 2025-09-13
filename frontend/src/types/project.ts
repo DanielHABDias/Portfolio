@@ -9,6 +9,7 @@ type Project = {
   };
   skills: Skill[];
   img: string;
+  video?: string;
   situation: "in progress" | "completed";
 }
 

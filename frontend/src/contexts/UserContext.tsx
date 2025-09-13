@@ -184,6 +184,7 @@ const projects: Project[] = [
       { title: "RabbitMQ", icon: SiRabbitmq, color: "#EA580C" },
     ],
     img: "/projects/rabbitgo.png",
+    video: "/projects/rabbitgo.mp4",
     situation: "completed"
   },
   {
@@ -272,7 +273,7 @@ const UserProvider = ({ children }: { children: ReactNode }) => {
     projects: projects,
     achievements: achievements,
     contacts : contacts,
-    titles: ["Full-Stack Developer", "Front-End Developer", "Back-End Developer"],
+    titles: ["Full-Stack Developer", "Back-End Developer", "IA Developer"],
     about,
     avatar: "/avatar.webp",
     avatarBody: "/avatarBody.png",
