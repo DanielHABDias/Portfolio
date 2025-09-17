@@ -243,7 +243,7 @@ const achievements: Achievement[] = [
 
 const contacts: Contact[] = [
   { type: "Email", title: "danielhabdias@gmail.com", link: "mailto:danielhabdias@gmail.com?subject=Proposta de trabalho&body=Olá somos a Empresa...", icon: SiGmail, color: "#DC2626" },
-  { type: "Linkedin", title: "Daniel Dias", link: "www.linkedin.com/in/danielhabdias", icon: FaLinkedin, color: "#0A66C2" },
+  { type: "Linkedin", title: "Daniel Dias", link: "https://www.linkedin.com/in/danielhabdias", icon: FaLinkedin, color: "#0A66C2" },
   { type: "Github", title: "KloseBH", link: "https://github.com/DanielHABDias", icon: FaGithub, color: "#181717" },
   { type: "Whatsapp", title: "Talk to me", link: "https://wa.me/5531994332959", icon: FaWhatsapp, color: "#25D366" },
 ];
@@ -275,8 +275,8 @@ const UserProvider = ({ children }: { children: ReactNode }) => {
     contacts : contacts,
     titles: ["Full-Stack Developer", "Back-End Developer", "IA Developer"],
     about,
-    avatar: "/avatar.webp",
-    avatarBody: "/avatarBody.png",
+    avatar: "/avatar.png",
+    avatarBody: "/avatar2.png",
     skills,
     experiences,
   };

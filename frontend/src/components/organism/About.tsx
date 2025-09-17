@@ -2,159 +2,160 @@
 
 import * as Types from "@/types/user";
 import Image from "next/image";
-import { Grid, Box, Paper, Stack, Typography, Divider } from "@mui/material";
+import { Grid, Box, Paper, Stack, Typography, useMediaQuery } from "@mui/material"; 
 import { 
   FaUser, 
   FaBriefcase, 
   FaGraduationCap, 
-  FaLaptopCode, 
-  FaLightbulb, 
 } from "react-icons/fa";
-import Title from "../atoms/Title";
+import Title from "../atoms/Title"; 
 import useUser from "@/hooks/useUser";
 
 export default function About() {
   const user: Types.UserContextType = useUser();
   const lastProfessionalExperience = user.experiences?.filter((exp) => exp.type === "professional")?.slice(-1)?.[0];
   const lastAcademicExperience = user.experiences?.filter((exp) => exp.type === "academic")?.slice(-1)?.[0];
+  const isMobile = useMediaQuery("(max-width: 1024px)");
+  const blueColor = "#00ffff";
 
   return (
-    <Grid container spacing={2} sx={{ height: "100%", width: "100%", padding: 2 }}>
-      <Grid container size={{ xs: 12, md: 12 }} spacing={2}>
+    <Grid container spacing={4} sx={{ height: "100%", width: "100%", padding: 2, alignItems: "center" }}>
+      
+      <Grid container size={12} spacing={{ xs: 2, md: 4 }} alignItems="center" sx={{ minHeight: '300px' }}> 
         
-        <Grid size={{ xs: 0, md: 6 }}>
-          <Image
-            src={user.avatarBody}
-            alt={user.name}
-            width={3000}
-            height={4000}
-            style={{
-              objectFit: "cover",
-              filter: "drop-shadow(0 4px 20px #ffffffff)",
-              borderRadius: 8,
-              width: "100%",
-              height: "100%",
-              margin: "auto",
-            }}
-          />
+        <Grid size={{ xs: 12, md: 6 }}>
+          <Stack spacing={1} sx={{ textAlign: { xs: "center", md: "left" } }}>
+            <Typography variant="h3" component="h1" sx={{ fontWeight: 700, color: "white" }}>
+              Olá, eu sou o 
+            </Typography>
+            <Typography 
+              variant="h2" 
+              component="h1" 
+              className="highlight" 
+              sx={{ 
+                fontWeight: 700, 
+                color: blueColor,
+                textShadow: `0 0 10px ${blueColor}70`
+              }}
+            >
+              {user.name}
+            </Typography>
+            <Typography variant="h5" sx={{ fontWeight: 400, color: "#ccc", fontFamily: "Courier New, monospace" }}>
+              {user.titles[0]}
+            </Typography>
+
+            <Stack 
+              direction="row" 
+              spacing={1} 
+              sx={{ 
+                mt: 2, 
+                flexWrap: 'wrap', 
+                justifyContent: { xs: "center", md: "flex-start" } 
+              }}
+            >
+              {user.skills?.hardskills.slice(0, 5).map((skill: Types.Skill, index: number) => (
+                <Box key={index} sx={{ display: 'flex', alignItems: 'center' }}>
+                  {skill.icon && <skill.icon size={20} color={skill.color || blueColor}/>}
+                </Box>
+              ))}
+            </Stack>
+
+            <Stack spacing={1} sx={{ mt: 3 }}>
+                <Stack direction="row" spacing={1} alignItems="center" justifyContent={{ xs: "center", md: "flex-start" }}>
+                    {!isMobile && <FaUser color={blueColor} />}
+                    <Typography sx={{ color: "#ccc" }}>
+                        {`${user.years} anos`}
+                    </Typography>
+                </Stack>
+                <Stack direction="row" spacing={1} alignItems="center" justifyContent={{ xs: "center", md: "flex-start" }}>
+                    {!isMobile && <FaGraduationCap color={blueColor} />}
+                    <Typography sx={{ color: "#ccc" }}>
+                        <strong>{lastAcademicExperience?.role}</strong> -{" "}
+                        <span className="highlight">{lastAcademicExperience?.company}</span>
+                    </Typography>
+                </Stack>
+                <Stack direction="row" spacing={1} alignItems="center" justifyContent={{ xs: "center", md: "flex-start" }}>
+                    {!isMobile && <FaBriefcase color={blueColor} />}
+                    <Typography sx={{ color: "#ccc" }}>
+                        Atualmente: <span className="highlight">{lastProfessionalExperience?.company}</span> – 
+                        {lastProfessionalExperience?.role}
+                    </Typography>
+                </Stack>
+            </Stack>
+          </Stack>
         </Grid>
 
-        <Grid size={{ xs: 12, md: 6 }}>
-          <Paper
-            elevation={6}
+        <Grid size={{ xs: 12, md: 6 }} sx={{ 
+            display: "flex", 
+            justifyContent: "center", 
+            alignItems: "center",
+            mt: { xs: 4, md: 0 }
+        }}>
+          <Box
             sx={{
-              p: 4,
-              bgcolor: "rgba(255,255,255,0.07)",
-              borderRadius: 3,
-              height: "100%",
-              width: "100%",
-              boxShadow: "0 8px 24px rgba(0,0,0,0.6)",
-              color: "white",
+              position: "relative",
+              width: { xs: 250, md: 350 }, 
+              height: { xs: 250, md: 350 }, 
+              borderRadius: "50%", 
+              overflow: "hidden",
               display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
+              justifyContent: "center",
+              alignItems: "center",
+              clipPath: 'polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%)',
+              bgcolor: blueColor,
+              boxShadow: `0 8px 24px ${blueColor}50`,
+              p: 1, 
             }}
           >
-            <Stack spacing={3}>
-              <div>
-                <Title text={user.name} lineColor="rgba(255, 255, 255, 0.56)" />
-                <Typography variant="h6" sx={{ fontWeight: 600 }} className="highlight">
-                  {user.titles[0]}
-                </Typography>
-              </div>
-
-              <Divider sx={{ borderColor: "rgba(255,255,255,0.15)" }} />
-
-              <Stack spacing={2}>
-                <Stack direction="row" spacing={1} alignItems="center">
-                  <FaUser />
-                  <Typography sx={{ color: "#ccc" }}>
-                    {`${user.years} anos`}
-                  </Typography>
-                </Stack>
-                <Stack direction="row" spacing={1} alignItems="center">
-                  <FaGraduationCap />
-                  <Typography sx={{ color: "#ccc" }}>
-                    <strong>{lastAcademicExperience.role}</strong> -{" "}
-                    <span className="highlight">{lastAcademicExperience.company}</span>
-                  </Typography>
-                </Stack>
-                <Stack direction="row" spacing={1} alignItems="center">
-                  <FaBriefcase />
-                  <Typography sx={{ color: "#ccc" }}>
-                    Atualmente: <span className="highlight">{lastProfessionalExperience.company}</span> – 
-                    {lastProfessionalExperience.role}
-                  </Typography>
-                </Stack>
-              </Stack>
-
-              <Divider sx={{ borderColor: "rgba(255,255,255,0.15)" }} />
-
-              <Stack spacing={1}>
-                <Stack direction="row" spacing={1} alignItems="center">
-                  <FaLaptopCode color="#00ffff" />
-                  <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-                    Principais Hard Skills
-                  </Typography>
-                </Stack>
-                <Typography sx={{ color: "#ccc" }}>
-                  {user.skills?.hardskills.slice(0, 5).map((skill: Types.Skill) => skill.title).join(", ")}
-                </Typography>
-              </Stack>
-
-              <Divider sx={{ borderColor: "rgba(255,255,255,0.15)" }} />
-
-              <Stack spacing={1}>
-                <Stack direction="row" spacing={1} alignItems="center">
-                  <FaLightbulb color="#FACC15" />
-                  <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-                    Soft Skills
-                  </Typography>
-                </Stack>
-                
-                <Stack spacing={1} sx={{ color: "#ccc" }}>
-                  {user.skills?.softskills.slice(0, 5).map((skill: Types.Skill, index: number) => (
-                    <Stack direction="row" spacing={1} alignItems="center" key={index}>
-                      <skill.icon color={skill.color} />
-                      <Typography>{skill.title}</Typography>
-                    </Stack>
-                  ))}
-                </Stack>
-
-              </Stack>
-            </Stack>
-          </Paper>
+            <Image
+              src={user.avatarBody} 
+              alt={user.name}
+              width={350} 
+              height={350} 
+              style={{
+                objectFit: "cover",
+                borderRadius: "50%", 
+                width: "100%",
+                height: "100%",
+                filter: "brightness(0.95)", 
+              }}
+            />
+          </Box>
         </Grid>
       </Grid>
 
-      <Grid size={{ xs: 12, md: 12 }}>
-        <Box
+      <Grid size={12}>
+        <Paper
+          elevation={6}
           sx={{
-            backgroundColor: "rgba(255, 255, 255, 0.05)",
-            borderRadius: 2,
-            padding: 3,
-            boxShadow: "0 4px 20px rgba(0,0,0,0.5)",
-            overflow: "hidden",
-            minHeight: "8rem",
+            p: 4,
+            bgcolor: "rgba(255,255,255,0.07)",
+            borderRadius: 3,
+            boxShadow: "0 8px 24px rgba(0,0,0,0.6)",
             color: "white",
+            display: "flex",
+            flexDirection: "column",
+            gap: 3, 
           }}
         >
-          <Title text="Sobre Mim" lineColor="rgba(255, 255, 255, 0.56)" />
-          {user.about && user.about.map((item: string, index: number) => {
-            return (
-              <Typography
-                paragraph
-                sx={{
-                  color: "rgba(255,255,255,0.9)",
-                  fontSize: { xs: "0.96rem", md: "1rem" },
-                  lineHeight: 1.7,
-                }}
-                dangerouslySetInnerHTML={{ __html: item }}
-                key={index}
-              />
-            );
-          })}
-        </Box>
+          <Box>
+            <Title text="Sobre Mim" lineColor="rgba(255, 255, 255, 0.56)" />
+            {user.about && user.about.map((item: string, index: number) => {
+              return (
+                <Typography
+                  paragraph
+                  sx={{
+                    color: "rgba(255,255,255,0.9)",
+                    fontSize: { xs: "0.96rem", md: "1rem" },
+                    lineHeight: 1.7,
+                  }}
+                  dangerouslySetInnerHTML={{ __html: item }}
+                  key={index}
+                />
+              );
+            })}
+          </Box>
+        </Paper>
       </Grid>
     </Grid>
   );
