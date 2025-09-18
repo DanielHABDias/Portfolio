@@ -16,7 +16,7 @@ export default function About() {
   const lastProfessionalExperience = user.experiences?.filter((exp) => exp.type === "professional")?.slice(-1)?.[0];
   const lastAcademicExperience = user.experiences?.filter((exp) => exp.type === "academic")?.slice(-1)?.[0];
   const isMobile = useMediaQuery("(max-width: 1024px)");
-  const blueColor = "#00ffff";
+  const styleColor = "#E0E0E0";
 
   return (
     <Grid container spacing={4} sx={{ height: "100%", width: "100%", padding: 2, alignItems: "center" }}>
@@ -34,8 +34,8 @@ export default function About() {
               className="highlight" 
               sx={{ 
                 fontWeight: 700, 
-                color: blueColor,
-                textShadow: `0 0 10px ${blueColor}70`
+                color: styleColor,
+                textShadow: `0 0 10px ${styleColor}70`
               }}
             >
               {user.name}
@@ -55,27 +55,27 @@ export default function About() {
             >
               {user.skills?.hardskills.slice(0, 5).map((skill: Types.Skill, index: number) => (
                 <Box key={index} sx={{ display: 'flex', alignItems: 'center' }}>
-                  {skill.icon && <skill.icon size={20} color={skill.color || blueColor}/>}
+                  {skill.icon && <skill.icon size={20} color={skill.color || styleColor}/>}
                 </Box>
               ))}
             </Stack>
 
             <Stack spacing={1} sx={{ mt: 3 }}>
                 <Stack direction="row" spacing={1} alignItems="center" justifyContent={{ xs: "center", md: "flex-start" }}>
-                    {!isMobile && <FaUser color={blueColor} />}
+                    {!isMobile && <FaUser color={styleColor} />}
                     <Typography sx={{ color: "#ccc" }}>
                         {`${user.years} anos`}
                     </Typography>
                 </Stack>
                 <Stack direction="row" spacing={1} alignItems="center" justifyContent={{ xs: "center", md: "flex-start" }}>
-                    {!isMobile && <FaGraduationCap color={blueColor} />}
+                    {!isMobile && <FaGraduationCap color={styleColor} />}
                     <Typography sx={{ color: "#ccc" }}>
                         <strong>{lastAcademicExperience?.role}</strong> -{" "}
                         <span className="highlight">{lastAcademicExperience?.company}</span>
                     </Typography>
                 </Stack>
                 <Stack direction="row" spacing={1} alignItems="center" justifyContent={{ xs: "center", md: "flex-start" }}>
-                    {!isMobile && <FaBriefcase color={blueColor} />}
+                    {!isMobile && <FaBriefcase color={styleColor} />}
                     <Typography sx={{ color: "#ccc" }}>
                         Atualmente: <span className="highlight">{lastProfessionalExperience?.company}</span> – 
                         {lastProfessionalExperience?.role}
@@ -102,8 +102,8 @@ export default function About() {
               justifyContent: "center",
               alignItems: "center",
               clipPath: 'polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%)',
-              bgcolor: blueColor,
-              boxShadow: `0 8px 24px ${blueColor}50`,
+              bgcolor: styleColor,
+              boxShadow: `0 8px 24px ${styleColor}80`,
               p: 1, 
             }}
           >

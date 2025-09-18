@@ -171,7 +171,8 @@ const projects: Project[] = [
       { title: "Render", icon: SiRender, color: "#000000" },
     ],
     img: "/projects/portfolio.png",
-    situation: "in progress"
+    video: "/projects/portfolio.mp4",
+    situation: "completed"
   },
   {
     title: "RabbitGo",
