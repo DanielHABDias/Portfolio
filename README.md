@@ -5,6 +5,12 @@
 Olá! Eu sou **Daniel Dias**, desenvolvedor **full-stack** com foco em **back-end**, apaixonado por criar soluções escaláveis e eficientes. Este é o meu portfólio, mostrando meus projetos, habilidades e experiência.
 
 ---
+## 🎬 Demonstração
+
+<!-- Coloque aqui o vídeo de demonstração -->
+https://github.com/user-attachments/assets/8a6261ff-4269-4e17-9c49-494cd9d50e3e
+
+---
 
 ## 🖥 Front-end
 
