@@ -54,6 +54,8 @@ export default function ModalProject({ open, handleClose, selectedProject,}: { o
             height={4000}
             style={{
               objectFit: "cover",
+              maxHeight: "300px",
+              maxWidth: "100%",
             }}
           />}
           {selectedProject.video &&

@@ -161,7 +161,6 @@ const projects: Project[] = [
     },
     skills: [
       { title: "Next.js", icon: SiNextdotjs, color: "#070000ff" },
-      { title: "React", icon: FaReact, color: "#61DAFB" },
       { title: "TypeScript", icon: SiTypescript, color: "#2563EB" },
       { title: "Python", icon: FaPython, color: "#3B82F6" },
       { title: "FastAPI", icon: SiFastapi , color: "#087cb3ff" },
@@ -197,9 +196,33 @@ const projects: Project[] = [
     skills: [
       { title: "Node.js", icon: FaNodeJs, color: "#22C55E" },
       { title: "React", icon: FaReact, color: "#61DAFB" },
+      { title: "Docker", icon: FaDocker, color: "#3B82F6" },
     ],
     img: "/projects/apjobs.png",
     situation: "completed"
+  },
+  {
+    title: "SmartWallet",
+    description: "SmartWallet é um sistema de orçamento e planejamento financeiro pessoal, que permite aos usuários registrar contas, acompanhar transações, definir metas financeiras e receber alertas inteligentes. Desenvolvido com microserviços, mensageria, autenticação JWT e os bancos PostgreSQL e MongoDB, é uma aplicação full-stack escalável e profissional.",
+    links: {
+      github: "https://github.com/DanielHABDias/SmartWallet",
+    },
+    skills: [
+      { title: "Next.js", icon: SiNextdotjs, color: "#070000ff" },
+      { title: "TypeScript", icon: SiTypescript, color: "#2563EB" },
+      { title: "Golang", icon: SiGo, color: "#00ADD8" },
+      { title: "Java", icon: FaJava, color: "#DC2626" },
+      { title: "Spring Boot", icon: SiSpringboot, color: "#15803D" },
+      { title: "Material UI", icon: SiMui, color: "#60A5FA" },
+      { title: "PostgreSQL", icon: SiPostgresql, color: "#0EA5E9" },
+      { title: "MongoDB", icon: SiMongodb, color: "#16A34A" },
+      { title: "RabbitMQ", icon: SiRabbitmq, color: "#EA580C" },
+      { title: "Docker", icon: FaDocker, color: "#3B82F6" },
+      { title: "Vercel", icon: SiVercel, color: "#000000" },
+      { title: "Render", icon: SiRender, color: "#000000" },
+    ],
+    img: "/projects/smartwallet.png",
+    situation: "in progress"
   },
 ];
 
