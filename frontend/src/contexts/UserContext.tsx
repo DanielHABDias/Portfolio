@@ -14,7 +14,7 @@ import {
   SiTypescript, SiGo, SiSpringboot, SiDjango, SiNextdotjs, SiIonic, 
   SiMui, SiPostgresql, SiMongodb, SiFirebase, SiRabbitmq, 
   SiOpenai, SiGooglegemini, SiLangchain, SiGmail, SiJunit5, SiVercel, SiRender,
-  SiFastapi, SiNestjs 
+  SiFastapi, SiNestjs, SiExpress 
 } from "react-icons/si";
 
 const UserContext = createContext<UserContextType>({
@@ -36,11 +36,11 @@ const UserContext = createContext<UserContextType>({
 
 const skills: Skills = {
   hardskills: [
-    { title: "Java", icon: FaJava, color: "#DC2626" },
-    { title: "Python", icon: FaPython, color: "#3B82F6" },
-    { title: "PHP", icon: FaPhp, color: "#4F46E5" },
     { title: "Node.js", icon: FaNodeJs, color: "#22C55E" },
+    { title: "Python", icon: FaPython, color: "#3B82F6" },
     { title: "Golang", icon: SiGo, color: "#06B6D4" },
+    { title: "PHP", icon: FaPhp, color: "#4F46E5" },
+    { title: "Java", icon: FaJava, color: "#DC2626" },
     { title: "TypeScript", icon: SiTypescript, color: "#2563EB" },
     { title: "CSharp", icon: TbBrandCSharp, color: "#7C3AED" },
     { title: "Spring Boot", icon: SiSpringboot, color: "#15803D" },
@@ -49,6 +49,7 @@ const skills: Skills = {
     { title: "React", icon: FaReact, color: "#22D3EE" },
     { title: "Next.js", icon: SiNextdotjs, color: "#070000ff" },
     { title: "NestJS", icon: SiNestjs, color: "#eb148aff" },
+    { title: "ExpressJS", icon: SiExpress , color: "#000000" },
     { title: "Ionic", icon: SiIonic, color: "#6366F1" },
     { title: "Material UI", icon: SiMui, color: "#60A5FA" },
     { title: "PostgreSQL", icon: SiPostgresql, color: "#0EA5E9" },
@@ -81,7 +82,7 @@ const experiences: Experience[] = [
   // Formação Acadêmica
   {
     company: "COLTEC UFMG",
-    period: "02/2020 – 12/2022",
+    period: "Fevereiro 2020 – Dezembro 2022",
     role: "Técnico em Eletrônica",
     description: [],
     type: "academic",
@@ -89,7 +90,7 @@ const experiences: Experience[] = [
   },
   {
     company: "PUC Minas",
-    period: "02/2023 – 12/2025",
+    period: "Fevereiro 2023 – Julho 2025",
     role: "Graduação em Análise e Desenvolvimento de Sistemas",
     description: [],
     type: "academic",
@@ -141,13 +142,22 @@ const experiences: Experience[] = [
     period: "Abril 2025 - Presente",
     role: "Desenvolvedor Full Stack Júnior",
     description: [
-      "Desenvolvimento de crawlers e automações (PHP, Node.js, Python).",
-      "Integração de APIs de IA (OpenAI, Gemini).",
-      "Modelagem orientada a objetos (SOLID), PostgreSQL e suporte em infraestrutura.",
-      "Efetivado de estagiário a júnior em poucos meses."
+      "Atuação em dois projetos: React + ExpressJS (TS) e refatoração PHP para NestJS.",
+      "Desenvolvimento de crawlers, automações e interfaces.",
+      "Integração com APIs de IA (OpenAI, Gemini).",
+      "Uso de PostgreSQL e suporte em infraestrutura.",
+      "Promoção de estagiário para júnior em poucos meses."
     ],
     type: "professional",
     color: "#fa3200",
+  },
+  {
+    company: "PUC Minas",
+    period: "Outubro 2025 – Presente",
+    role: "Pós Graduação em Inteligência Artificial e Aprendizado de Máquina",
+    description: [],
+    type: "academic",
+    color: "#062cda",
   },
 ];
 
@@ -273,9 +283,9 @@ const contacts: Contact[] = [
 ];
 
 const about: string[] = [
-  `💻 Sou <span class="highlight">Desenvolvedor Full-Stack</span>, com foco em <span class="highlight">Back-End</span>, formado em <span class="highlight">Análise e Desenvolvimento de Sistemas</span>. Atualmente atuo como <span class="highlight">Desenvolvedor Júnior</span> na 4MTI, onde fui efetivado rapidamente após estágio graças à minha dedicação e rápida adaptação.`,
-  `🚀 Tenho experiência em <span class="highlight">web crawlers</span>, ingestão de grandes volumes de dados em <span class="highlight">PostgreSQL</span> e projetos de tecnologia embarcada (<span class="highlight">C/C++</span>). Também possuo conhecimentos em front-end, criando interfaces funcionais e modernas. Durante a graduação, fui monitor de <span class="highlight">Algoritmos e Estruturas de Dados</span> e recebi reconhecimento acadêmico.`,
-  `🤖 Apaixonado por <span class="highlight">Inteligência Artificial</span>, aplico APIs como <span class="highlight">OpenAI</span> e <span class="highlight">Gemini</span> com uso de <span class="highlight">LangChain</span> e pipelines RAG. Prezo por <span class="highlight">boas práticas</span>, código limpo e soluções escaláveis. 🌱 Busco evolução constante, valorizo <span class="highlight">proatividade</span>, colaboração e comunicação clara para gerar impacto positivo em cada projeto.`
+  `💻 Sou <span class="highlight">Desenvolvedor Full-Stack</span> com foco em <span class="highlight">Back-End</span>, formado em <span class="highlight">Análise e Desenvolvimento de Sistemas</span>. Tenho experiência sólida com <span class="highlight">PHP</span>, <span class="highlight">TypeScript/Node.js</span> e <span class="highlight">Python</span>, além de conhecimentos em <span class="highlight">Golang</span>, <span class="highlight">C#</span> e <span class="highlight">Java</span>. Atualmente atuo como <span class="highlight">Desenvolvedor Júnior</span> na 4MTI, onde fui efetivado rapidamente após o estágio graças à minha dedicação e rápida adaptação.`,
+  `🚀 Atuo no desenvolvimento de <span class="highlight">web crawlers</span>, ingestão de grandes volumes de dados em <span class="highlight">PostgreSQL</span> e criação/refatoração de sistemas. Embora meu foco seja o back-end, também possuo experiência em front-end, criando interfaces funcionais e modernas. Já participei de projetos relevantes, incluindo soluções de tecnologia embarcada em <span class="highlight">C/C++</span> para microcontroladores para a COPASA.`,
+  `🤖 Tenho grande interesse em <span class="highlight">Inteligência Artificial</span>, aplicando no trabalho APIs da <span class="highlight">OpenAI</span> e <span class="highlight">Gemini</span>, com uso de <span class="highlight">LangChain</span> e pipelines RAG para automações e soluções inteligentes. Prezo por <span class="highlight">boas práticas</span>, código limpo e arquitetura consistente. 🌱 Estou em evolução contínua, buscando sempre aprender, colaborar e gerar impacto real nos projetos em que atuo.`
 ];
 
 const UserProvider = ({ children }: { children: ReactNode }) => {
